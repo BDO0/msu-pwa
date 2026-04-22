@@ -1,0 +1,27 @@
+{
+    "id": "station3",
+    "name": "Station 3: Strength and Shelter Station",
+    "artifacts": [
+        {
+            "id": "7",
+            "name": "Kampilan",
+            "description": "The Kampilan is a heavy, single-edged long sword traditionally used by Maranao warriors and chieftains. Its most striking feature is the hilt, which is often carved to represent the gaping mouth of a crocodile or a mythical creature. It symbolizes the bravery and leadership of the person who carries it.",
+            "image": "https://via.placeholder.com/400x250?text=Kampilan",
+            "references": "MSU Aga Khan Museum Archives"
+        },
+        {
+            "id": "8",
+            "name": "Kris (Pira)",
+            "description": "The Kris is a double-edged dagger or sword known for its wavy blade, though some versions are straight. In Maranao culture, a Kris is more than a weapon; it is a symbol of rank, authority, and spiritual protection. The intricate details on the hilt and scabbard indicate the owner's social status.",
+            "image": "https://via.placeholder.com/400x250?text=Kris",
+            "references": "MSU Aga Khan Museum Archives"
+        },
+        {
+            "id": "9",
+            "name": "Panolong",
+            "description": "A Panolong is a carved floor beam that protrudes from the front of the Torogan, the royal house of the Maranao. It is shaped like the prow of a boat and is elaborately carved with naga or floral okir designs. The Panolong serves to protect the house and visually demonstrate the power of the ruling Sultan.",
+            "image": "https://via.placeholder.com/400x250?text=Panolong",
+            "references": "MSU Aga Khan Museum Archives"
+        }
+    ]
+}

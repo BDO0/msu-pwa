@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSU Museum Admin Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="theme-color" content="#800000">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .admin-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        .form-group input[type="file"] {
+            margin-top: 10px;
+        }
+        #upload-status {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .status-loading { color: #ff9800; }
+        .status-success { color: #4CAF50; }
+        .status-error { color: #f44336; }
+        
+        /* Dashboard Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .admin-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, border 0.3s ease;
+            border-bottom: 5px solid transparent;
+        }
+        .admin-box:hover {
+            transform: translateY(-5px);
+            border-color: #800000;
+        }
+        .admin-box.yellow:hover {
+            border-color: #FFD700;
+        }
+        .admin-box.green:hover {
+            border-color: #008000;
+        }
+        .admin-box h3 { margin-bottom: 10px; color: #800000; }
+        .admin-box p { font-size: 0.9rem; color: #666; }
+        .icon { font-size: 2.5rem; display: block; margin-bottom: 15px; }
+
+        .hidden { display: none !important; }
+        .nav-controls { display: flex; justify-content: space-between; margin-bottom: 20px; align-items:center;}
+        .back-btn { background: none; border: none; color: #800000; cursor: pointer; display: flex; align-items:center; font-weight:600; padding: 0;}
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">MSU Aga Khan Museum - Admin</div>
+    </header>
+
+    <main class="admin-container">
+        <!-- Dashboard View -->
+        <section id="view-dashboard">
+            <div class="admin-header">
+                <h2 style="font-size: 2.5rem;">Select Admin Action</h2>
+                <p>Welcome back! How can we improve the museum experience today?</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="admin-box green" id="btn-view-add">
+                    <span class="icon">✨</span>
+                    <h3>Add New</h3>
+                    <p>Register a brand new artifact discovered for the museum.</p>
+                </div>
+                <div class="admin-box yellow" id="btn-view-edit">
+                    <span class="icon">✏️</span>
+                    <h3>Edit Existing</h3>
+                    <p>Modify descriptions, rename artifacts, or update images.</p>
+                </div>
+                <div class="admin-box" id="btn-view-delete" style="border-bottom-color: #dc3545; background: #fff;">
+                    <span class="icon">🗑️</span>
+                    <h3>Delete Artifact</h3>
+                    <p>Permanently remove artifacts from the digital system.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form View (Add/Edit) -->
+        <section id="view-form" class="hidden">
+            <div class="nav-controls">
+                <button class="back-btn" id="btn-back-to-dash-form">← Back to Menu</button>
+            </div>
+            <div class="card">
+                <div class="admin-header">
+                    <h2 id="form-title">Upload New Artifact</h2>
+                    <p>Update artifact data stored in Firebase.</p>
+                </div>
+
+                <form id="admin-form">
+                    <div class="form-group">
+                        <label for="art-id">Artifact ID (e.g., kris_sword, agong)</label>
+                        <input type="text" id="art-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="art-name">Artifact Name</label>
+                        <input type="text" id="art-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="art-station">Assigned Station</label>
+                        <select id="art-station" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                            <option value="station1">Station 1</option>
+                            <option value="station2">Station 2</option>
+                            <option value="station3">Station 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="art-desc">Description</label>
+                        <textarea id="art-desc" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="art-refs">References (Optional)</label>
+                        <input type="text" id="art-refs">
+                    </div>
+                    <div class="form-group">
+                        <label for="art-image">Artifact Image File (Optional if URL provided)</label>
+                        <input type="file" id="art-image" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="art-url">OR Paste Image URL</label>
+                        <input type="url" id="art-url" placeholder="https://example.com/image.jpg">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="btn-upload" style="width: 100%;">Upload Artifact</button>
+                </form>
+                <div id="upload-status" class="hidden"></div>
+            </div>
+        </section>
+
+        <!-- Manage List View -->
+        <section id="view-manage" class="hidden">
+            <div class="nav-controls">
+                <button class="back-btn" id="btn-back-to-dash-manage">← Back to Menu</button>
+            </div>
+
+            <!-- Step 1: Station Picker -->
+            <div id="station-picker-step">
+                <div class="admin-header">
+                    <h2 id="manage-title">Choose a Station</h2>
+                    <p id="manage-subtitle">Select which station's artifacts you want to manage.</p>
+                </div>
+                <div class="dashboard-grid" style="margin-top: 20px;">
+                    <div class="admin-box green" id="pick-station1" style="cursor:pointer;">
+                        <span class="icon">⚔️</span>
+                        <h3>Station 1</h3>
+                        <p>Weapons &amp; Tools</p>
+                    </div>
+                    <div class="admin-box yellow" id="pick-station2" style="cursor:pointer;">
+                        <span class="icon">🎵</span>
+                        <h3>Station 2</h3>
+                        <p>Musical Instruments</p>
+                    </div>
+                    <div class="admin-box" id="pick-station3" style="cursor:pointer; border-bottom-color:#5c6bc0;">
+                        <span class="icon">👘</span>
+                        <h3>Station 3</h3>
+                        <p>Cultural Attire</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Artifacts Table for selected station -->
+            <div id="artifacts-step" class="hidden">
+                <div class="nav-controls" style="margin-bottom:10px;">
+                    <button class="back-btn" id="btn-back-to-station-picker">← Change Station</button>
+                    <span id="station-label" style="font-weight:600; color:#800000;"></span>
+                </div>
+                <div class="card">
+                    <div class="admin-header">
+                        <h2 id="artifacts-manage-title">Artifacts</h2>
+                        <p>Select an artifact to edit or delete.</p>
+                    </div>
+                    <div id="artifacts-manager" style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid #ddd; text-align: left;">
+                                    <th style="padding: 10px;">Name</th>
+                                    <th style="padding: 10px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="artifacts-list-body">
+                                <tr><td colspan="2" style="text-align:center; padding:20px;">Loading artifacts...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align:center; margin-top: 20px;">
+            <a href="index.html" class="back-link">Return to Main App</a>
+        </div>
+    </main>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+const CACHE_NAME = 'msu-museum-cache-v1';
+const ASSETS_TO_CACHE = [
+    '/',
+    '/index.html',
+    '/admin.html',
+    '/css/styles.css',
+    '/js/app.js',
+    '/js/admin.js',
+    '/js/firebase-ui.js',
+    '/manifest.json',
+    'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'
+];
+
+// Install Event: Pre-cache App Shell and Data
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+        .then((cache) => {
+            console.log('Opened cache');
+            return cache.addAll(ASSETS_TO_CACHE);
+        })
+    );
+});
+
+// Activate Event: Cleanup old caches
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});
+
+// Fetch Event: Cache-First Strategy for App Shell, Stale-While-Revalidate for Storage
+self.addEventListener('fetch', (event) => {
+    // Only cache GET requests
+    if (event.request.method !== 'GET') return;
+    
+    // For API calls to Firebase Firestore, skip caching
+    if (event.request.url.includes('firestore.googleapis.com')) {
+        return;
+    }
+
+    const isFirebaseStorage = event.request.url.includes('firebasestorage.googleapis.com');
+
+    if (isFirebaseStorage) {
+        // Stale-While-Revalidate Strategy for Images
+        event.respondWith(
+            caches.open(CACHE_NAME).then((cache) => {
+                return cache.match(event.request).then((cachedResponse) => {
+                    const fetchedResponse = fetch(event.request).then((networkResponse) => {
+                        // Allow basic and cors
+                        if (networkResponse && networkResponse.status === 200 && (networkResponse.type === 'basic' || networkResponse.type === 'cors' || networkResponse.type === 'opaque')) {
+                            cache.put(event.request, networkResponse.clone());
+                        }
+                        return networkResponse;
+                    }).catch(() => {
+                        // Offline fallback managed by returning cachedResponse
+                    });
+                    
+                    return cachedResponse || fetchedResponse;
+                });
+            })
+        );
+    } else {
+        // Cache-First Strategy for App Shell
+        event.respondWith(
+            caches.match(event.request)
+                .then((response) => {
+                    if (response) {
+                        return response;
+                    }
+                    
+                    return fetch(event.request).then(
+                        function(networkResponse) {
+                            // Check if valid
+                            if(!networkResponse || networkResponse.status !== 200 || (networkResponse.type !== 'basic' && networkResponse.type !== 'cors')) {
+                                return networkResponse;
+                            }
+
+                            var responseToCache = networkResponse.clone();
+
+                            caches.open(CACHE_NAME)
+                                .then(function(cache) {
+                                    cache.put(event.request, responseToCache);
+                                });
+
+                            return networkResponse;
+                        }
+                    );
+                })
+        );
+    }
+});

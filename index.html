@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSU Aga Khan Museum</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/matchup.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#800000">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Firebase SDK (Modular) will be loaded in firebase-ui.js -->
+</head>
+<body>
+    <header class="app-header">
+        <a href="#/" class="logo">MSU Aga Khan Museum</a>
+    </header>
+
+    <main id="app-content">
+        <!-- Content will be injected here by app.js -->
+        <div class="loading">Loading...</div>
+    </main>
+
+    <!-- Templates for different views -->
+    
+    <!-- Home Template -->
+    <template id="tmpl-home">
+        <div class="view home-view">
+            <div class="hero">
+                <h1>Welcome to the MSU Aga Khan Museum</h1>
+                <p>Scan QR codes at different stations to explore the artifacts and learn about our rich cultural heritage.</p>
+                <div class="action-buttons">
+                    <button id="btn-install" class="btn btn-secondary hidden">Install App (Offline Use)</button>
+                    <a href="#/station1" class="btn btn-primary" style="display:none;" id="btn-start-exploring">Start Exploring</a>
+                </div>
+            </div>
+
+            <div class="progress-section card">
+                <h2>Your Progress</h2>
+                <p id="overall-progress-text">You have viewed 0 out of 0 artifacts</p>
+                <div class="progress-bar-container">
+                    <div id="overall-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+                <div id="completion-message" class="completion-message hidden">
+                    <h3>🎉 You have completed the museum exploration!</h3>
+                    <button id="btn-register" class="btn btn-primary">Register as Completer</button>
+                </div>
+            </div>
+
+            <div class="stations-section">
+                <h2>Stations</h2>
+                <ul class="station-list" id="home-station-list">
+                    <!-- Populated via JS -->
+                </ul>
+            </div>
+
+            <div class="completers-section card">
+                <h2>Official Completers</h2>
+                <ul id="completers-list">
+                    <li>Loading...</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- Station Template -->
+    <template id="tmpl-station">
+        <div class="view station-view">
+            <a href="#/" class="back-link">&larr; Back to Dashboard</a>
+            <h1 id="station-title" class="page-title">Station Title</h1>
+            
+            <div class="progress-section card">
+                <p id="station-progress-text">You have viewed 0 out of 0 artifacts in this station</p>
+                <div class="progress-bar-container">
+                    <div id="station-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="artifacts-grid" id="station-artifacts-list">
+                <!-- Populated via JS -->
+            </div>
+
+            <!-- Station Challenge (populated by JS per station) -->
+            <div id="station-game-section"></div>
+        </div>
+    </template>
+
+    <!-- Artifact Template -->
+    <template id="tmpl-artifact">
+        <div class="view artifact-view">
+            <a href="#" id="back-to-station" class="back-link">&larr; Back to Station</a>
+            
+            <div class="artifact-content card">
+                <img id="artifact-img" src="" alt="Artifact Image" class="artifact-detail-image">
+                <h1 id="artifact-title" class="page-title">Artifact Title</h1>
+                <div class="viewed-badge green hidden" id="artifact-viewed-badge">✓ Viewed</div>
+                
+                <div class="artifact-description">
+                    <h3>Description</h3>
+                    <p id="artifact-desc"></p>
+                </div>
+                
+                <div class="artifact-references">
+                    <h3>References</h3>
+                    <p id="artifact-refs"></p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Registration Modal Template -->
+    <template id="tmpl-register-modal">
+        <div class="modal-overlay" id="register-modal">
+            <div class="modal-content card">
+                <button class="btn-close" id="btn-close-modal">&times;</button>
+                <h2>Register as Completer</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-id">Student ID Number</label>
+                        <input type="text" id="reg-id" required>
+                    </div>
+                    <div id="reg-error" class="error-msg hidden"></div>
+                    <div id="reg-success" class="success-msg hidden">Registration successful!</div>
+                    <button type="submit" class="btn btn-primary" id="btn-submit-reg">Submit Registration</button>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <!-- Include Firebase configuration logic first -->
+    <script type="module" src="js/firebase-ui.js"></script>
+    <!-- Include main application logic -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

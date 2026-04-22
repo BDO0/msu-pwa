@@ -1,0 +1,27 @@
+{
+    "id": "station1",
+    "name": "Station 1: Arts and Symbols Station",
+    "artifacts": [
+        {
+            "id": "1",
+            "name": "Sarimanok",
+            "description": "The Sarimanok is a legendary bird of the Maranao people, symbolizing good fortune and high social standing. It is characterized by its colorful feathers and a fish held in its beak or talons. The name comes from 'sari' (meaning garment or various colors) and 'manok' (meaning chicken).",
+            "image": "https://via.placeholder.com/400x250?text=Sarimanok",
+            "references": "MSU Aga Khan Museum Archives"
+        },
+        {
+            "id": "2",
+            "name": "Okir Design",
+            "description": "Okir is the term for geometric and flowing plant-based designs unique to the Maranao people. These patterns, such as the 'naga' (serpent) or 'pako rabong' (fern), are carved into wood, brass, and silver. It represents the artistic soul of Lanao and is found on everything from houses to small tools.",
+            "image": "https://via.placeholder.com/400x250?text=Okir+Design",
+            "references": "MSU Aga Khan Museum Archives"
+        },
+        {
+            "id": "3",
+            "name": "Langkit",
+            "description": "Langkit is a sophisticated hand-woven strip of fabric used to decorate the 'Malong Landap' or traditional tube skirt. It features intricate okir patterns woven using high-contrast silk threads. These pieces are highly valued and often passed down through generations as family heirlooms.",
+            "image": "https://via.placeholder.com/400x250?text=Langkit",
+            "references": "MSU Aga Khan Museum Archives"
+        }
+    ]
+}

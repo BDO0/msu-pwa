@@ -1,0 +1,27 @@
+{
+    "id": "station2",
+    "name": "Station 2: Daily Life and Music Station",
+    "artifacts": [
+        {
+            "id": "4",
+            "name": "Gadur",
+            "description": "Gadur are ornate brass jars used by Maranao royalty for ceremonial gifts and storing precious items. They are recognized by their distinct pedestal bases and high-pointed lids that resemble mosque domes. These jars are masterfully crafted using the 'lost-wax' casting method in Tugaya.",
+            "image": "https://via.placeholder.com/400x250?text=Gadur",
+            "references": "MSU Aga Khan Museum Archives"
+        },
+        {
+            "id": "5",
+            "name": "Kulintang",
+            "description": "The Kulintang is a musical instrument consisting of eight small, graduated brass gongs arranged horizontally on a wooden frame. It is the lead instrument in a Maranao ensemble and is played by striking the bosses with wooden sticks. It is essential for weddings, festivals, and royal welcomes.",
+            "image": "https://via.placeholder.com/400x250?text=Kulintang",
+            "references": "MSU Aga Khan Museum Archives"
+        },
+        {
+            "id": "6",
+            "name": "Baor",
+            "description": "A Baor is a hand-carved wooden chest, often made from Philippine mahogany and inlaid with mother-of-pearl (tipay). These chests were traditionally used to store the finest malongs and jewelry of a Maranao household. The carvings usually feature the pako rabong (growing fern) okir motif.",
+            "image": "https://via.placeholder.com/400x250?text=Baor",
+            "references": "MSU Aga Khan Museum Archives"
+        }
+    ]
+}
