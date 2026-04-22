@@ -1,0 +1,497 @@
+/* =========================================================
+   LIVES DISPLAY
+   ========================================================= */
+
+.lives-display {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+}
+
+/* =========================================================
+   MARANAO WORD WEAVER — STATION 2 GAME
+   ========================================================= */
+
+.word-weaver-wrapper {
+    padding: 10px 0;
+}
+
+/* Artifact image header with blur reveal */
+.ww-image-header {
+    position: relative;
+    width: 100%;
+    max-height: 220px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid var(--border-gold);
+    margin-bottom: 20px;
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.2);
+}
+
+.ww-artifact-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: filter 0.6s ease;
+    display: block;
+}
+
+.ww-image-label {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.55);
+    color: var(--gold);
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    font-family: 'Cinzel', serif;
+    white-space: nowrap;
+}
+
+/* Prompt text */
+.ww-prompt {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 14px;
+    text-shadow: 0 0 10px rgba(201,168,76,0.3);
+}
+
+/* Answer slots row */
+.ww-answer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 22px;
+    min-height: 52px;
+}
+
+.ww-slot {
+    width: 40px;
+    height: 48px;
+    border-radius: 6px;
+    background: rgba(201, 168, 76, 0.07);
+    border: 2px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, border-color 0.2s;
+    position: relative;
+}
+
+.ww-slot.filled {
+    background: rgba(201, 168, 76, 0.18);
+    border-color: var(--gold);
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.25);
+}
+
+.ww-slot.filled:hover {
+    background: rgba(201, 168, 76, 0.3);
+    transform: translateY(-3px);
+}
+
+.ww-slot.solved {
+    background: rgba(46, 125, 50, 0.3);
+    border-color: #8BCB6A;
+    color: #8BCB6A;
+    cursor: default;
+    animation: slot-solved-pulse 0.4s ease;
+}
+
+.ww-slot.space-slot {
+    border-style: dashed;
+    background: transparent;
+    cursor: default;
+    opacity: 0.4;
+}
+
+@keyframes slot-solved-pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Letter pool */
+.ww-pool {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Neumorphic "carved wood" letter tile */
+.ww-tile {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #3d1f08, #2a1505);
+    border: 1px solid var(--border-gold);
+    box-shadow:
+        3px 3px 6px rgba(0,0,0,0.5),
+        -1px -1px 4px rgba(201, 168, 76, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s, opacity 0.3s;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.ww-tile:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        4px 4px 10px rgba(0,0,0,0.6),
+        0 0 12px rgba(201, 168, 76, 0.2);
+    border-color: var(--gold-light);
+}
+
+.ww-tile:active {
+    transform: scale(0.95);
+}
+
+.ww-tile.used {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.7);
+}
+
+.ww-tile.decoy-shake {
+    animation: ww-shake 0.4s ease;
+    border-color: #FF7070;
+    color: #FF7070;
+}
+
+@keyframes ww-shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+}
+
+/* Round tracker for Word Weaver */
+.ww-round-info {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+    opacity: 0.8;
+}
+
+/* Word Weaver Win state */
+.ww-solved-banner {
+    text-align: center;
+    padding: 16px;
+    background: rgba(46, 125, 50, 0.2);
+    border: 1px solid rgba(139, 203, 106, 0.4);
+    border-radius: 10px;
+    margin-top: 16px;
+    animation: fadeInUp 0.5s ease;
+    color: #8BCB6A;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+
+
+/* --- Wrapper --- */
+.matchup-wrapper {
+    margin-top: 10px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.matchup-instructions {
+    margin-bottom: 14px;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+}
+
+/* --- Round Indicator --- */
+.round-indicator {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+    opacity: 0.8;
+}
+
+/* --- Match-Up Grid --- */
+.matchup-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows:    repeat(3, 100px);
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--gold);
+    margin: 0 auto 20px;
+    gap: 0;
+    background: var(--marble-dark);
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.2), 0 8px 30px rgba(0,0,0,0.6);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* --- Tiles --- */
+.matchup-tile {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.matchup-tile.correct {
+    box-shadow: inset 0 0 14px 4px rgba(201, 168, 76, 0.7);
+    outline: 2px solid var(--gold);
+    z-index: 2;
+    position: relative;
+    cursor: default;
+}
+
+/* =========================================================
+   NAME CHALLENGE SCREEN
+   ========================================================= */
+
+.name-challenge-wrapper {
+    margin-top: 18px;
+    padding: 20px 10px;
+}
+
+.name-challenge-wrapper h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(201, 168, 76, 0.3);
+}
+
+/* --- Choice Buttons with Okir Animated Corners --- */
+.choice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.choice-btn {
+    position: relative;
+    background: linear-gradient(135deg, rgba(50, 20, 5, 0.95), rgba(30, 10, 0, 0.95));
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 18px 12px;
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    text-align: center;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choice-btn:hover {
+    background: linear-gradient(135deg, rgba(80, 35, 5, 0.98), rgba(50, 20, 5, 0.98));
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.25);
+    transform: translateY(-2px);
+}
+
+.choice-btn.correct-answer {
+    background: linear-gradient(135deg, #1a4d00, #2E7D32);
+    border-color: #8BCB6A;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(139, 203, 106, 0.3);
+}
+
+.choice-btn.wrong-answer {
+    background: linear-gradient(135deg, #5a0000, #800000);
+    border-color: #FF7070;
+    color: #fff;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+}
+
+/* --- Okir Animated Corner Accents --- */
+.choice-btn::before,
+.choice-btn::after,
+.corner-tl,
+.corner-br {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+}
+
+/* Top-left corner accent */
+.choice-btn::before {
+    top: 4px;
+    left: 4px;
+    border-top: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+    border-top-left-radius: 3px;
+    animation: okir-pulse 2.5s ease-in-out infinite;
+}
+
+/* Bottom-right corner accent */
+.choice-btn::after {
+    bottom: 4px;
+    right: 4px;
+    border-bottom: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    border-bottom-right-radius: 3px;
+    animation: okir-pulse 2.5s ease-in-out infinite 1.25s;
+}
+
+/* We'll use pseudo elements on a span for the other two corners */
+.choice-btn .okir-tr {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 14px;
+    height: 14px;
+    border-top: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    border-top-right-radius: 3px;
+    animation: okir-pulse 2.5s ease-in-out infinite 0.62s;
+    pointer-events: none;
+}
+
+.choice-btn .okir-bl {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    border-bottom: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+    border-bottom-left-radius: 3px;
+    animation: okir-pulse 2.5s ease-in-out infinite 1.87s;
+    pointer-events: none;
+}
+
+/* Okir corner glow/pulse animation */
+@keyframes okir-pulse {
+    0%, 100% {
+        opacity: 0.35;
+        transform: scale(0.92);
+        filter: drop-shadow(0 0 0px var(--gold));
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 5px var(--gold));
+    }
+}
+
+/* =========================================================
+   VICTORY SCREEN
+   ========================================================= */
+
+.victory-screen {
+    text-align: center;
+    padding: 30px 20px;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.victory-screen .trophy {
+    font-size: 4rem;
+    margin-bottom: 12px;
+    animation: trophy-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes trophy-bounce {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50%       { transform: translateY(-10px) rotate(5deg); }
+}
+
+.victory-screen h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.5rem;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.victory-screen p {
+    color: var(--cream-dim);
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   GAME CONTAINER FADE TRANSITION
+   ========================================================= */
+
+.game-phase-enter {
+    animation: fadeInUp 0.4s ease;
+}
+
+/* =========================================================
+   PROGRESS DOTS (Rounds)
+   ========================================================= */
+
+.round-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.round-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(201, 168, 76, 0.2);
+    border: 1px solid var(--border-gold);
+    transition: background 0.4s, transform 0.2s;
+}
+
+.round-dot.done {
+    background: var(--gold);
+    transform: scale(1.15);
+}
+
+.round-dot.active {
+    background: rgba(201, 168, 76, 0.55);
+    transform: scale(1.25);
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.45);
+}
