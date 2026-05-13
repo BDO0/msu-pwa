@@ -210,7 +210,9 @@ function router() {
             localStorage.setItem('unlockedStations', JSON.stringify(state.unlockedStations));
         }
 
-        if (artifactId) {
+        if (artifactId === 'game') {
+            renderGame(stationId);
+        } else if (artifactId) {
             renderArtifact(stationId, artifactId);
         } else {
             renderStation(stationId);
@@ -366,32 +368,54 @@ async function renderStation(stationId) {
                 <div class="station-challenge-card">
                     <h2>🏆 Station Challenge</h2>
                     <p>Test your knowledge! Solve 5 image puzzles and identify the artifacts from this station.</p>
-                    <button id="btn-start-challenge" class="btn btn-secondary">Start Station Challenge</button>
-                    <div id="challenge-container" style="margin-top:20px;"></div>
+                    <a href="#/station1/game" class="btn btn-secondary" style="display:inline-block; margin-top:10px;">Play Station Challenge</a>
                 </div>
             `;
-            document.getElementById('btn-start-challenge').addEventListener('click', () => {
-                document.getElementById('btn-start-challenge').style.display = 'none';
-                initStationChallenge('challenge-container', data.artifacts, () => {
-                    console.log('Station 1 Challenge completed!');
-                });
-            });
         } else if (stationId === 'station2') {
             gameSection.innerHTML = `
                 <div class="station-challenge-card">
                     <h2>🪘 Maranao Word Weaver</h2>
                     <p>Spell the names of 3 mystery artifacts! Letters scramble — only the sharpest minds prevail.</p>
-                    <button id="btn-start-challenge" class="btn btn-secondary">Start Word Weaver</button>
-                    <div id="challenge-container" style="margin-top:20px;"></div>
+                    <a href="#/station2/game" class="btn btn-secondary" style="display:inline-block; margin-top:10px;">Play Word Weaver</a>
                 </div>
             `;
-            document.getElementById('btn-start-challenge').addEventListener('click', () => {
-                document.getElementById('btn-start-challenge').style.display = 'none';
-                initWordWeaver('challenge-container', data.artifacts, () => {
-                    console.log('Station 2 Word Weaver completed!');
-                });
-            });
         }
+    }
+}
+
+async function renderGame(stationId) {
+    const template = document.getElementById('tmpl-game').content.cloneNode(true);
+    const data = getStationData(stationId);
+    
+    if (!data) {
+        appContent.innerHTML = '<h2>Station not found</h2><a href="#/">Back Home</a>';
+        return;
+    }
+    
+    template.getElementById('back-to-station-from-game').href = `#/${stationId}`;
+    
+    const gameTitle = template.getElementById('game-title');
+    const gameSubtitle = template.getElementById('game-subtitle');
+    
+    appContent.appendChild(template);
+    
+    const containerId = 'game-container';
+    
+    if (stationId === 'station1') {
+        gameTitle.innerText = "🏆 Station Challenge";
+        gameSubtitle.innerText = "Test your knowledge! Solve 5 image puzzles and identify the artifacts.";
+        initStationChallenge(containerId, data.artifacts, () => {
+            console.log('Station 1 Challenge completed!');
+        });
+    } else if (stationId === 'station2') {
+        gameTitle.innerText = "🪘 Maranao Word Weaver";
+        gameSubtitle.innerText = "Spell the names of 3 mystery artifacts! Letters scramble.";
+        initWordWeaver(containerId, data.artifacts, () => {
+            console.log('Station 2 Word Weaver completed!');
+        });
+    } else {
+        gameTitle.innerText = "Coming Soon";
+        gameSubtitle.innerText = "There is no challenge available for this station yet.";
     }
 }
 
