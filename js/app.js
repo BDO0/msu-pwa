@@ -1,4 +1,4 @@
-import { initStationChallenge, initWordWeaver } from './matchup.js';
+import { initStationChallenge, initWordWeaver, initDarangenGame } from './matchup.js';
 
 // State management
 let state = {
@@ -11,22 +11,16 @@ let state = {
 
 const STATIONS = ['station1', 'station2', 'station3'];
 const appContent = document.getElementById('app-content');
+let html5QrcodeScanner = null; // Global reference to the scanner
 
-// Cache Warmer Logic
-async function cacheWarmer(artifacts) {
+// Image Caching Logic (Local JSON files are cached by SW automatically)
+async function cacheImages(artifacts) {
     try {
         if (!('caches' in window)) return;
         const CACHE_NAME = 'msu-museum-cache-v1';
         const cache = await caches.open(CACHE_NAME);
-        
-        // 1. Cache the JSON data
-        const jsonResponse = new Response(JSON.stringify(artifacts), {
-            headers: { 'Content-Type': 'application/json' }
-        });
-        await cache.put('/api/cached-artifacts.json', jsonResponse);
-        console.log("JSON data cached for offline use");
 
-        // 2. Pre-fetch and cache image URLs
+        // Pre-fetch and cache image URLs defined in the local JSON
         const imageUrls = artifacts.map(a => a.image).filter(url => url);
         for (const url of imageUrls) {
             const cachedUrl = await cache.match(url);
@@ -41,10 +35,10 @@ async function cacheWarmer(artifacts) {
                 }
             }
         }
-        console.log("Firebase Storage images cached completely!");
+        console.log("Images from local JSON cached completely!");
         showOfflineReadyNotification();
     } catch (e) {
-        console.error("Cache warmer error:", e);
+        console.error("Image cache error:", e);
     }
 }
 
@@ -97,52 +91,84 @@ function getStationData(stationId) {
 // Load all data on init to know total artifacts
 async function initData() {
     state.totalArtifacts = 0;
-    let firebaseArtifacts = null;
+    const stationMap = {};
+    let allArtifacts = [];
     
-    // Check Firebase for artifacts
+    // 1. Fetching from Firebase (Admin Panel source of truth)
     if (window.firebaseAPI) {
-        firebaseArtifacts = await window.firebaseAPI.getAllArtifacts();
-    }
-
-    // Try offline cache fallback if firebase failed
-    if (!firebaseArtifacts || firebaseArtifacts.length === 0) {
         try {
-            const cachedRes = await fetch('/api/cached-artifacts.json');
-            if (cachedRes.ok) firebaseArtifacts = await cachedRes.json();
-        } catch (e) {}
+            const firebaseArtifacts = await window.firebaseAPI.getAllArtifacts();
+            
+            // If it returns an array (even empty), we are connected to Firebase
+            if (firebaseArtifacts !== null) {
+                console.log("Firebase Connection Active. Artifacts found:", firebaseArtifacts.length);
+                allArtifacts = firebaseArtifacts;
+                
+                // Initialize default station structure
+                stationMap['station1'] = { id: 'station1', name: 'Weapons & Tools', artifacts: [] };
+                stationMap['station2'] = { id: 'station2', name: 'Musical Instruments', artifacts: [] };
+                stationMap['station3'] = { id: 'station3', name: 'Animals', artifacts: [] };
+                
+                firebaseArtifacts.forEach(art => {
+                    const st = art.station || 'station1';
+                    if (stationMap[st]) stationMap[st].artifacts.push(art);
+                });
+            }
+        } catch (e) {
+            console.warn("Firebase fetch failed, falling back to local JSON.", e);
+        }
     }
 
-    // Group artifacts by station for app state compatibility
-    const stationMap = {
-        'station1': { id: 'station1', name: 'Weapons & Tools', artifacts: [] },
-        'station2': { id: 'station2', name: 'Musical Instruments', artifacts: [] },
-        'station3': { id: 'station3', name: 'Cultural Attire', artifacts: [] }
-    };
+    // 2. ONLY fallback to Local JSON files if Firebase is completely unreachable (offline/null)
+    if (allArtifacts.length === 0 && (!window.firebaseAPI || !navigator.onLine)) {
+        try {
+            console.log("Firebase unreachable. Loading data from local JSON fallback.");
+            const [res1, res2, res3] = await Promise.all([
+                fetch('/data/station1.json'),
+                fetch('/data/station2.json'),
+                fetch('/data/station3.json')
+            ]);
+            
+            if (res1.ok) {
+                const data1 = await res1.json();
+                stationMap[data1.id] = data1;
+                allArtifacts = allArtifacts.concat(data1.artifacts);
+            }
+            if (res2.ok) {
+                const data2 = await res2.json();
+                stationMap[data2.id] = data2;
+                allArtifacts = allArtifacts.concat(data2.artifacts);
+            }
+            if (res3.ok) {
+                const data3 = await res3.json();
+                stationMap[data3.id] = data3;
+                allArtifacts = allArtifacts.concat(data3.artifacts);
+            }
+        } catch (e) {
+            console.error("Error loading local JSON data:", e);
+        }
+    }
 
-    if (firebaseArtifacts && firebaseArtifacts.length > 0) {
-        // Run cache warmer logic
-        await cacheWarmer(firebaseArtifacts);
+    if (allArtifacts.length > 0) {
+        // Run image caching logic to ensure external images are cached
+        await cacheImages(allArtifacts);
 
-        // Sanitize viewed artifacts: remove any IDs that were deleted by admin
-        const validIds = firebaseArtifacts.map(a => a.id);
+        // Sanitize viewed artifacts: remove any IDs that were deleted
+        const validIds = allArtifacts.map(a => a.id);
         const validViewed = state.viewedArtifacts.filter(id => validIds.includes(id));
         if (validViewed.length !== state.viewedArtifacts.length) {
             state.viewedArtifacts = validViewed;
             localStorage.setItem('viewedArtifacts', JSON.stringify(state.viewedArtifacts));
         }
-
-        firebaseArtifacts.forEach(art => {
-             // Fallback default if unassigned
-            const st = art.station || 'station1';
-            if (stationMap[st]) stationMap[st].artifacts.push(art);
-        });
     } else {
-        console.warn("No artifacts found via Firebase or Cache.");
+        console.warn("No artifacts found in local JSON files.");
     }
 
     state.stationsData = stationMap;
     for (const st in stationMap) {
-        state.totalArtifacts += stationMap[st].artifacts.length;
+        if(stationMap[st].artifacts) {
+            state.totalArtifacts += stationMap[st].artifacts.length;
+        }
     }
     
     checkCompletion();
@@ -262,6 +288,14 @@ async function renderHome() {
         });
     }
     
+    // Scanner Logic
+    const btnScanQr = template.getElementById('btn-scan-qr');
+    if (btnScanQr) {
+        btnScanQr.addEventListener('click', () => {
+            openScannerModal();
+        });
+    }
+    
     appContent.appendChild(template);
     
     // Handle offline install prompt
@@ -357,14 +391,6 @@ async function renderStation(stationId) {
                     console.log('Station 2 Word Weaver completed!');
                 });
             });
-        } else {
-            gameSection.innerHTML = `
-                <div class="station-challenge-card">
-                    <h2>🎮 Station Challenge</h2>
-                    <p>A challenge for this station is coming soon.</p>
-                    <span class="coming-soon-badge">COMING SOON</span>
-                </div>
-            `;
         }
     }
 }
@@ -398,6 +424,61 @@ async function renderArtifact(stationId, artifactId) {
     template.getElementById('artifact-viewed-badge').classList.remove('hidden');
     
     appContent.appendChild(template);
+}
+
+function openScannerModal() {
+    let modal = document.getElementById('scanner-modal');
+    
+    // Inject the scanner modal if it hasn't been added yet
+    if (!modal) {
+        const modalTemplate = document.getElementById('tmpl-scanner-modal').content.cloneNode(true);
+        const overlay = modalTemplate.querySelector('.modal-overlay');
+        overlay.classList.remove('hidden'); // Ensure it's visible when added
+        document.body.appendChild(modalTemplate);
+        
+        modal = document.getElementById('scanner-modal');
+        const btnClose = document.getElementById('btn-close-scanner');
+        const btnStop = document.getElementById('btn-stop-scanner');
+        
+        const closeScanner = () => {
+            modal.classList.add('hidden');
+            if (html5QrcodeScanner) {
+                html5QrcodeScanner.clear().catch(err => console.error("Failed to clear scanner", err));
+                html5QrcodeScanner = null;
+            }
+        };
+        
+        btnClose.addEventListener('click', closeScanner);
+        btnStop.addEventListener('click', closeScanner);
+    } else {
+        modal.classList.remove('hidden');
+    }
+    
+    // Initialize scanner
+    if (!html5QrcodeScanner) {
+        html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", 
+            { fps: 10, qrbox: {width: 250, height: 250} }, 
+            false
+        );
+        
+        html5QrcodeScanner.render((decodedText) => {
+            console.log(`Scan result: ${decodedText}`);
+            
+            // Look for a station ID in the QR code text
+            let match = decodedText.match(/(station[1-3])/i);
+            if (match) {
+                window.location.hash = `#/${match[1].toLowerCase()}`;
+                modal.classList.add('hidden');
+                html5QrcodeScanner.clear().catch(e => console.error(e));
+                html5QrcodeScanner = null;
+            } else {
+                alert("Unrecognized QR Code. Please scan a valid Station QR Code.");
+            }
+        }, (errorMessage) => {
+            // Ignore normal scanning errors
+        });
+    }
 }
 
 function setupModal() {
@@ -472,6 +553,60 @@ function setupModal() {
                 }
             }
             btnSubmit.disabled = false;
+        });
+    }
+
+    // Setup Admin Login Modal Events
+    if (!document.getElementById('admin-login-modal')) {
+        const adminModalTemplate = document.getElementById('tmpl-admin-login-modal').content.cloneNode(true);
+        const adminOverlay = adminModalTemplate.querySelector('.modal-overlay');
+        adminOverlay.classList.add('hidden');
+        document.body.appendChild(adminModalTemplate);
+
+        const adminModal = document.getElementById('admin-login-modal');
+        const adminBtnClose = document.getElementById('btn-close-admin-login');
+        const adminForm = document.getElementById('admin-login-form');
+        const adminErrorMsg = document.getElementById('admin-login-error');
+        const adminBtnSubmit = document.getElementById('btn-admin-login-submit');
+
+        adminBtnClose.addEventListener('click', () => {
+            adminModal.classList.add('hidden');
+        });
+
+        adminForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('admin-login-email').value;
+            const pass = document.getElementById('admin-login-pass').value;
+
+            adminBtnSubmit.disabled = true;
+            adminErrorMsg.classList.add('hidden');
+
+            if (window.firebaseAPI && window.firebaseAPI.adminLogin) {
+                const res = await window.firebaseAPI.adminLogin(email, pass);
+                if (res.success) {
+                    window.location.href = "admin.html";
+                } else {
+                    adminErrorMsg.innerText = res.error || "Login failed";
+                    adminErrorMsg.classList.remove('hidden');
+                    adminBtnSubmit.disabled = false;
+                }
+            } else {
+                adminErrorMsg.innerText = "Firebase API not available";
+                adminErrorMsg.classList.remove('hidden');
+                adminBtnSubmit.disabled = false;
+            }
+        });
+    }
+
+    // Attach click event for the footer link
+    const adminLoginLink = document.getElementById('admin-login-link');
+    if (adminLoginLink) {
+        adminLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const adminModal = document.getElementById('admin-login-modal');
+            if (adminModal) {
+                adminModal.classList.remove('hidden');
+            }
         });
     }
 }

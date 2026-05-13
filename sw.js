@@ -1,13 +1,21 @@
-const CACHE_NAME = 'msu-museum-cache-v1';
+const CACHE_NAME = 'msu-museum-cache-v6';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
     '/admin.html',
     '/css/styles.css',
+    '/css/matchup.css',
     '/js/app.js',
     '/js/admin.js',
+    '/js/matchup.js',
     '/js/firebase-ui.js',
+    '/js/html5-qrcode.min.js',
     '/manifest.json',
+    '/data/station1.json',
+    '/data/station2.json',
+    '/data/station3.json',
+    '/images/icons/icon-192x192.png',
+    '/images/icons/icon-512x512.png',
     'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'
 ];
 

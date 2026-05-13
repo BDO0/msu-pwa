@@ -24,6 +24,12 @@
         <div class="loading">Loading...</div>
     </main>
 
+    <footer style="text-align: center; padding: 0;">
+        <a href="#" id="admin-login-link" style="display: block; padding: 20px; font-size: 1rem; color: #ccc; text-decoration: none;">
+            &copy; 2026 MSU Aga Khan Museum &middot; Admin Access
+        </a>
+    </footer>
+
     <!-- Templates for different views -->
     
     <!-- Home Template -->
@@ -34,6 +40,7 @@
                 <p>Scan QR codes at different stations to explore the artifacts and learn about our rich cultural heritage.</p>
                 <div class="action-buttons">
                     <button id="btn-install" class="btn btn-secondary hidden">Install App (Offline Use)</button>
+                    <button id="btn-scan-qr" class="btn btn-primary" style="background-color: #FBC02D; color: #333;">📷 Scan Station QR</button>
                     <a href="#/station1" class="btn btn-primary" style="display:none;" id="btn-start-exploring">Start Exploring</a>
                 </div>
             </div>
@@ -134,7 +141,46 @@
         </div>
     </template>
 
+    <!-- Admin Login Modal Template -->
+    <template id="tmpl-admin-login-modal">
+        <div class="modal-overlay" id="admin-login-modal">
+            <div class="modal-content card" style="max-width: 400px; text-align: center;">
+                <button class="btn-close" id="btn-close-admin-login">&times;</button>
+                <div class="admin-header" style="margin-bottom: 20px;">
+                    <h2>Admin Access</h2>
+                    <p style="font-size: 0.9rem; color: #666;">Please log in to manage museum artifacts.</p>
+                </div>
+                <form id="admin-login-form">
+                    <div class="form-group" style="text-align: left;">
+                        <label for="admin-login-email">Email</label>
+                        <input type="email" id="admin-login-email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-top: 5px; font-family: inherit;">
+                    </div>
+                    <div class="form-group" style="text-align: left; margin-top: 15px;">
+                        <label for="admin-login-pass">Password</label>
+                        <input type="password" id="admin-login-pass" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-top: 5px; font-family: inherit;">
+                    </div>
+                    <div id="admin-login-error" class="error-msg hidden" style="color: #f44336; margin-top: 15px; margin-bottom: 15px; font-size: 0.9rem;"></div>
+                    <button type="submit" class="btn btn-primary" id="btn-admin-login-submit" style="width: 100%; margin-top: 15px;">Login</button>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scanner Modal Template -->
+    <template id="tmpl-scanner-modal">
+        <div class="modal-overlay" id="scanner-modal">
+            <div class="modal-content card" style="text-align:center;">
+                <button class="btn-close" id="btn-close-scanner">&times;</button>
+                <h2>Scan QR Code</h2>
+                <p>Point your camera at the station QR code.</p>
+                <div id="reader" style="width: 100%; max-width: 400px; margin: 0 auto;"></div>
+                <button id="btn-stop-scanner" class="btn btn-secondary" style="margin-top: 15px;">Cancel</button>
+            </div>
+        </div>
+    </template>
+
     <!-- Scripts -->
+    <script src="js/html5-qrcode.min.js"></script>
     <!-- Include Firebase configuration logic first -->
     <script type="module" src="js/firebase-ui.js"></script>
     <!-- Include main application logic -->

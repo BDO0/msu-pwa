@@ -495,3 +495,107 @@
     transform: scale(1.25);
     box-shadow: 0 0 8px rgba(201, 168, 76, 0.45);
 }
+
+/* =========================================================
+   DARANGEN SCENARIO MATCH — STATION 3 GAME
+   ========================================================= */
+
+.darangen-wrapper {
+    padding: 10px 0;
+}
+
+.darangen-scenario-box {
+    background: rgba(30, 10, 0, 0.6);
+    border: 2px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 15px rgba(201, 168, 76, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.darangen-scenario-text {
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-family: 'Cinzel', serif;
+}
+
+.darangen-drop-zone {
+    width: 140px;
+    height: 140px;
+    border: 2px dashed rgba(201, 168, 76, 0.5);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.darangen-drop-zone span {
+    color: rgba(201, 168, 76, 0.5);
+    font-size: 0.8rem;
+    text-align: center;
+    pointer-events: none;
+}
+
+.darangen-drop-zone.correct {
+    border: 2px solid #8BCB6A;
+    background: rgba(139, 203, 106, 0.2);
+    box-shadow: 0 0 20px rgba(139, 203, 106, 0.4);
+}
+
+.darangen-drop-zone.wrong {
+    border: 2px solid #FF7070;
+    background: rgba(255, 112, 112, 0.2);
+    animation: ww-shake 0.4s ease;
+}
+
+.darangen-items-area {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.darangen-draggable {
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    touch-action: none; /* Crucial for preventing scrolling during drag */
+    cursor: grab;
+    transition: transform 0.2s;
+}
+
+.darangen-draggable img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--border-gold);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    pointer-events: none; /* Let the wrapper handle pointer events */
+}
+
+.darangen-draggable.dragging {
+    cursor: grabbing;
+    opacity: 0.9;
+    /* transform handled by JS */
+}
+
+.darangen-item-label {
+    font-size: 0.7rem;
+    color: var(--cream-dim);
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.2;
+    pointer-events: none;
+}

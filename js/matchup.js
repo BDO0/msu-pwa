@@ -590,3 +590,227 @@ function showWWGameOver(container, onReplay) {
     document.getElementById('btn-ww-replay').addEventListener('click', onReplay);
 }
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// DARANGEN SCENARIO MATCH — Station 3 Game
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export function initDarangenGame(containerId, allArtifacts, onComplete) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!allArtifacts || allArtifacts.length < 3) {
+        container.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:20px;">Not enough artifacts available for this game yet.</p>';
+        return;
+    }
+
+    // Define 3 generic scenarios based on the Darangen epic theme
+    const scenarios = [
+        { text: "Prince Bantugan is preparing for an epic battle to defend his kingdom. He needs his trusted weapon.", type: "weapon" },
+        { text: "A grand royal feast is being prepared to celebrate a great victory. An ornate vessel is needed.", type: "vessel" },
+        { text: "The princess is getting ready for a ceremonial dance. She needs a traditional accessory.", type: "attire" }
+    ];
+
+    const TOTAL_ROUNDS = Math.min(3, allArtifacts.length);
+    // Pick 3 target artifacts
+    const roundArtifacts = pickRandom(allArtifacts, TOTAL_ROUNDS);
+    let currentRound = 0;
+
+    function runDarangenRound() {
+        if (currentRound >= TOTAL_ROUNDS) {
+            showDarangenVictory(container, onComplete);
+            return;
+        }
+
+        const targetArtifact = roundArtifacts[currentRound];
+        const scenario = scenarios[currentRound % scenarios.length]; // cycle through scenarios
+
+        container.innerHTML = '';
+        container.classList.add('game-phase-enter');
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'darangen-wrapper';
+
+        // Round info
+        const roundInfo = document.createElement('div');
+        roundInfo.className = 'ww-round-info'; // Reusing style
+        roundInfo.innerHTML = `SCENARIO ${currentRound + 1} / ${TOTAL_ROUNDS}
+            <div class="round-dots" style="margin-top:6px;">
+                ${Array.from({length: TOTAL_ROUNDS}, (_, i) =>
+                    `<div class="round-dot ${i < currentRound ? 'done' : i === currentRound ? 'active' : ''}"></div>`
+                ).join('')}
+            </div>`;
+        wrapper.appendChild(roundInfo);
+
+        // Scenario Box with Drop Zone
+        const scenarioBox = document.createElement('div');
+        scenarioBox.className = 'darangen-scenario-box';
+        
+        const scenarioText = document.createElement('p');
+        scenarioText.className = 'darangen-scenario-text';
+        scenarioText.innerText = scenario.text;
+        scenarioBox.appendChild(scenarioText);
+
+        const dropZone = document.createElement('div');
+        dropZone.className = 'darangen-drop-zone';
+        dropZone.id = 'darangen-drop-zone';
+        dropZone.innerHTML = '<span>Drag correct artifact here</span>';
+        scenarioBox.appendChild(dropZone);
+
+        wrapper.appendChild(scenarioBox);
+
+        // Draggable Items Area
+        const itemsArea = document.createElement('div');
+        itemsArea.className = 'darangen-items-area';
+
+        // Mix target with 2 decoys
+        const decoys = pickRandom(allArtifacts.filter(a => a.id !== targetArtifact.id), 2);
+        const choices = shuffle([targetArtifact, ...decoys]);
+
+        choices.forEach(choice => {
+            const item = document.createElement('div');
+            item.className = 'darangen-draggable';
+            item.dataset.id = choice.id;
+            
+            const img = document.createElement('img');
+            img.src = choice.image;
+            img.draggable = false; // Disable native HTML5 drag
+            
+            const label = document.createElement('div');
+            label.className = 'darangen-item-label';
+            // Shorten name to fit nicely under thumbnail
+            label.innerText = choice.name.length > 20 ? choice.name.substring(0, 18) + '...' : choice.name;
+
+            item.appendChild(img);
+            item.appendChild(label);
+            
+            // Pointer events logic
+            setupDraggable(item, dropZone, targetArtifact.id, choice.id, () => {
+                // Success Callback
+                dropZone.innerHTML = '';
+                item.style.position = 'static';
+                item.style.transform = 'none';
+                item.classList.add('snapped');
+                dropZone.appendChild(item);
+                dropZone.classList.add('correct');
+                
+                // Disable other items
+                itemsArea.querySelectorAll('.darangen-draggable').forEach(i => {
+                    if (i !== item) i.style.opacity = '0.3';
+                    i.style.pointerEvents = 'none';
+                });
+
+                saveGameWin(targetArtifact.id);
+
+                setTimeout(() => {
+                    currentRound++;
+                    runDarangenRound();
+                }, 1500);
+            });
+
+            itemsArea.appendChild(item);
+        });
+
+        wrapper.appendChild(itemsArea);
+        container.appendChild(wrapper);
+    }
+
+    runDarangenRound();
+}
+
+function setupDraggable(element, dropZone, targetId, currentId, onSuccess) {
+    let isDragging = false;
+    let startX = 0, startY = 0;
+
+    element.addEventListener('pointerdown', (e) => {
+        if (element.classList.contains('snapped')) return;
+        isDragging = true;
+        element.setPointerCapture(e.pointerId);
+        
+        element.classList.add('dragging');
+        
+        startX = e.clientX;
+        startY = e.clientY;
+        
+        element.style.zIndex = 1000;
+        // Fix element dimensions to prevent shrinking during scale
+        element.style.width = element.offsetWidth + 'px';
+        element.style.height = element.offsetHeight + 'px';
+    });
+
+    element.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        
+        // Disable transition during drag for 1:1 finger tracking
+        element.style.transition = 'none';
+        element.style.transform = `translate(${dx}px, ${dy}px) scale(1.1)`;
+    });
+
+    element.addEventListener('pointerup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        element.releasePointerCapture(e.pointerId);
+        element.classList.remove('dragging');
+        element.style.zIndex = 1;
+
+        // Check intersection with drop zone
+        const elementRect = element.getBoundingClientRect();
+        const dropRect = dropZone.getBoundingClientRect();
+
+        // Center-point collision check
+        const elementCenterX = elementRect.left + elementRect.width / 2;
+        const elementCenterY = elementRect.top + elementRect.height / 2;
+
+        const isOverDropZone = (
+            elementCenterX >= dropRect.left &&
+            elementCenterX <= dropRect.right &&
+            elementCenterY >= dropRect.top &&
+            elementCenterY <= dropRect.bottom
+        );
+
+        if (isOverDropZone) {
+            if (currentId === targetId) {
+                // Correct!
+                onSuccess();
+            } else {
+                // Wrong! Bounce back and show red visual
+                bounceBack(element);
+                dropZone.classList.add('wrong');
+                setTimeout(() => dropZone.classList.remove('wrong'), 500);
+            }
+        } else {
+            // Not over zone, return to origin
+            bounceBack(element);
+        }
+    });
+
+    function bounceBack(el) {
+        el.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        el.style.transform = 'translate(0px, 0px) scale(1)';
+        setTimeout(() => {
+            el.style.transition = ''; // clear transition for next drag
+            el.style.width = '';
+            el.style.height = '';
+        }, 400);
+    }
+}
+
+function showDarangenVictory(container, onComplete) {
+    container.innerHTML = '';
+    const screen = document.createElement('div');
+    screen.className = 'victory-screen game-phase-enter';
+    screen.innerHTML = `
+        <div class="trophy">🏆</div>
+        <h2>Darangen Match Complete!</h2>
+        <p>You completed all scenarios. You are a true historian of the Darangen.</p>
+        <p style="color:var(--gold); font-weight:600; margin-top:8px;">✨ Badge Progress Saved</p>
+    `;
+    container.appendChild(screen);
+    if (onComplete) onComplete();
+}
+
+
