@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, addDoc, setDoc, doc, getDocs, updateDoc, deleteDoc, query, orderBy, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, setDoc, doc, getDocs, updateDoc, deleteDoc, query, where, orderBy, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
 // Import config directly (We should probably export it from firebase-ui or duplicate here for simplicity,
@@ -15,6 +16,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
@@ -32,6 +34,54 @@ let currentDocId = null;
 let currentExistingImage = null; // Store image during edit
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Authentication UI & Logic ---
+    const loginSection = document.getElementById('login-section');
+    const adminContent = document.getElementById('admin-content');
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+    const btnLogout = document.getElementById('btn-logout');
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in
+            loginSection.classList.add('hidden');
+            adminContent.classList.remove('hidden');
+            btnLogout.classList.remove('hidden');
+            // Load data only when authenticated
+            loadArtifacts();
+        } else {
+            // User is signed out
+            loginSection.classList.remove('hidden');
+            adminContent.classList.add('hidden');
+            btnLogout.classList.add('hidden');
+        }
+    });
+
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const pass = document.getElementById('login-pass').value;
+        const btnLogin = document.getElementById('btn-login');
+        
+        btnLogin.disabled = true;
+        loginError.classList.add('hidden');
+        
+        try {
+            await signInWithEmailAndPassword(auth, email, pass);
+            // onAuthStateChanged will handle the UI switch
+        } catch (error) {
+            loginError.innerText = "Login failed: " + error.message;
+            loginError.classList.remove('hidden');
+        } finally {
+            btnLogin.disabled = false;
+        }
+    });
+
+    btnLogout.addEventListener('click', () => {
+        signOut(auth);
+    });
+
+    // --- Admin Dashboard Logic ---
     const form = document.getElementById('admin-form');
     const statusEl = document.getElementById('upload-status');
     const btnSubmit = document.getElementById('btn-upload');
@@ -62,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Station picker buttons
     document.getElementById('pick-station1').addEventListener('click', () => showArtifactsForStation('station1', 'Station 1 — Weapons & Tools'));
     document.getElementById('pick-station2').addEventListener('click', () => showArtifactsForStation('station2', 'Station 2 — Musical Instruments'));
-    document.getElementById('pick-station3').addEventListener('click', () => showArtifactsForStation('station3', 'Station 3 — Cultural Attire'));
+    document.getElementById('pick-station3').addEventListener('click', () => showArtifactsForStation('station3', 'Station 3 — Animals'));
 
     document.getElementById('btn-back-to-station-picker').addEventListener('click', () => {
         document.getElementById('artifacts-step').classList.add('hidden');
@@ -257,6 +307,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const artId = document.getElementById('art-id').value;
+            
+            // 1. Validate ID Format
+            const idRegex = /^[a-z0-9_]+$/;
+            if (!idRegex.test(artId)) {
+                throw new Error("Invalid Artifact ID format. Please use ONLY lowercase letters, numbers, and underscores (_). No spaces allowed.");
+            }
+
+            // 2. Check for Duplicates
+            const qCheck = query(collection(db, "artifacts"), where("id", "==", artId));
+            const snapCheck = await getDocs(qCheck);
+            
+            let isDuplicate = false;
+            snapCheck.forEach(docSnap => {
+                // If adding new, any match is a duplicate.
+                // If editing, a match is a duplicate only if it's a DIFFERENT document.
+                if (!isEditing || docSnap.id !== currentDocId) {
+                    isDuplicate = true;
+                }
+            });
+
+            if (isDuplicate) {
+                throw new Error(`The Artifact ID "${artId}" is already taken! Please choose a unique ID.`);
+            }
+
             const name = document.getElementById('art-name').value;
             const station = document.getElementById('art-station').value;
             const description = document.getElementById('art-desc').value;
@@ -310,6 +384,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initial Load
-    loadArtifacts();
+    // Initial load removed here, moved to onAuthStateChanged
 });

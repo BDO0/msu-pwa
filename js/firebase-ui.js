@@ -2,6 +2,7 @@
 // REPLACE these with your actual Firebase project settings.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, limit, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA1VJmRQK1bKATahlKxBiizbbS6XhB91nI",
@@ -13,12 +14,13 @@ const firebaseConfig = {
   measurementId: "G-MVBB6KGDJK"
 };
 
-let app, db;
+let app, db, auth;
 let isFirebaseInitialized = false;
 
 try {
     app = initializeApp(firebaseConfig);
     db = getFirestore(app);
+    auth = getAuth(app);
     
     // Enable offline persistence
     enableIndexedDbPersistence(db).catch((err) => {
@@ -38,6 +40,18 @@ try {
 
 // Attach functions to window so app.js can use them
 window.firebaseAPI = {
+    adminLogin: async (email, password) => {
+        if (!isFirebaseInitialized || !auth || firebaseConfig.apiKey === "YOUR_API_KEY") {
+            return { success: false, error: "Firebase not properly configured or offline." };
+        }
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            return { success: true };
+        } catch (error) {
+            return { success: false, error: error.message };
+        }
+    },
+    
     registerCompleter: async (name, studentId) => {
         if (!isFirebaseInitialized || firebaseConfig.apiKey === "YOUR_API_KEY") {
             // Mock success if offline or using placeholder

@@ -20,12 +20,14 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        .form-group textarea {
+        .form-group textarea, .form-group select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-gold);
             border-radius: 8px;
             font-family: inherit;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--cream);
         }
         .form-group input[type="file"] {
             margin-top: 10px;
@@ -47,13 +49,14 @@
             margin-top: 40px;
         }
         .admin-box {
-            background-color: #fff;
+            background-color: var(--marble-card-lighter);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             text-align: center;
             cursor: pointer;
             transition: transform 0.3s ease, border 0.3s ease;
+            border: 1px solid var(--border-gold);
             border-bottom: 5px solid transparent;
         }
         .admin-box:hover {
@@ -66,8 +69,8 @@
         .admin-box.green:hover {
             border-color: #008000;
         }
-        .admin-box h3 { margin-bottom: 10px; color: #800000; }
-        .admin-box p { font-size: 0.9rem; color: #666; }
+        .admin-box h3 { margin-bottom: 10px; color: var(--gold); }
+        .admin-box p { font-size: 0.9rem; color: var(--cream-dim); }
         .icon { font-size: 2.5rem; display: block; margin-bottom: 15px; }
 
         .hidden { display: none !important; }
@@ -78,11 +81,36 @@
 <body>
     <header class="app-header">
         <div class="logo">MSU Aga Khan Museum - Admin</div>
+        <button id="btn-logout" class="btn btn-secondary hidden" style="position: absolute; right: 20px; top: 15px; background: white; color: #800000; font-size: 0.9rem; padding: 5px 15px;">Logout</button>
     </header>
 
     <main class="admin-container">
-        <!-- Dashboard View -->
-        <section id="view-dashboard">
+        <!-- Login View -->
+        <section id="login-section">
+            <div class="card" style="max-width: 400px; margin: 40px auto; text-align: center;">
+                <div class="admin-header">
+                    <h2>Admin Access</h2>
+                    <p>Please log in to manage the museum artifacts.</p>
+                </div>
+                <form id="login-form">
+                    <div class="form-group" style="text-align: left;">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label for="login-pass">Password</label>
+                        <input type="password" id="login-pass" required>
+                    </div>
+                    <div id="login-error" class="error-msg hidden" style="color: #f44336; margin-bottom: 10px;"></div>
+                    <button type="submit" class="btn btn-primary" id="btn-login" style="width: 100%;">Login</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Protected Admin Content -->
+        <div id="admin-content" class="hidden">
+            <!-- Dashboard View -->
+            <section id="view-dashboard">
             <div class="admin-header">
                 <h2 style="font-size: 2.5rem;">Select Admin Action</h2>
                 <p>Welcome back! How can we improve the museum experience today?</p>
@@ -99,7 +127,7 @@
                     <h3>Edit Existing</h3>
                     <p>Modify descriptions, rename artifacts, or update images.</p>
                 </div>
-                <div class="admin-box" id="btn-view-delete" style="border-bottom-color: #dc3545; background: #fff;">
+                <div class="admin-box" id="btn-view-delete" style="border-bottom-color: #dc3545;">
                     <span class="icon">🗑️</span>
                     <h3>Delete Artifact</h3>
                     <p>Permanently remove artifacts from the digital system.</p>
@@ -120,7 +148,8 @@
 
                 <form id="admin-form">
                     <div class="form-group">
-                        <label for="art-id">Artifact ID (e.g., kris_sword, agong)</label>
+                        <label for="art-id">Artifact ID</label>
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 0; margin-bottom: 5px;">Use ONLY lowercase letters, numbers, and underscores (e.g., <code>kris_sword</code>). No spaces or special characters.</p>
                         <input type="text" id="art-id" required>
                     </div>
                     <div class="form-group">
@@ -129,7 +158,7 @@
                     </div>
                     <div class="form-group">
                         <label for="art-station">Assigned Station</label>
-                        <select id="art-station" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                        <select id="art-station" required>
                             <option value="station1">Station 1</option>
                             <option value="station2">Station 2</option>
                             <option value="station3">Station 3</option>
@@ -182,9 +211,9 @@
                         <p>Musical Instruments</p>
                     </div>
                     <div class="admin-box" id="pick-station3" style="cursor:pointer; border-bottom-color:#5c6bc0;">
-                        <span class="icon">👘</span>
+                        <span class="icon">🐾</span>
                         <h3>Station 3</h3>
-                        <p>Cultural Attire</p>
+                        <p>Animals</p>
                     </div>
                 </div>
             </div>
@@ -216,6 +245,8 @@
                 </div>
             </div>
         </section>
+
+        </div> <!-- End of admin-content -->
 
         <div style="text-align:center; margin-top: 20px;">
             <a href="index.html" class="back-link">Return to Main App</a>
