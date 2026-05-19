@@ -334,13 +334,9 @@ async function renderHome() {
     // Scanner Logic
     const btnScanQr = template.getElementById('btn-scan-qr');
     if (btnScanQr) {
-        if (state.unlockedStations.length >= STATIONS.length) {
-            btnScanQr.classList.add('hidden');
-        } else {
-            btnScanQr.addEventListener('click', () => {
-                openScannerModal();
-            });
-        }
+        btnScanQr.addEventListener('click', () => {
+            openScannerModal();
+        });
     }
     
     appContent.appendChild(template);
@@ -575,7 +571,11 @@ function openScannerModal() {
     if (!html5QrcodeScanner) {
         html5QrcodeScanner = new Html5QrcodeScanner(
             "reader", 
-            { fps: 10, qrbox: {width: 250, height: 250} }, 
+            { 
+                fps: 10, 
+                qrbox: {width: 250, height: 250},
+                supportedScanTypes: [0] // 0 = Html5QrcodeScanType.SCAN_TYPE_CAMERA
+            }, 
             false
         );
         
