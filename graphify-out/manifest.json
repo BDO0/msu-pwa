@@ -1,31 +1,31 @@
 {
   "C:\\Abdo\\Capstone\\sw.js": {
-    "mtime": 1778586682.4203303,
-    "hash": "1d2e5552cf1ec9bd53efdb108b2f1fa1"
+    "mtime": 1779195140.8269193,
+    "hash": "88cb2712d9cee6ddd9819166a2d45c89"
   },
   "C:\\Abdo\\Capstone\\js\\admin.js": {
-    "mtime": 1778586694.6695974,
-    "hash": "c3803a3910c11806d7bc9121e356b6d3"
+    "mtime": 1779189869.0041783,
+    "hash": "ccf5befc328b10b15090475111990c03"
   },
   "C:\\Abdo\\Capstone\\js\\app.js": {
-    "mtime": 1778586688.9784958,
-    "hash": "46de71fb66b2c432835d80758b42ef8c"
+    "mtime": 1779195132.17778,
+    "hash": "1088f2e5b761ac554b69e45cfddb6c4d"
   },
   "C:\\Abdo\\Capstone\\js\\firebase-ui.js": {
-    "mtime": 1775808998.092082,
-    "hash": "76a6d7d0bb688fc1eef60abbb63cf2ab"
+    "mtime": 1778628328.3999536,
+    "hash": "6f57af8df1196032dbfc09cc7eefaba4"
   },
   "C:\\Abdo\\Capstone\\js\\html5-qrcode.min.js": {
     "mtime": 1778384146.9273744,
     "hash": "d88d3200cb547c9e86ee972975561dcd"
   },
   "C:\\Abdo\\Capstone\\js\\matchup.js": {
-    "mtime": 1778386468.7884116,
-    "hash": "1bf6cc35b6e9364891f75ca38375f382"
+    "mtime": 1779194186.4701319,
+    "hash": "ba1086e89ea09d3602202e7b34aeaac4"
   },
   "C:\\Abdo\\Capstone\\admin.html": {
-    "mtime": 1778584745.4108078,
-    "hash": "5535ce6592c102cff87d91bc79320d49"
+    "mtime": 1779189848.8001232,
+    "hash": "9bdc9f779455af0467e26ca93871a3ba"
   },
   "C:\\Abdo\\Capstone\\brand_guideline.md": {
     "mtime": 1775088601.7810118,
@@ -36,8 +36,12 @@
     "hash": "ba39dde53b6b8ac372e33117c71fa60e"
   },
   "C:\\Abdo\\Capstone\\index.html": {
-    "mtime": 1778584721.659695,
-    "hash": "15c618a31c6b7cc815ce8e3a37dcf9aa"
+    "mtime": 1779191388.8809676,
+    "hash": "3de4f7a646d4110fe20f93b8248cb040"
+  },
+  "C:\\Abdo\\Capstone\\qr_codes.html": {
+    "mtime": 1778647469.432519,
+    "hash": "4456ae26ded9ed12417f3022a1807a84"
   },
   "C:\\Abdo\\Capstone\\placeholder.jpg.jpg": {
     "mtime": 1732901789.7055519,

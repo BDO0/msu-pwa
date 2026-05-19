@@ -278,6 +278,8 @@ function showVictory(container, onComplete) {
 
     container.appendChild(screen);
 
+    localStorage.setItem('station1GameComplete', 'true');
+
     if (onComplete) onComplete();
 }
 
@@ -570,6 +572,7 @@ function showWWVictory(container, onComplete) {
         <p style="color:var(--gold); font-weight:600; margin-top:8px;">✨ Badge Progress Saved</p>
     `;
     container.appendChild(screen);
+    localStorage.setItem('station2GameComplete', 'true');
     if (onComplete) onComplete();
 }
 
@@ -604,17 +607,78 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
         return;
     }
 
-    // Define 3 generic scenarios based on the Darangen epic theme
-    const scenarios = [
-        { text: "Prince Bantugan is preparing for an epic battle to defend his kingdom. He needs his trusted weapon.", type: "weapon" },
-        { text: "A grand royal feast is being prepared to celebrate a great victory. An ornate vessel is needed.", type: "vessel" },
-        { text: "The princess is getting ready for a ceremonial dance. She needs a traditional accessory.", type: "attire" }
+    // We will hardcode the storytelling mappings to the 3 artifacts expected in Station 3
+    const storyMapping = {
+        "Kampilan": {
+            image: "images/Chapter1.webp",
+            text: "Chapter 1: The Valor of Prince Bantugan. In the legendary kingdom of Bembaran, dark clouds gather as enemy invaders approach by sea. The brave Prince Bantugan, defender of the realm, prepares to face the oncoming fleet. He reaches for his trusty Kampilan—a heavy, single-edged sword with a hilt carved in the likeness of a gaping crocodile’s jaw, representing the strength of the protector spirits. Match Prince Bantugan with his sacred weapon to lead the defense.",
+            success: "Success! With the Kampilan in hand, Prince Bantugan leads his men to victory!",
+            dropHint: "Place the sword in Bantugan's hand"
+        },
+        "Kris": {
+            image: "images/chapter2.webp",
+            text: "Chapter 2: The Royal Judgment of the Sultan. Following the victory, the kingdom gathers at the court. A dispute arises over the ancestral lands of Bembaran. The ruling Sultan must pass a fair and binding judgment. To invoke royal authority and shield the court from negative spirits, the Sultan must hold the wavy-bladed Kris, a sacred dagger symbolizing peace, lineage, and high rank. Match the Sultan with the Kris to restore harmony.",
+            success: "Correct! The Kris restores order and authority in the royal court.",
+            dropHint: "Hand the dagger to the Sultan"
+        },
+        "Panolong": {
+            image: "images/chapter3.webp",
+            text: "Chapter 3: The Glory of the Torogan. With peace restored, the Sultan orders the construction of a grand Torogan—the royal house of the clan. Master woodcarvers gather to sculpt the Panolong, the wing-like beams that protrude from the front of the palace, carved with the mythical Naga (serpent) to ward off evil and display the family's prestige. Help the builders secure the Panolong to complete the kingdom's sanctuary.",
+            success: "Excellent! The Panolong is placed, securing the royal house of the Maranao.",
+            dropHint: "Mount the beam onto the Torogan"
+        }
+    };
+    
+    // Add audio narration function
+    if (typeof window.darangenMuted === 'undefined') window.darangenMuted = false;
+    
+    const speakText = (text) => {
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel(); // Stop any ongoing speech
+            if (!window.darangenMuted) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.95; // Slightly slower for dramatic storytelling
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+    };
+
+    // Construct round artifacts explicitly with their designated images
+    const roundArtifacts = [
+        { id: "darangen-1-kampilan", name: "Kampilan", image: "images/Kampilan.webp" },
+        { id: "darangen-2-kris", name: "Kris (Dagger)", image: "images/Kris.webp" },
+        { id: "darangen-3-panolong", name: "Panolong", image: "images/Panolong.webp" }
     ];
 
-    const TOTAL_ROUNDS = Math.min(3, allArtifacts.length);
-    // Pick 3 target artifacts
-    const roundArtifacts = pickRandom(allArtifacts, TOTAL_ROUNDS);
+    const TOTAL_ROUNDS = roundArtifacts.length;
+
     let currentRound = 0;
+
+    function showPrologue() {
+        container.innerHTML = '';
+        container.classList.add('game-phase-enter');
+        
+        const wrapper = document.createElement('div');
+        wrapper.className = 'darangen-wrapper';
+        
+        const prologueBox = document.createElement('div');
+        prologueBox.className = 'darangen-scenario-box scroll-unrolled';
+        prologueBox.innerHTML = `
+            <h2>Enter the Epic of Darangen</h2>
+            <div class="darangen-subtitles">
+                <p>The kingdom of Bembaran is in peril. Guide the heroes and rulers of the Maranao by matching the sacred artifacts to the chapters of their epic song.</p>
+            </div>
+            <div style="text-align:center; margin-top:20px;">
+                <button id="btn-begin-quest" class="btn btn-primary" style="padding:12px 24px; font-size:1.1rem; border-radius:50px;">Begin Quest</button>
+            </div>
+        `;
+        wrapper.appendChild(prologueBox);
+        container.appendChild(wrapper);
+        
+        document.getElementById('btn-begin-quest').addEventListener('click', () => {
+            runDarangenRound();
+        });
+    }
 
     function runDarangenRound() {
         if (currentRound >= TOTAL_ROUNDS) {
@@ -623,7 +687,19 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
         }
 
         const targetArtifact = roundArtifacts[currentRound];
-        const scenario = scenarios[currentRound % scenarios.length]; // cycle through scenarios
+        
+        // Find the mapped story based on the current round index instead of name
+        const chapterKeys = ["Kampilan", "Kris", "Panolong"];
+        let story = {
+            image: "",
+            text: `Find the ${targetArtifact.name} to continue the story.`,
+            success: `Correct! You found the ${targetArtifact.name}.`,
+            dropHint: "Drag correct artifact here"
+        };
+        
+        if (currentRound < chapterKeys.length) {
+            story = storyMapping[chapterKeys[currentRound]];
+        }
 
         container.innerHTML = '';
         container.classList.add('game-phase-enter');
@@ -633,8 +709,8 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
 
         // Round info
         const roundInfo = document.createElement('div');
-        roundInfo.className = 'ww-round-info'; // Reusing style
-        roundInfo.innerHTML = `SCENARIO ${currentRound + 1} / ${TOTAL_ROUNDS}
+        roundInfo.className = 'ww-round-info';
+        roundInfo.innerHTML = `CHAPTER ${currentRound + 1} / ${TOTAL_ROUNDS}
             <div class="round-dots" style="margin-top:6px;">
                 ${Array.from({length: TOTAL_ROUNDS}, (_, i) =>
                     `<div class="round-dot ${i < currentRound ? 'done' : i === currentRound ? 'active' : ''}"></div>`
@@ -642,30 +718,72 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
             </div>`;
         wrapper.appendChild(roundInfo);
 
-        // Scenario Box with Drop Zone
+        // Header controls (mute toggle)
+        const controlsDiv = document.createElement('div');
+        controlsDiv.style.textAlign = 'right';
+        controlsDiv.style.marginBottom = '10px';
+        const muteBtn = document.createElement('button');
+        muteBtn.className = 'btn btn-secondary';
+        muteBtn.style.padding = '5px 12px';
+        muteBtn.style.fontSize = '0.9rem';
+        muteBtn.style.borderRadius = '50px';
+        muteBtn.innerText = window.darangenMuted ? '🔇 Audio Muted' : '🔊 Audio On';
+        muteBtn.addEventListener('click', () => {
+            window.darangenMuted = !window.darangenMuted;
+            muteBtn.innerText = window.darangenMuted ? '🔇 Audio Muted' : '🔊 Audio On';
+            if (window.darangenMuted && window.speechSynthesis) window.speechSynthesis.cancel();
+            else speakText(story.text);
+        });
+        controlsDiv.appendChild(muteBtn);
+        wrapper.appendChild(controlsDiv);
+
+        // Parchment Scroll Box
         const scenarioBox = document.createElement('div');
-        scenarioBox.className = 'darangen-scenario-box';
+        scenarioBox.className = 'darangen-scenario-box scroll-rolled-up';
         
-        const scenarioText = document.createElement('p');
-        scenarioText.className = 'darangen-scenario-text';
-        scenarioText.innerText = scenario.text;
+        if (story.image) {
+            const art = document.createElement('img');
+            art.src = story.image;
+            art.className = 'darangen-chapter-art';
+            scenarioBox.appendChild(art);
+        }
+
+        const scenarioText = document.createElement('div');
+        scenarioText.className = 'darangen-subtitles';
+        scenarioText.innerHTML = `<p>${story.text}</p>`;
         scenarioBox.appendChild(scenarioText);
 
         const dropZone = document.createElement('div');
         dropZone.className = 'darangen-drop-zone';
         dropZone.id = 'darangen-drop-zone';
-        dropZone.innerHTML = '<span>Drag correct artifact here</span>';
+        dropZone.innerHTML = `<span>${story.dropHint}</span>`;
         scenarioBox.appendChild(dropZone);
 
         wrapper.appendChild(scenarioBox);
+
+        // Simulates scroll unrolling animation and narrates
+        setTimeout(() => {
+            scenarioBox.classList.remove('scroll-rolled-up');
+            scenarioBox.classList.add('scroll-unrolled');
+            // Play narration when scroll unrolls
+            speakText(story.text);
+        }, 150);
 
         // Draggable Items Area
         const itemsArea = document.createElement('div');
         itemsArea.className = 'darangen-items-area';
 
-        // Mix target with 2 decoys
-        const decoys = pickRandom(allArtifacts.filter(a => a.id !== targetArtifact.id), 2);
-        const choices = shuffle([targetArtifact, ...decoys]);
+        // Mix target with 2 decoys from other stations
+        const possibleDecoys = allArtifacts.filter(a => {
+            if (a.id === targetArtifact.id) return false;
+            const name = a.name ? a.name.toLowerCase() : "";
+            // Ensure we don't accidentally use the real station 3 artifacts as decoys
+            return !name.includes("kampilan") && !name.includes("kris") && !name.includes("panolong");
+        });
+        
+        // Pick 2 random decoys, then add the target, and finally shuffle the 3 items
+        const selectedDecoys = shuffle(possibleDecoys).slice(0, 2);
+        const choices = shuffle([targetArtifact, ...selectedDecoys]);
 
         choices.forEach(choice => {
             const item = document.createElement('div');
@@ -685,7 +803,7 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
             item.appendChild(label);
             
             // Pointer events logic
-            setupDraggable(item, dropZone, targetArtifact.id, choice.id, () => {
+            setupDraggable(container, item, dropZone, targetArtifact.id, choice.id, () => {
                 // Success Callback
                 dropZone.innerHTML = '';
                 item.style.position = 'static';
@@ -701,11 +819,16 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
                 });
 
                 saveGameWin(targetArtifact.id);
+                
+                scenarioText.innerHTML = `<p style="color:var(--gold); font-weight:bold; font-size:1.1rem; text-align:center;">${story.success}</p>`;
+                // Play success narration
+                speakText(story.success);
 
+                // Give it time to finish speaking before going to next round
                 setTimeout(() => {
                     currentRound++;
                     runDarangenRound();
-                }, 1500);
+                }, 4500);
             });
 
             itemsArea.appendChild(item);
@@ -715,10 +838,10 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
         container.appendChild(wrapper);
     }
 
-    runDarangenRound();
+    showPrologue();
 }
 
-function setupDraggable(element, dropZone, targetId, currentId, onSuccess) {
+function setupDraggable(container, element, dropZone, targetId, currentId, onSuccess) {
     let isDragging = false;
     let startX = 0, startY = 0;
 
@@ -733,7 +856,6 @@ function setupDraggable(element, dropZone, targetId, currentId, onSuccess) {
         startY = e.clientY;
         
         element.style.zIndex = 1000;
-        // Fix element dimensions to prevent shrinking during scale
         element.style.width = element.offsetWidth + 'px';
         element.style.height = element.offsetHeight + 'px';
     });
@@ -745,9 +867,27 @@ function setupDraggable(element, dropZone, targetId, currentId, onSuccess) {
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
         
-        // Disable transition during drag for 1:1 finger tracking
         element.style.transition = 'none';
         element.style.transform = `translate(${dx}px, ${dy}px) scale(1.1)`;
+        
+        // Pulse dropzone if hovering over it
+        const elementRect = element.getBoundingClientRect();
+        const dropRect = dropZone.getBoundingClientRect();
+        const elementCenterX = elementRect.left + elementRect.width / 2;
+        const elementCenterY = elementRect.top + elementRect.height / 2;
+
+        const isOverDropZone = (
+            elementCenterX >= dropRect.left &&
+            elementCenterX <= dropRect.right &&
+            elementCenterY >= dropRect.top &&
+            elementCenterY <= dropRect.bottom
+        );
+
+        if (isOverDropZone) {
+            dropZone.classList.add('hovered');
+        } else {
+            dropZone.classList.remove('hovered');
+        }
     });
 
     element.addEventListener('pointerup', (e) => {
@@ -756,6 +896,7 @@ function setupDraggable(element, dropZone, targetId, currentId, onSuccess) {
         element.releasePointerCapture(e.pointerId);
         element.classList.remove('dragging');
         element.style.zIndex = 1;
+        dropZone.classList.remove('hovered');
 
         // Check intersection with drop zone
         const elementRect = element.getBoundingClientRect();
@@ -775,9 +916,17 @@ function setupDraggable(element, dropZone, targetId, currentId, onSuccess) {
         if (isOverDropZone) {
             if (currentId === targetId) {
                 // Correct!
+                playCorrectSound();
+                
+                // Spawn particles relative to the container coords
+                const sparkX = elementRect.left + elementRect.width / 2;
+                const sparkY = elementRect.top + elementRect.height / 2;
+                spawnSparkles(container, sparkX, sparkY);
+                
                 onSuccess();
             } else {
-                // Wrong! Bounce back and show red visual
+                // Wrong! Bounce back, shake drop zone, play sound
+                playWrongSound();
                 bounceBack(element);
                 dropZone.classList.add('wrong');
                 setTimeout(() => dropZone.classList.remove('wrong'), 500);
@@ -800,17 +949,180 @@ function setupDraggable(element, dropZone, targetId, currentId, onSuccess) {
 }
 
 function showDarangenVictory(container, onComplete) {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
     container.innerHTML = '';
-    const screen = document.createElement('div');
-    screen.className = 'victory-screen game-phase-enter';
-    screen.innerHTML = `
-        <div class="trophy">🏆</div>
-        <h2>Darangen Match Complete!</h2>
-        <p>You completed all scenarios. You are a true historian of the Darangen.</p>
-        <p style="color:var(--gold); font-weight:600; margin-top:8px;">✨ Badge Progress Saved</p>
+    playVictoryFanfare();
+    
+    // Create epic victory ceremony container
+    const victoryContainer = document.createElement('div');
+    victoryContainer.className = 'darangen-victory-container';
+    
+    // Glowing rotating sunburst background
+    const sunburst = document.createElement('div');
+    sunburst.className = 'sunburst-backdrop';
+    victoryContainer.appendChild(sunburst);
+    
+    // Raining gold confetti particles
+    for (let i = 0; i < 40; i++) {
+        const drop = document.createElement('div');
+        drop.className = 'gold-rain-drop';
+        drop.style.left = `${Math.random() * 100}%`;
+        drop.style.animationDelay = `${Math.random() * 3}s`;
+        drop.style.animationDuration = `${1.5 + Math.random() * 2}s`;
+        victoryContainer.appendChild(drop);
+    }
+    
+    const panel = document.createElement('div');
+    panel.className = 'victory-panel game-phase-enter';
+    panel.innerHTML = `
+        <div class="grand-trophy">👑</div>
+        <h2>QUEST COMPLETE!</h2>
+        <p class="epic-title">Grand Historian of the Darangen</p>
+        <p>You have successfully decoded the ancient epics and proven your knowledge of Maranao heritage.</p>
+        <p style="color:var(--gold); font-weight:600; margin-top:12px; text-shadow:0 0 10px rgba(201,168,76,0.6);">✨ Final Station Badge Unlocked! ✨</p>
     `;
-    container.appendChild(screen);
+    
+    victoryContainer.appendChild(panel);
+    container.appendChild(victoryContainer);
+    
+    localStorage.setItem('station3GameComplete', 'true');
     if (onComplete) onComplete();
+}
+
+// ─── Synthetic Audio System ───────────────────────────────────────────────────
+let audioCtx = null;
+
+function getAudioContext() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    return audioCtx;
+}
+
+function playCorrectSound() {
+    try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        // Rising pentatonic gold chime
+        const freqs = [349.23, 392.00, 440.00, 523.25, 587.33, 698.46]; // F4, G4, A4, C5, D5, F5
+        freqs.forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, now + i * 0.08);
+            
+            gain.gain.setValueAtTime(0.08, now + i * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.6);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + i * 0.08);
+            osc.stop(now + i * 0.08 + 0.65);
+        });
+    } catch (e) {
+        console.warn("Audio Context blocked or failed:", e);
+    }
+}
+
+function playWrongSound() {
+    try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        // A low, wood-like thud
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.linearRampToValueAtTime(60, now + 0.25);
+        
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.3);
+    } catch (e) {
+        console.warn("Audio Context failed:", e);
+    }
+}
+
+function playVictoryFanfare() {
+    try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        
+        // 3 sequential chords to create a rich fanfare
+        const chord1 = [261.63, 329.63, 392.00]; // C major
+        const chord2 = [293.66, 349.23, 440.00]; // F major
+        const chord3 = [329.63, 415.30, 493.88, 659.25]; // E major / E5 gold chime
+        
+        const playChord = (freqs, startTime, duration) => {
+            freqs.forEach(freq => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, startTime);
+                
+                gain.gain.setValueAtTime(0.06, startTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(startTime);
+                osc.stop(startTime + duration + 0.05);
+            });
+        };
+        
+        playChord(chord1, now, 0.4);
+        playChord(chord2, now + 0.35, 0.4);
+        playChord(chord3, now + 0.7, 1.2);
+    } catch (e) {
+        console.warn("Audio Context failed:", e);
+    }
+}
+
+// ─── Particle Effects ──────────────────────────────────────────────────────────
+function spawnSparkles(container, x, y) {
+    const rect = container.getBoundingClientRect();
+    const localX = x - rect.left;
+    const localY = y - rect.top;
+    
+    const count = 18;
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'gold-sparkle-particle';
+        
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = 30 + Math.random() * 60;
+        const targetX = localX + Math.cos(angle) * velocity;
+        const targetY = localY + Math.sin(angle) * velocity;
+        
+        particle.style.left = `${localX}px`;
+        particle.style.top = `${localY}px`;
+        
+        const size = 5 + Math.random() * 6;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        particle.innerHTML = `
+            <svg viewBox="0 0 10 10" width="100%" height="100%">
+                <path d="M5,0 L6,4 L10,5 L6,6 L5,10 L4,6 L0,5 L4,4 Z" fill="#C9A84C"/>
+            </svg>
+        `;
+        
+        container.appendChild(particle);
+        
+        requestAnimationFrame(() => {
+            particle.style.transform = `translate(${targetX - localX}px, ${targetY - localY}px) scale(0)`;
+            particle.style.opacity = '0';
+        });
+        
+        setTimeout(() => particle.remove(), 800);
+    }
 }
 
 

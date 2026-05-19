@@ -15,6 +15,14 @@
     <!-- Firebase SDK (Modular) will be loaded in firebase-ui.js -->
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen hidden">
+        <div class="splash-content">
+            <h1 class="splash-title">MSU Aga Khan Museum</h1>
+            <p class="splash-subtitle">Welcome to your cultural journey</p>
+        </div>
+    </div>
+
     <header class="app-header">
         <a href="#/" class="logo">MSU Aga Khan Museum</a>
     </header>
@@ -36,9 +44,10 @@
     <template id="tmpl-home">
         <div class="view home-view">
             <div class="hero">
-                <h1>Welcome to the MSU Aga Khan Museum</h1>
-                <p>Scan QR codes at different stations to explore the artifacts and learn about our rich cultural heritage.</p>
-                <div class="action-buttons">
+                <div class="hero-bg"></div>
+                <h1 style="position:relative; z-index:2;">Welcome to the MSU Aga Khan Museum</h1>
+                <p id="hero-welcome-text" style="position:relative; z-index:2;">Your cultural journey begins here. Tap 'Scan Station QR' at your first stop.</p>
+                <div class="action-buttons" style="position:relative; z-index:2;">
                     <button id="btn-install" class="btn btn-secondary hidden">Install App (Offline Use)</button>
                     <button id="btn-scan-qr" class="btn btn-primary" style="background-color: #FBC02D; color: #333;">📷 Scan Station QR</button>
                     <a href="#/station1" class="btn btn-primary" style="display:none;" id="btn-start-exploring">Start Exploring</a>
@@ -46,7 +55,10 @@
             </div>
 
             <div class="progress-section card">
-                <h2>Your Progress</h2>
+                <div style="display:flex; justify-content: space-between; align-items:baseline; border-bottom: 1px solid var(--border-gold); margin-bottom: 16px; padding-bottom: 10px;">
+                    <h2 style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">Your Progress</h2>
+                    <span id="visitor-title" style="color: var(--gold); font-weight: 600; font-family: var(--font-heading); font-size: 0.95rem; text-shadow: 0 0 10px rgba(201,168,76,0.3);">Curious Visitor</span>
+                </div>
                 <p id="overall-progress-text">You have viewed 0 out of 0 artifacts</p>
                 <div class="progress-bar-container">
                     <div id="overall-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
@@ -62,6 +74,27 @@
                 <ul class="station-list" id="home-station-list">
                     <!-- Populated via JS -->
                 </ul>
+            </div>
+
+            <div class="achievements-section card">
+                <h2>Achievements & Badges</h2>
+                <div class="badges-grid" id="home-badges-list">
+                    <div class="badge-item locked" id="badge-station1">
+                        <div class="badge-icon">⚔️</div>
+                        <div class="badge-name">Explorer</div>
+                        <div class="badge-desc">Station 1 Challenge</div>
+                    </div>
+                    <div class="badge-item locked" id="badge-station2">
+                        <div class="badge-icon">🎵</div>
+                        <div class="badge-name">Scholar</div>
+                        <div class="badge-desc">Word Weaver</div>
+                    </div>
+                    <div class="badge-item locked" id="badge-station3">
+                        <div class="badge-icon">🐾</div>
+                        <div class="badge-name">Historian</div>
+                        <div class="badge-desc">Darangen Match</div>
+                    </div>
+                </div>
             </div>
 
             <div class="completers-section card">
@@ -103,7 +136,10 @@
             <div class="artifact-content card">
                 <img id="artifact-img" src="" alt="Artifact Image" class="artifact-detail-image">
                 <h1 id="artifact-title" class="page-title">Artifact Title</h1>
-                <div class="viewed-badge green hidden" id="artifact-viewed-badge">✓ Viewed</div>
+                <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom: 18px;">
+                    <div class="viewed-badge green hidden" id="artifact-viewed-badge" style="margin-bottom:0;">✓ Viewed</div>
+                    <button id="btn-listen" class="btn btn-secondary" style="width: auto; padding: 6px 12px; margin-bottom:0; font-size: 0.85rem; display:flex; align-items:center; gap:6px;">🔊 Listen</button>
+                </div>
                 
                 <div class="artifact-description">
                     <h3>Description</h3>
@@ -150,6 +186,34 @@
                     <div id="reg-success" class="success-msg hidden">Registration successful!</div>
                     <button type="submit" class="btn btn-primary" id="btn-submit-reg">Submit Registration</button>
                 </form>
+            </div>
+        </div>
+    </template>
+
+    <!-- Onboarding Modal Template -->
+    <template id="tmpl-onboarding-modal">
+        <div class="modal-overlay" id="onboarding-modal">
+            <div class="modal-content card" style="text-align: center; max-width: 450px;">
+                <h2 id="onboard-title">Discover</h2>
+                <div id="onboard-slide-0" class="onboard-slide">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🏛️</div>
+                    <p>Welcome! This app is your digital guide to the MSU Aga Khan Museum.</p>
+                </div>
+                <div id="onboard-slide-1" class="onboard-slide hidden">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">📷</div>
+                    <p>Look for QR codes at each station. Tap 'Scan QR' to unlock artifacts and learn their stories.</p>
+                </div>
+                <div id="onboard-slide-2" class="onboard-slide hidden">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🏆</div>
+                    <p>Complete interactive challenges to earn badges and register as an Official Museum Completer!</p>
+                </div>
+                
+                <div class="onboard-dots" style="margin: 20px 0; display:flex; justify-content:center; gap:8px;">
+                    <span class="onboard-dot active" style="width:10px;height:10px;border-radius:50%;background:var(--gold);"></span>
+                    <span class="onboard-dot" style="width:10px;height:10px;border-radius:50%;background:rgba(201,168,76,0.3);"></span>
+                    <span class="onboard-dot" style="width:10px;height:10px;border-radius:50%;background:rgba(201,168,76,0.3);"></span>
+                </div>
+                <button id="btn-onboard-next" class="btn btn-primary" style="margin-bottom:0;">Next</button>
             </div>
         </div>
     </template>

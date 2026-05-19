@@ -1,16 +1,16 @@
-# Graph Report - Capstone  (2026-05-12)
+# Graph Report - Capstone  (2026-05-19)
 
 ## Corpus Check
-- 8 files · ~161,791 words
+- 8 files · ~164,227 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1288 nodes · 3285 edges · 59 communities (17 shown, 42 thin omitted)
+- 1314 nodes · 3321 edges · 59 communities (22 shown, 37 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e72473f2`
+- Built from commit: `1b6e9300`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,7 +34,6 @@
 - [[_COMMUNITY_Community 16|Community 16]]
 - [[_COMMUNITY_Community 17|Community 17]]
 - [[_COMMUNITY_Community 18|Community 18]]
-- [[_COMMUNITY_Community 19|Community 19]]
 - [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 21|Community 21]]
 - [[_COMMUNITY_Community 22|Community 22]]
@@ -53,7 +52,6 @@
 - [[_COMMUNITY_Community 35|Community 35]]
 - [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
-- [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 41|Community 41]]
 - [[_COMMUNITY_Community 42|Community 42]]
@@ -67,7 +65,6 @@
 - [[_COMMUNITY_Community 51|Community 51]]
 - [[_COMMUNITY_Community 52|Community 52]]
 - [[_COMMUNITY_Community 53|Community 53]]
-- [[_COMMUNITY_Community 54|Community 54]]
 - [[_COMMUNITY_Community 55|Community 55]]
 - [[_COMMUNITY_Community 56|Community 56]]
 
@@ -84,62 +81,66 @@
 10. `ft` - 23 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `e()` --calls--> `I`  [EXTRACTED]
-  js/html5-qrcode.min.js → js/html5-qrcode.min.js  _Bridges community 43 → community 4_
-- `e()` --calls--> `r()`  [EXTRACTED]
-  js/html5-qrcode.min.js → js/html5-qrcode.min.js  _Bridges community 43 → community 7_
-- `T` --calls--> `r()`  [EXTRACTED]
-  js/html5-qrcode.min.js → js/html5-qrcode.min.js  _Bridges community 7 → community 29_
-- `c` --calls--> `T`  [EXTRACTED]
-  js/html5-qrcode.min.js → js/html5-qrcode.min.js  _Bridges community 4 → community 29_
-- `ir()` --calls--> `rr()`  [EXTRACTED]
-  js/html5-qrcode.min.js → js/html5-qrcode.min.js  _Bridges community 4 → community 18_
+- `renderGame()` --calls--> `initStationChallenge()`  [EXTRACTED]
+  js/app.js → js/matchup.js
+- `renderGame()` --calls--> `initWordWeaver()`  [EXTRACTED]
+  js/app.js → js/matchup.js
+- `renderGame()` --calls--> `initDarangenGame()`  [EXTRACTED]
+  js/app.js → js/matchup.js
 
-## Communities (59 total, 42 thin omitted)
+## Communities (59 total, 37 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
-Nodes (10): ht, kt, Qt, te, ue, vt, xt, y (+2 more)
+Nodes (7): be, de, dt, fe, ft, it, re
 
 ### Community 1 - "Community 1"
-Cohesion: 0.08
-Nodes (5): dr, he, Q, tt, xe
+Cohesion: 0.06
+Nodes (3): cr, p, wr
 
 ### Community 2 - "Community 2"
-Cohesion: 0.09
-Nodes (4): de, dt, fe, ft
+Cohesion: 0.07
+Nodes (7): constructor(), he, lr, te, ue, y, zt
 
-### Community 4 - "Community 4"
+### Community 3 - "Community 3"
 Cohesion: 0.05
-Nodes (16): _, a, c, g, h, Hr, I, K (+8 more)
+Nodes (49): adminBtnClose, adminBtnSubmit, adminErrorMsg, adminForm, adminLoginLink, adminModal, adminModalTemplate, adminOverlay (+41 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.08
-Nodes (6): ar, constructor(), d, gt, j, lr
+Cohesion: 0.09
+Nodes (4): dr, Q, tt, xe
 
 ### Community 6 - "Community 6"
 Cohesion: 0.08
-Nodes (3): ce, ie, me
+Nodes (7): ht, kt, Qt, vt, wt, xt, yt
 
 ### Community 7 - "Community 7"
-Cohesion: 0.08
-Nodes (4): b, l, r(), u
+Cohesion: 0.05
+Nodes (3): ke, or, w
 
 ### Community 8 - "Community 8"
 Cohesion: 0.07
-Nodes (4): ae, le, oe, pe
+Nodes (5): ar, d, gt, j, le
 
 ### Community 9 - "Community 9"
-Cohesion: 0.09
-Nodes (25): appContent, cacheImages(), cacheWarmer(), checkCompletion(), getStationData(), init(), initData(), markViewed() (+17 more)
+Cohesion: 0.07
+Nodes (4): ae, oe, pe, se
 
-### Community 11 - "Community 11"
-Cohesion: 0.09
+### Community 10 - "Community 10"
+Cohesion: 0.08
+Nodes (4): b, l, r(), u
+
+### Community 14 - "Community 14"
+Cohesion: 0.08
 Nodes (23): adminContent, app, artifactData, artifactsListBody, auth, btnLogin, btnLogout, btnSubmit (+15 more)
 
-### Community 13 - "Community 13"
+### Community 15 - "Community 15"
 Cohesion: 0.15
 Nodes (4): br(), gr, mr, Vr
+
+### Community 16 - "Community 16"
+Cohesion: 0.1
+Nodes (11): a, c, g, h, Hr, K, kr, O (+3 more)
 
 ### Community 53 - "Community 53"
 Cohesion: 0.4
@@ -150,24 +151,24 @@ Cohesion: 0.5
 Nodes (3): ASSETS_TO_CACHE, fetchedResponse, isFirebaseStorage
 
 ## Knowledge Gaps
-- **33 isolated node(s):** `ASSETS_TO_CACHE`, `isFirebaseStorage`, `fetchedResponse`, `firebaseConfig`, `app` (+28 more)
+- **50 isolated node(s):** `ASSETS_TO_CACHE`, `isFirebaseStorage`, `fetchedResponse`, `firebaseConfig`, `app` (+45 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **42 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **37 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `f` connect `Community 3` to `Community 4`, `Community 5`?**
-  _High betweenness centrality (0.069) - this node is a cross-community bridge._
-- **Why does `N` connect `Community 21` to `Community 4`, `Community 6`, `Community 40`, `Community 18`, `Community 30`, `Community 31`?**
-  _High betweenness centrality (0.046) - this node is a cross-community bridge._
-- **Why does `Q` connect `Community 1` to `Community 4`?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+- **Why does `f` connect `Community 4` to `Community 16`?**
+  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **Why does `ft` connect `Community 0` to `Community 16`, `Community 19`, `Community 6`?**
+  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+- **Why does `ot` connect `Community 50` to `Community 16`, `Community 29`?**
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
 - **What connects `ASSETS_TO_CACHE`, `isFirebaseStorage`, `fetchedResponse` to the rest of the system?**
-  _33 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _50 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
