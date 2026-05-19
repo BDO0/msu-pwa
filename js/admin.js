@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // View Switching
     const switchView = (viewId) => {
-        ['view-dashboard', 'view-form', 'view-manage'].forEach(id => {
+        ['view-dashboard', 'view-form', 'view-manage', 'view-completers'].forEach(id => {
             document.getElementById(id).classList.add('hidden');
         });
         document.getElementById(viewId).classList.remove('hidden');
@@ -138,6 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('btn-back-to-dash-form').addEventListener('click', () => switchView('view-dashboard'));
     document.getElementById('btn-back-to-dash-manage').addEventListener('click', () => switchView('view-dashboard'));
+    
+    document.getElementById('btn-view-completers').addEventListener('click', () => {
+        switchView('view-completers');
+        loadAdminCompleters();
+    });
+    document.getElementById('btn-back-to-dash-completers').addEventListener('click', () => switchView('view-dashboard'));
 
     // --- Image Compression Utility ---
     const compressImage = async (file, { quality = 0.7, maxWidth = 800, maxHeight = 800 }) => {
@@ -243,6 +249,56 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error("Error loading artifacts:", error);
             artifactsListBody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:20px; color:red;">Failed to load data. Error: ${error.message}</td></tr>`;
+        }
+    };
+
+    const loadAdminCompleters = async () => {
+        const tbody = document.getElementById('completers-list-body');
+        try {
+            const q = query(collection(db, "completers"), orderBy("completionDate", "desc"));
+            const querySnapshot = await getDocs(q);
+            
+            tbody.innerHTML = '';
+            
+            if (querySnapshot.empty) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:20px;">No completers found.</td></tr>';
+                return;
+            }
+
+            querySnapshot.forEach((docSnap) => {
+                const data = docSnap.data();
+                const docId = docSnap.id;
+                const d = new Date(data.completionDate).toLocaleDateString();
+                
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
+                tr.innerHTML = `
+                    <td style="padding: 10px; color: var(--cream);">${data.name}</td>
+                    <td style="padding: 10px; color: var(--cream);">${data.studentId || 'N/A'}</td>
+                    <td style="padding: 10px; color: var(--text-muted);">${d}</td>
+                    <td style="padding: 10px;">
+                        <button class="btn-delete-completer" data-id="${docId}" style="background:#dc3545; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.querySelectorAll('.btn-delete-completer').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const id = btn.getAttribute('data-id');
+                    if (confirm("Are you sure you want to remove this completer? This cannot be undone.")) {
+                        try {
+                            await deleteDoc(doc(db, "completers", id));
+                            loadAdminCompleters(); // Refresh list
+                        } catch (err) {
+                            alert("Error deleting completer: " + err.message);
+                        }
+                    }
+                });
+            });
+        } catch (error) {
+            console.error("Error loading completers:", error);
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:20px; color:red;">Failed to load data. Error: ${error.message}</td></tr>`;
         }
     };
 

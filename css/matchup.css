@@ -505,57 +505,107 @@
 }
 
 .darangen-scenario-box {
-    background: rgba(30, 10, 0, 0.6);
-    border: 2px solid var(--border-gold);
-    border-radius: 12px;
-    padding: 20px;
+    background: radial-gradient(circle, #f5ecd5 60%, #e2d2b1 100%);
+    border-left: 5px solid #2d1806;
+    border-right: 5px solid #2d1806;
+    border-top: 2px solid #8d622b;
+    border-bottom: 2px solid #8d622b;
+    border-radius: 4px;
+    padding: 24px;
     margin-bottom: 24px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 15px rgba(201, 168, 76, 0.15);
+    box-shadow: 
+        0 10px 25px rgba(0,0,0,0.55),
+        inset 0 0 40px rgba(100, 70, 30, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    color: #3d2208;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1), opacity 0.5s ease;
+}
+
+/* Wood roller handles for the parchment scroll effect */
+.darangen-scenario-box::before,
+.darangen-scenario-box::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    height: 12px;
+    background: linear-gradient(to right, #402008, #603010, #402008);
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.darangen-scenario-box::before {
+    top: -6px;
+}
+
+.darangen-scenario-box::after {
+    bottom: -6px;
 }
 
 .darangen-scenario-text {
-    font-size: 1rem;
-    color: var(--cream);
-    line-height: 1.5;
+    font-size: 1.05rem;
+    color: #3d2208;
+    line-height: 1.6;
     text-align: center;
-    margin-bottom: 20px;
-    font-style: italic;
+    margin-bottom: 22px;
+    font-weight: 600;
     font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.7);
+}
+
+/* Transition classes for scroll unrolling */
+.scroll-rolled-up {
+    transform: scaleY(0.01);
+    opacity: 0.1;
+}
+
+.scroll-unrolled {
+    transform: scaleY(1);
+    opacity: 1;
 }
 
 .darangen-drop-zone {
-    width: 140px;
-    height: 140px;
-    border: 2px dashed rgba(201, 168, 76, 0.5);
+    width: 142px;
+    height: 142px;
+    border: 2px dashed rgba(61, 34, 8, 0.5);
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(61, 34, 8, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .darangen-drop-zone span {
-    color: rgba(201, 168, 76, 0.5);
-    font-size: 0.8rem;
+    color: rgba(61, 34, 8, 0.6);
+    font-size: 0.85rem;
+    font-weight: 500;
     text-align: center;
     pointer-events: none;
 }
 
+.darangen-drop-zone.hovered {
+    border-style: solid;
+    border-color: #c9a84c;
+    background: rgba(201, 168, 76, 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.4);
+}
+
 .darangen-drop-zone.correct {
-    border: 2px solid #8BCB6A;
-    background: rgba(139, 203, 106, 0.2);
-    box-shadow: 0 0 20px rgba(139, 203, 106, 0.4);
+    border: 2px solid #2e7d32;
+    background: rgba(46, 125, 50, 0.15);
+    box-shadow: 0 0 20px rgba(46, 125, 50, 0.4);
 }
 
 .darangen-drop-zone.wrong {
-    border: 2px solid #FF7070;
-    background: rgba(255, 112, 112, 0.2);
-    animation: ww-shake 0.4s ease;
+    border: 2px solid #c62828;
+    background: rgba(198, 40, 40, 0.15);
+    animation: shake 0.4s ease;
 }
 
 .darangen-items-area {
@@ -570,7 +620,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    touch-action: none; /* Crucial for preventing scrolling during drag */
+    touch-action: none;
     cursor: grab;
     transition: transform 0.2s;
 }
@@ -582,13 +632,12 @@
     border-radius: 8px;
     border: 2px solid var(--border-gold);
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    pointer-events: none; /* Let the wrapper handle pointer events */
+    pointer-events: none;
 }
 
 .darangen-draggable.dragging {
     cursor: grabbing;
     opacity: 0.9;
-    /* transform handled by JS */
 }
 
 .darangen-item-label {
@@ -598,4 +647,154 @@
     margin-top: 6px;
     line-height: 1.2;
     pointer-events: none;
+}
+
+/* Gold Sparkles */
+.gold-sparkle-particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2000;
+    transition: transform 0.75s cubic-bezier(0.25, 1, 0.50, 1), opacity 0.75s ease-out;
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+}
+
+/* Victory Ceremony for Game 3 */
+.darangen-victory-container {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+    background: radial-gradient(circle, #2d0000 0%, #100000 100%);
+    border: 2px solid var(--border-gold);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+}
+
+.sunburst-backdrop {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(201, 168, 76, 0.12) 0deg 15deg,
+        transparent 15deg 30deg
+    );
+    animation: rotate-sunburst 25s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes rotate-sunburst {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.gold-rain-drop {
+    position: absolute;
+    top: -20px;
+    width: 6px;
+    height: 6px;
+    background: #c9a84c;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #c9a84c;
+    opacity: 0.8;
+    z-index: 2;
+    animation: fall-rain linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fall-rain {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(500px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.victory-panel {
+    position: relative;
+    z-index: 3;
+    background: rgba(0,0,0,0.72);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 12px;
+    padding: 30px 24px;
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.grand-trophy {
+    font-size: 4.5rem;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 15px rgba(201,168,76,0.6));
+    animation: trophy-bounce 1.5s ease-in-out infinite;
+}
+
+.victory-panel h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.7rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    text-shadow: 0 0 12px rgba(201,168,76,0.4);
+    border: none;
+}
+
+.epic-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: #e2d2b1;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.victory-panel p {
+    color: var(--cream-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   DARANGEN ENHANCED UI (CHAPTER ART & SUBTITLES)
+   ========================================================= */
+
+.darangen-chapter-art {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #8d622b;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    display: block;
+}
+
+.darangen-subtitles {
+    font-size: 1.05rem;
+    color: #3d2208;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 22px;
+    font-weight: 600;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.7);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    border: 1px solid rgba(141, 98, 43, 0.3);
+}
+
+.darangen-subtitles p {
+    margin: 0;
 }

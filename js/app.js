@@ -119,8 +119,8 @@ async function initData() {
         }
     }
 
-    // 2. ONLY fallback to Local JSON files if Firebase is completely unreachable (offline/null)
-    if (allArtifacts.length === 0 && (!window.firebaseAPI || !navigator.onLine)) {
+    // 2. Fallback to Local JSON files if no artifacts were fetched (either offline or empty database)
+    if (allArtifacts.length === 0) {
         try {
             console.log("Firebase unreachable. Loading data from local JSON fallback.");
             const [res1, res2, res3] = await Promise.all([
@@ -194,6 +194,8 @@ function checkCompletion() {
 
 // Navigation & Routing
 function router() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    
     const hash = window.location.hash || '#/';
     appContent.innerHTML = ''; // Clear current view
     
@@ -237,12 +239,51 @@ async function renderHome() {
     const progressPct = state.totalArtifacts === 0 ? 0 : Math.round((state.viewedArtifacts.length / state.totalArtifacts) * 100);
     progressFill.style.width = `${progressPct}%`;
     
+    // Update Visitor Title
+    let title = "Curious Visitor";
+    if (progressPct >= 100) {
+        title = "Master Historian 👑";
+    } else if (progressPct >= 66) {
+        title = "Maranao Scholar 🎓";
+    } else if (progressPct >= 33) {
+        title = "Cultural Explorer 🧭";
+    }
+    const visitorTitleEl = template.getElementById('visitor-title');
+    if (visitorTitleEl) visitorTitleEl.innerText = title;
+    
     // Check completion
     const completionMessage = template.getElementById('completion-message');
     if (state.isCompleted) {
         completionMessage.classList.remove('hidden');
     } else {
         completionMessage.classList.add('hidden');
+    }
+    
+    // Update Badges
+    if (localStorage.getItem('station1GameComplete') === 'true') {
+        const b1 = template.getElementById('badge-station1');
+        if (b1) b1.classList.remove('locked');
+    }
+    if (localStorage.getItem('station2GameComplete') === 'true') {
+        const b2 = template.getElementById('badge-station2');
+        if (b2) b2.classList.remove('locked');
+    }
+    if (localStorage.getItem('station3GameComplete') === 'true') {
+        const b3 = template.getElementById('badge-station3');
+        if (b3) b3.classList.remove('locked');
+    }
+    
+    // Dynamic Hero Text
+    const heroWelcomeText = template.getElementById('hero-welcome-text');
+    if (heroWelcomeText) {
+        if (state.totalArtifacts > 0 && progressPct >= 100) {
+            heroWelcomeText.innerText = "Congratulations on completing the tour! Have you registered your name yet?";
+        } else if (state.viewedArtifacts.length > 0) {
+            const left = state.totalArtifacts - state.viewedArtifacts.length;
+            heroWelcomeText.innerText = `Welcome back! You have ${left} more artifact${left > 1 ? 's' : ''} left to discover.`;
+        } else {
+            heroWelcomeText.innerText = "Your cultural journey begins here. Tap 'Scan Station QR' at your first stop.";
+        }
     }
     
     // Station List
@@ -293,9 +334,13 @@ async function renderHome() {
     // Scanner Logic
     const btnScanQr = template.getElementById('btn-scan-qr');
     if (btnScanQr) {
-        btnScanQr.addEventListener('click', () => {
-            openScannerModal();
-        });
+        if (state.unlockedStations.length >= STATIONS.length) {
+            btnScanQr.classList.add('hidden');
+        } else {
+            btnScanQr.addEventListener('click', () => {
+                openScannerModal();
+            });
+        }
     }
     
     appContent.appendChild(template);
@@ -379,6 +424,14 @@ async function renderStation(stationId) {
                     <a href="#/station2/game" class="btn btn-secondary" style="display:inline-block; margin-top:10px;">Play Word Weaver</a>
                 </div>
             `;
+        } else if (stationId === 'station3') {
+            gameSection.innerHTML = `
+                <div class="station-challenge-card" style="border-color: var(--gold); box-shadow: 0 4px 15px rgba(201,168,76,0.2);">
+                    <h2 style="color: var(--gold);">✨ Darangen Quest</h2>
+                    <p>Experience the epic tale. Match the sacred artifacts to their chapters in the Maranao Darangen.</p>
+                    <a href="#/station3/game" class="btn btn-secondary" style="background:var(--gold); color:var(--surface); display:inline-block; margin-top:10px;">Play Darangen Quest</a>
+                </div>
+            `;
         }
     }
 }
@@ -413,6 +466,21 @@ async function renderGame(stationId) {
         initWordWeaver(containerId, data.artifacts, () => {
             console.log('Station 2 Word Weaver completed!');
         });
+    } else if (stationId === 'station3') {
+        gameTitle.innerText = "✨ Darangen Quest";
+        gameSubtitle.innerText = "Experience the epic tale. Match the sacred artifacts to their chapters.";
+        
+        // Pass all global artifacts to Darangen Game so it can use Station 1 and 2 artifacts as baits
+        let globalArtifacts = [];
+        for (const st in state.stationsData) {
+            if (state.stationsData[st] && state.stationsData[st].artifacts) {
+                globalArtifacts = globalArtifacts.concat(state.stationsData[st].artifacts);
+            }
+        }
+        
+        initDarangenGame(containerId, globalArtifacts, () => {
+            console.log('Station 3 Darangen Game completed!');
+        });
     } else {
         gameTitle.innerText = "Coming Soon";
         gameSubtitle.innerText = "There is no challenge available for this station yet.";
@@ -446,6 +514,31 @@ async function renderArtifact(stationId, artifactId) {
     template.getElementById('artifact-refs').innerText = art.references;
     
     template.getElementById('artifact-viewed-badge').classList.remove('hidden');
+    
+    // Setup Audio Guide
+    const btnListen = template.getElementById('btn-listen');
+    if (btnListen && window.speechSynthesis) {
+        let isPlaying = false;
+        btnListen.addEventListener('click', () => {
+            if (isPlaying) {
+                window.speechSynthesis.cancel();
+                btnListen.innerHTML = '🔊 Listen';
+                isPlaying = false;
+            } else {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(`${art.name}. ${art.description}`);
+                utterance.onend = () => {
+                    btnListen.innerHTML = '🔊 Listen';
+                    isPlaying = false;
+                };
+                window.speechSynthesis.speak(utterance);
+                btnListen.innerHTML = '⏸ Stop Audio';
+                isPlaying = true;
+            }
+        });
+    } else if (btnListen) {
+        btnListen.style.display = 'none';
+    }
     
     appContent.appendChild(template);
 }
@@ -503,6 +596,52 @@ function openScannerModal() {
             // Ignore normal scanning errors
         });
     }
+}
+
+// --- Onboarding Logic ---
+function handleOnboarding() {
+    const hasOnboarded = localStorage.getItem('hasOnboarded');
+    const splashScreen = document.getElementById('splash-screen');
+    
+    if (!hasOnboarded) {
+        splashScreen.classList.remove('hidden');
+        
+        setTimeout(() => {
+            splashScreen.classList.add('hidden');
+            showOnboardingModal();
+        }, 2500);
+    }
+}
+
+function showOnboardingModal() {
+    const modalTemplate = document.getElementById('tmpl-onboarding-modal').content.cloneNode(true);
+    document.body.appendChild(modalTemplate);
+    
+    const modal = document.getElementById('onboarding-modal');
+    const btnNext = document.getElementById('btn-onboard-next');
+    const dots = modal.querySelectorAll('.onboard-dot');
+    let currentSlide = 0;
+    
+    btnNext.addEventListener('click', () => {
+        document.getElementById(`onboard-slide-${currentSlide}`).classList.add('hidden');
+        dots[currentSlide].classList.remove('active');
+        dots[currentSlide].style.background = 'rgba(201,168,76,0.3)';
+        
+        currentSlide++;
+        
+        if (currentSlide < 3) {
+            document.getElementById(`onboard-slide-${currentSlide}`).classList.remove('hidden');
+            dots[currentSlide].classList.add('active');
+            dots[currentSlide].style.background = 'var(--gold)';
+            
+            if (currentSlide === 2) {
+                btnNext.innerText = "Get Started";
+            }
+        } else {
+            modal.remove();
+            localStorage.setItem('hasOnboarded', 'true');
+        }
+    });
 }
 
 function setupModal() {
@@ -637,6 +776,7 @@ function setupModal() {
 
 // App Initialization
 async function init() {
+    handleOnboarding();
     syncRegistrations(); // Attempt sync on load if online
     await initData();
     router();

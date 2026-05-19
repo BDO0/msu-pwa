@@ -132,6 +132,11 @@
                     <h3>Delete Artifact</h3>
                     <p>Permanently remove artifacts from the digital system.</p>
                 </div>
+                <div class="admin-box" id="btn-view-completers" style="border-bottom-color: #9c27b0;">
+                    <span class="icon">👥</span>
+                    <h3>Manage Completers</h3>
+                    <p>View and remove official completers from the list.</p>
+                </div>
             </div>
         </section>
 
@@ -242,6 +247,34 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manage Completers View -->
+        <section id="view-completers" class="hidden">
+            <div class="nav-controls">
+                <button class="back-btn" id="btn-back-to-dash-completers">← Back to Menu</button>
+            </div>
+            <div class="card">
+                <div class="admin-header">
+                    <h2>Official Completers</h2>
+                    <p>Manage the registered completers. Delete inappropriate entries here.</p>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #ddd; text-align: left; color: var(--gold);">
+                                <th style="padding: 10px;">Name</th>
+                                <th style="padding: 10px;">Student ID</th>
+                                <th style="padding: 10px;">Date</th>
+                                <th style="padding: 10px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="completers-list-body">
+                            <tr><td colspan="4" style="text-align:center; padding:20px;">Loading completers...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>

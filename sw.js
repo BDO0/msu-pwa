@@ -1,4 +1,4 @@
-const CACHE_NAME = 'msu-museum-cache-v6';
+const CACHE_NAME = 'msu-museum-cache-v15';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -14,6 +14,12 @@ const ASSETS_TO_CACHE = [
     '/data/station1.json',
     '/data/station2.json',
     '/data/station3.json',
+    '/images/Chapter1.webp',
+    '/images/chapter2.webp',
+    '/images/chapter3.webp',
+    '/images/Kampilan.webp',
+    '/images/Kris.webp',
+    '/images/Panolong.webp',
     '/images/icons/icon-192x192.png',
     '/images/icons/icon-512x512.png',
     'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'
@@ -21,6 +27,7 @@ const ASSETS_TO_CACHE = [
 
 // Install Event: Pre-cache App Shell and Data
 self.addEventListener('install', (event) => {
+    self.skipWaiting(); // Force the waiting service worker to become the active service worker
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) => {
@@ -41,7 +48,7 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
-        })
+        }).then(() => self.clients.claim()) // Immediately take control of the page
     );
 });
 
