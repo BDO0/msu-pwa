@@ -1,4 +1,4 @@
-const CACHE_NAME = 'msu-museum-cache-v15';
+const CACHE_NAME = 'msu-museum-cache-v16';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -43,7 +43,7 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
+                    if (cacheName !== CACHE_NAME && cacheName !== 'msu-museum-images') {
                         return caches.delete(cacheName);
                     }
                 })
@@ -67,26 +67,24 @@ self.addEventListener('fetch', (event) => {
     if (isFirebaseStorage) {
         // Stale-While-Revalidate Strategy for Images
         event.respondWith(
-            caches.open(CACHE_NAME).then((cache) => {
-                return cache.match(event.request).then((cachedResponse) => {
-                    const fetchedResponse = fetch(event.request).then((networkResponse) => {
-                        // Allow basic and cors
-                        if (networkResponse && networkResponse.status === 200 && (networkResponse.type === 'basic' || networkResponse.type === 'cors' || networkResponse.type === 'opaque')) {
-                            cache.put(event.request, networkResponse.clone());
-                        }
-                        return networkResponse;
-                    }).catch(() => {
-                        // Offline fallback managed by returning cachedResponse
-                    });
-                    
-                    return cachedResponse || fetchedResponse;
+            caches.match(event.request).then((cachedResponse) => {
+                const fetchedResponse = fetch(event.request).then((networkResponse) => {
+                    // Allow basic and cors
+                    if (networkResponse && networkResponse.status === 200 && (networkResponse.type === 'basic' || networkResponse.type === 'cors' || networkResponse.type === 'opaque')) {
+                        caches.open(CACHE_NAME).then(cache => cache.put(event.request, networkResponse.clone()));
+                    }
+                    return networkResponse;
+                }).catch(() => {
+                    // Offline fallback managed by returning cachedResponse
                 });
+                
+                return cachedResponse || fetchedResponse;
             })
         );
     } else {
         // Cache-First Strategy for App Shell
         event.respondWith(
-            caches.match(event.request)
+            caches.match(event.request, { ignoreSearch: true })
                 .then((response) => {
                     if (response) {
                         return response;
@@ -108,7 +106,12 @@ self.addEventListener('fetch', (event) => {
 
                             return networkResponse;
                         }
-                    );
+                    ).catch(() => {
+                        // Offline fallback for navigation requests
+                        if (event.request.mode === 'navigate' || event.request.headers.get('accept').includes('text/html')) {
+                            return caches.match('/index.html');
+                        }
+                    });
                 })
         );
     }
