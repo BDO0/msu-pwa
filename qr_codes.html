@@ -3,38 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Museum Station QR Codes</title>
+    <title>MSU Aga Khan Museum — QR Codes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; text-align: center; background: #f4f4f4; padding: 50px; }
-        .qr-container { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
-        .qr-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .qr-card h2 { margin-top: 0; color: #800000; }
-        img { width: 250px; height: 250px; border: 5px solid #FBC02D; border-radius: 10px; }
-        p { font-size: 0.9rem; color: #555; }
+        :root {
+            --maroon: #800000;
+            --maroon-dark: #5a0000;
+            --gold: #C9A84C;
+            --gold-light: #F0D080;
+            --cream: #F5E6D0;
+            --dark: #1a1008;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0e8dc;
+            color: var(--dark);
+        }
+
+        /* ── Page Header ── */
+        .page-header {
+            background: linear-gradient(135deg, var(--maroon-dark), var(--maroon));
+            color: var(--gold);
+            text-align: center;
+            padding: 40px 20px 30px;
+            border-bottom: 4px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .page-header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 20px rgba(201,168,76,0.4);
+        }
+
+        .page-header p {
+            color: rgba(245,230,208,0.75);
+            font-size: 0.88rem;
+            margin-top: 6px;
+        }
+
+        /* ── Scroll Container ── */
+        .qr-scroll {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* ── Individual QR Section ── */
+        .qr-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px;
+            position: relative;
+        }
+
+        .qr-section:nth-child(odd) {
+            background: linear-gradient(160deg, #f5ede0 0%, #eedfc8 100%);
+        }
+
+        .qr-section:nth-child(even) {
+            background: linear-gradient(160deg, #2d1b0e 0%, #1a1008 100%);
+        }
+
+        /* Decorative border lines */
+        .qr-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* ── QR Card ── */
+        .qr-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 36px 36px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 0 0 2px var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-section:nth-child(even) .qr-card {
+            background: #2d1b0e;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px var(--gold);
+        }
+
+        /* Corner decorations */
+        .qr-card::before, .qr-card::after {
+            content: '';
+            position: absolute;
+            width: 40px; height: 40px;
+            border-color: var(--gold);
+            border-style: solid;
+            opacity: 0.5;
+        }
+        .qr-card::before { top: 12px; left: 12px; border-width: 2px 0 0 2px; border-radius: 4px 0 0 0; }
+        .qr-card::after  { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; border-radius: 0 0 4px 0; }
+
+        /* ── Badge ── */
+        .qr-badge {
+            display: inline-block;
+            background: var(--maroon);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            padding: 5px 18px;
+            border-radius: 30px;
+            border: 1px solid var(--gold);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .qr-badge.home-badge {
+            background: linear-gradient(135deg, #1a5c00, #2E7D32);
+        }
+
+        /* ── Title ── */
+        .qr-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: 700;
+            color: var(--maroon);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .qr-section:nth-child(even) .qr-title {
+            color: var(--gold);
+        }
+
+        .qr-subtitle {
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+
+        .qr-section:nth-child(even) .qr-subtitle {
+            color: rgba(245,230,208,0.6);
+        }
+
+        /* ── QR Image ── */
+        .qr-image-wrap {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            display: inline-block;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border: 3px solid var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .qr-image-wrap img {
+            width: clamp(240px, 65vw, 380px);
+            height: clamp(240px, 65vw, 380px);
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* ── URL Label ── */
+        .qr-url {
+            font-size: 0.78rem;
+            color: #999;
+            word-break: break-all;
+            background: #f7f2ec;
+            border-radius: 8px;
+            padding: 8px 14px;
+            margin-top: 4px;
+            font-family: monospace;
+            border: 1px solid #e0d4c0;
+        }
+
+        .qr-section:nth-child(even) .qr-url {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(201,168,76,0.2);
+            color: rgba(245,230,208,0.5);
+        }
+
+        /* ── Emoji Icon ── */
+        .qr-icon {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        /* ── Print Button ── */
+        .print-btn {
+            display: block;
+            margin: 0 auto 0;
+            padding: 10px 28px;
+            background: var(--maroon);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 18px;
+            letter-spacing: 0.04em;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+
+        .print-btn:hover { background: var(--maroon-dark); }
+
+        /* ── Scroll indicator ── */
+        .scroll-hint {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(6px); }
+        }
+
+        @media print {
+            .page-header, .print-btn, .scroll-hint { display: none; }
+            .qr-section { page-break-after: always; min-height: 100vh; }
+        }
     </style>
 </head>
 <body>
-    <h1>MSU Aga Khan Museum - Station QR Codes</h1>
-    <p>Right-click the images below and select "Save Image As..." to download them, or print this page.</p>
-    
-    <div class="qr-container">
+
+<header class="page-header">
+    <h1>MSU Aga Khan Museum — QR Codes</h1>
+    <p>Scroll down to see all QR codes · Right-click any QR image → Save to download</p>
+</header>
+
+<div class="qr-scroll">
+
+    <!-- ══ HOME / ENTRANCE QR ══ -->
+    <section class="qr-section">
         <div class="qr-card">
-            <h2>Station 1</h2>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https://msu-pwa.vercel.app/%23/station1" alt="Station 1 QR">
-            <p>Weapons & Tools</p>
+            <div class="qr-icon">🏛️</div>
+            <div class="qr-badge home-badge">Entrance QR</div>
+            <h2 class="qr-title">Museum Home</h2>
+            <p class="qr-subtitle">Scan this at the entrance to open the app</p>
+            <div class="qr-image-wrap">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://bdo0.github.io/msu-pwa/" alt="Home QR Code">
+            </div>
+            <div class="qr-url">https://bdo0.github.io/msu-pwa/</div>
+            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://bdo0.github.io/msu-pwa/" target="_blank" download>⬇ Download High-Res</a>
         </div>
-        
+        <span class="scroll-hint">▼ scroll for stations</span>
+    </section>
+
+    <!-- ══ STATION 1 ══ -->
+    <section class="qr-section">
         <div class="qr-card">
-            <h2>Station 2</h2>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https://msu-pwa.vercel.app/%23/station2" alt="Station 2 QR">
-            <p>Musical Instruments</p>
+            <div class="qr-icon">⚔️</div>
+            <div class="qr-badge">Station 1 QR</div>
+            <h2 class="qr-title">Weapons &amp; Tools</h2>
+            <p class="qr-subtitle">Place this QR code at Station 1</p>
+            <div class="qr-image-wrap">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://bdo0.github.io/msu-pwa/%23/station1" alt="Station 1 QR Code">
+            </div>
+            <div class="qr-url">https://bdo0.github.io/msu-pwa/#/station1</div>
+            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://bdo0.github.io/msu-pwa/%23/station1" target="_blank" download>⬇ Download High-Res</a>
         </div>
-        
+    </section>
+
+    <!-- ══ STATION 2 ══ -->
+    <section class="qr-section">
         <div class="qr-card">
-            <h2>Station 3</h2>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https://msu-pwa.vercel.app/%23/station3" alt="Station 3 QR">
-            <p>Animals</p>
+            <div class="qr-icon">🎵</div>
+            <div class="qr-badge">Station 2 QR</div>
+            <h2 class="qr-title">Musical Instruments</h2>
+            <p class="qr-subtitle">Place this QR code at Station 2</p>
+            <div class="qr-image-wrap">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://bdo0.github.io/msu-pwa/%23/station2" alt="Station 2 QR Code">
+            </div>
+            <div class="qr-url">https://bdo0.github.io/msu-pwa/#/station2</div>
+            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://bdo0.github.io/msu-pwa/%23/station2" target="_blank" download>⬇ Download High-Res</a>
         </div>
-    </div>
+    </section>
+
+    <!-- ══ STATION 3 ══ -->
+    <section class="qr-section">
+        <div class="qr-card">
+            <div class="qr-icon">🐾</div>
+            <div class="qr-badge">Station 3 QR</div>
+            <h2 class="qr-title">Animals</h2>
+            <p class="qr-subtitle">Place this QR code at Station 3</p>
+            <div class="qr-image-wrap">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://bdo0.github.io/msu-pwa/%23/station3" alt="Station 3 QR Code">
+            </div>
+            <div class="qr-url">https://bdo0.github.io/msu-pwa/#/station3</div>
+            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://bdo0.github.io/msu-pwa/%23/station3" target="_blank" download>⬇ Download High-Res</a>
+        </div>
+    </section>
+
+</div>
 </body>
 </html>
