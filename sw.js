@@ -1,4 +1,4 @@
-const CACHE_NAME = 'msu-museum-cache-v16';
+const CACHE_NAME = 'msu-museum-cache-v17';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -32,7 +32,13 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME)
         .then((cache) => {
             console.log('Opened cache');
-            return cache.addAll(ASSETS_TO_CACHE);
+            return Promise.all(
+                ASSETS_TO_CACHE.map(url => {
+                    return cache.add(url).catch(err => {
+                        console.warn('Failed to cache:', url, err);
+                    });
+                })
+            );
         })
     );
 });
@@ -108,9 +114,10 @@ self.addEventListener('fetch', (event) => {
                         }
                     ).catch(() => {
                         // Offline fallback for navigation requests
-                        if (event.request.mode === 'navigate' || event.request.headers.get('accept').includes('text/html')) {
+                        if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
                             return caches.match('/index.html');
                         }
+                        return new Response('Offline', { status: 503, statusText: 'Service Unavailable' });
                     });
                 })
         );
