@@ -1,4 +1,4 @@
-const CACHE_NAME = 'msu-museum-cache-v18';
+const CACHE_NAME = 'msu-museum-cache-v19';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -11,9 +11,6 @@ const ASSETS_TO_CACHE = [
     './js/firebase-ui.js',
     './js/html5-qrcode.min.js',
     './manifest.json',
-    './data/station1.json',
-    './data/station2.json',
-    './data/station3.json',
     './images/Chapter1.webp',
     './images/chapter2.webp',
     './images/chapter3.webp',
