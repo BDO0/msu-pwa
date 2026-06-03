@@ -255,6 +255,18 @@ async function renderHome() {
     const completionMessage = template.getElementById('completion-message');
     if (state.isCompleted) {
         completionMessage.classList.remove('hidden');
+        if (localStorage.getItem('hasRegistered') === 'true') {
+            const btnReg = template.getElementById('btn-register');
+            if (btnReg) {
+                btnReg.style.display = 'none';
+                const msg = document.createElement('p');
+                msg.innerText = "✅ You are officially registered as a completer!";
+                msg.style.color = 'var(--gold)';
+                msg.style.fontWeight = 'bold';
+                msg.style.marginTop = '15px';
+                completionMessage.appendChild(msg);
+            }
+        }
     } else {
         completionMessage.classList.add('hidden');
     }
@@ -333,10 +345,19 @@ async function renderHome() {
     
     // Scanner Logic
     const btnScanQr = template.getElementById('btn-scan-qr');
+    const btnStartExploring = template.getElementById('btn-start-exploring');
     if (btnScanQr) {
-        btnScanQr.addEventListener('click', () => {
-            openScannerModal();
-        });
+        if (state.unlockedStations.length >= STATIONS.length) {
+            btnScanQr.style.display = 'none';
+            if (btnStartExploring) {
+                btnStartExploring.style.display = 'inline-block';
+                btnStartExploring.innerText = 'Continue Exploring';
+            }
+        } else {
+            btnScanQr.addEventListener('click', () => {
+                openScannerModal();
+            });
+        }
     }
     
     appContent.appendChild(template);
@@ -688,11 +709,16 @@ function setupModal() {
                 let pendingRegs = JSON.parse(localStorage.getItem('pendingRegistrations') || '[]');
                 pendingRegs.push({ name, studentId });
                 localStorage.setItem('pendingRegistrations', JSON.stringify(pendingRegs));
+                localStorage.setItem('hasRegistered', 'true');
                 
                 successMsg.innerText = "You are offline. Registration saved and will sync automatically!";
                 successMsg.classList.remove('hidden');
                 form.reset();
-                setTimeout(() => { modal.classList.add('hidden'); successMsg.classList.add('hidden'); }, 3000);
+                setTimeout(() => { 
+                    modal.classList.add('hidden'); 
+                    successMsg.classList.add('hidden'); 
+                    if (window.location.hash === '#/') router();
+                }, 3000);
                 
                 btnSubmit.disabled = false;
                 return;
@@ -701,6 +727,7 @@ function setupModal() {
             if (window.firebaseAPI) {
                 const res = await window.firebaseAPI.registerCompleter(name, studentId);
                 if (res.success) {
+                    localStorage.setItem('hasRegistered', 'true');
                     successMsg.classList.remove('hidden');
                     form.reset();
                     // Auto close after 2 seconds

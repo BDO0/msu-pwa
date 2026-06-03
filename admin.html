@@ -79,9 +79,11 @@
     </style>
 </head>
 <body>
-    <header class="app-header">
-        <div class="logo">MSU Aga Khan Museum - Admin</div>
-        <button id="btn-logout" class="btn btn-secondary hidden" style="position: absolute; right: 20px; top: 15px; background: white; color: #800000; font-size: 0.9rem; padding: 5px 15px;">Logout</button>
+    <header class="app-header" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 20px;">
+        <div class="logo" style="flex: 1; line-height: 1.2; font-size: 1.1rem;">
+            MSU Museum <span style="display:block; font-size: 0.8rem; font-family: var(--font-body); color: var(--gold-light); font-weight: 400; text-shadow: none;">Admin Panel</span>
+        </div>
+        <button id="btn-logout" class="btn hidden" style="width: auto; margin: 0; padding: 8px 16px; font-size: 0.9rem; background: var(--gold); color: #800000; border: none; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); flex-shrink: 0; cursor: pointer;">Logout</button>
     </header>
 
     <main class="admin-container">

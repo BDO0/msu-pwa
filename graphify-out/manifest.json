@@ -1,15 +1,19 @@
 {
+  "C:\\Abdo\\Capstone\\compress.js": {
+    "mtime": 1779200383.1484773,
+    "hash": "1583be95cb39b6c9861cd344c170d456"
+  },
   "C:\\Abdo\\Capstone\\sw.js": {
-    "mtime": 1779195140.8269193,
-    "hash": "88cb2712d9cee6ddd9819166a2d45c89"
+    "mtime": 1779200512.1356769,
+    "hash": "140f0974d2a9b96ac6b709662d1c2116"
   },
   "C:\\Abdo\\Capstone\\js\\admin.js": {
     "mtime": 1779189869.0041783,
     "hash": "ccf5befc328b10b15090475111990c03"
   },
   "C:\\Abdo\\Capstone\\js\\app.js": {
-    "mtime": 1779195132.17778,
-    "hash": "1088f2e5b761ac554b69e45cfddb6c4d"
+    "mtime": 1780478564.355409,
+    "hash": "6272a896b7a4c73cf577c64084531dda"
   },
   "C:\\Abdo\\Capstone\\js\\firebase-ui.js": {
     "mtime": 1778628328.3999536,
@@ -20,8 +24,8 @@
     "hash": "d88d3200cb547c9e86ee972975561dcd"
   },
   "C:\\Abdo\\Capstone\\js\\matchup.js": {
-    "mtime": 1779194186.4701319,
-    "hash": "ba1086e89ea09d3602202e7b34aeaac4"
+    "mtime": 1779200499.8438332,
+    "hash": "4518d33d15d485a63b08990bae602f88"
   },
   "C:\\Abdo\\Capstone\\admin.html": {
     "mtime": 1779189848.8001232,
@@ -43,9 +47,29 @@
     "mtime": 1778647469.432519,
     "hash": "4456ae26ded9ed12417f3022a1807a84"
   },
-  "C:\\Abdo\\Capstone\\placeholder.jpg.jpg": {
-    "mtime": 1732901789.7055519,
-    "hash": "37d90c197b44099202a307649392e9da"
+  "C:\\Abdo\\Capstone\\images\\Chapter1.webp": {
+    "mtime": 1779200475.521,
+    "hash": "73b7885f4428a9f3f25ae870ddaa3c3a"
+  },
+  "C:\\Abdo\\Capstone\\images\\chapter2.webp": {
+    "mtime": 1779200476.321,
+    "hash": "211e9ba0efde276ba8d5eec7fba84d99"
+  },
+  "C:\\Abdo\\Capstone\\images\\chapter3.webp": {
+    "mtime": 1779200476.537,
+    "hash": "f6446252b285bece480b6c98c61f6fe2"
+  },
+  "C:\\Abdo\\Capstone\\images\\Kampilan.webp": {
+    "mtime": 1779200475.708,
+    "hash": "9051c31bbb8dda108e5ae6823605698c"
+  },
+  "C:\\Abdo\\Capstone\\images\\Kris.webp": {
+    "mtime": 1779200475.89,
+    "hash": "90569ebe8ccb58aaf813a5fc58334ff1"
+  },
+  "C:\\Abdo\\Capstone\\images\\Panolong.webp": {
+    "mtime": 1779200476.104,
+    "hash": "9f7c7d09d629137a1d4493b490181c6a"
   },
   "C:\\Abdo\\Capstone\\images\\icons\\icon-192x192.png": {
     "mtime": 1778382847.4709685,
