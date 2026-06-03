@@ -807,24 +807,37 @@ function setupModal() {
 
 // App Initialization
 async function init() {
+    // Register Service Worker first so it can start caching immediately
+    if ('serviceWorker' in navigator) {
+        try {
+            const registration = await navigator.serviceWorker.register('./sw.js');
+            console.log('ServiceWorker registered, scope:', registration.scope);
+        } catch (err) {
+            console.warn('ServiceWorker registration failed:', err);
+        }
+    }
+
     handleOnboarding();
     syncRegistrations(); // Attempt sync on load if online
+
+    // Wait briefly for firebase-ui.js dynamic imports to finish before loading data.
+    // firebase-ui.js sets window.firebaseAPI asynchronously. We poll for up to 3 seconds.
+    await new Promise(resolve => {
+        if (window.firebaseAPI !== undefined) return resolve();
+        let waited = 0;
+        const interval = setInterval(() => {
+            waited += 100;
+            if (window.firebaseAPI !== undefined || waited >= 3000) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, 100);
+    });
+
     await initData();
     router();
-    
-    // Register Service Worker for PWA offline support
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                })
-                .catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-        });
-    }
 }
 
 // Start
 init();
+
