@@ -820,18 +820,17 @@ async function init() {
     handleOnboarding();
     syncRegistrations(); // Attempt sync on load if online
 
-    // Wait briefly for firebase-ui.js dynamic imports to finish before loading data.
-    // firebase-ui.js sets window.firebaseAPI asynchronously. We poll for up to 3 seconds.
+    // Wait for firebase-ui.js to finish its async setup (success OR failure).
+    // It dispatches 'firebaseReady' in both cases via the finally block.
     await new Promise(resolve => {
+        // If firebase-ui.js already finished before we got here, resolve immediately
         if (window.firebaseAPI !== undefined) return resolve();
-        let waited = 0;
-        const interval = setInterval(() => {
-            waited += 100;
-            if (window.firebaseAPI !== undefined || waited >= 3000) {
-                clearInterval(interval);
-                resolve();
-            }
-        }, 100);
+        // Otherwise wait for the event (max 5 seconds as a safety net)
+        const timeout = setTimeout(resolve, 5000);
+        window.addEventListener('firebaseReady', () => {
+            clearTimeout(timeout);
+            resolve();
+        }, { once: true });
     });
 
     await initData();
