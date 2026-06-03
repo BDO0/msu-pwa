@@ -9,7 +9,7 @@
       "source_file": "compress.js",
       "source_location": "L1",
       "id": "compress_js",
-      "community": 44,
+      "community": 45,
       "norm_label": "compress.js"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "compress.js",
       "source_location": "L1",
       "id": "capstone_compress_fs",
-      "community": 44,
+      "community": 45,
       "norm_label": "fs"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "compress.js",
       "source_location": "L2",
       "id": "capstone_compress_path",
-      "community": 44,
+      "community": 45,
       "norm_label": "path"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "compress.js",
       "source_location": "L3",
       "id": "capstone_compress_sharp",
-      "community": 44,
+      "community": 45,
       "norm_label": "sharp"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "compress.js",
       "source_location": "L5",
       "id": "capstone_compress_imagesdir",
-      "community": 44,
+      "community": 45,
       "norm_label": "imagesdir"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "compress.js",
       "source_location": "L6",
       "id": "capstone_compress_images",
-      "community": 44,
+      "community": 45,
       "norm_label": "images"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "compress.js",
       "source_location": "L8",
       "id": "capstone_compress_processimages",
-      "community": 44,
+      "community": 45,
       "norm_label": "processimages()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "sw.js",
       "source_location": "L1",
       "id": "sw_js",
-      "community": 51,
+      "community": 52,
       "norm_label": "sw.js"
     },
     {
@@ -81,25 +81,25 @@
       "source_file": "sw.js",
       "source_location": "L2",
       "id": "capstone_sw_assets_to_cache",
-      "community": 51,
+      "community": 52,
       "norm_label": "assets_to_cache"
     },
     {
       "label": "isFirebaseStorage",
       "file_type": "code",
       "source_file": "sw.js",
-      "source_location": "L65",
+      "source_location": "L71",
       "id": "capstone_sw_isfirebasestorage",
-      "community": 51,
+      "community": 52,
       "norm_label": "isfirebasestorage"
     },
     {
       "label": "fetchedResponse",
       "file_type": "code",
       "source_file": "sw.js",
-      "source_location": "L71",
+      "source_location": "L77",
       "id": "capstone_sw_fetchedresponse",
-      "community": 51,
+      "community": 52,
       "norm_label": "fetchedresponse"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "js/admin.js",
       "source_location": "L1",
       "id": "js_admin_js",
-      "community": 13,
+      "community": 12,
       "norm_label": "admin.js"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "js/admin.js",
       "source_location": "L8",
       "id": "js_admin_firebaseconfig",
-      "community": 13,
+      "community": 12,
       "norm_label": "firebaseconfig"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "js/admin.js",
       "source_location": "L18",
       "id": "js_admin_app",
-      "community": 13,
+      "community": 12,
       "norm_label": "app"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "js/admin.js",
       "source_location": "L19",
       "id": "js_admin_auth",
-      "community": 13,
+      "community": 12,
       "norm_label": "auth"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "js/admin.js",
       "source_location": "L20",
       "id": "js_admin_db",
-      "community": 13,
+      "community": 12,
       "norm_label": "db"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "js/admin.js",
       "source_location": "L21",
       "id": "js_admin_storage",
-      "community": 13,
+      "community": 12,
       "norm_label": "storage"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "js/admin.js",
       "source_location": "L38",
       "id": "js_admin_loginsection",
-      "community": 13,
+      "community": 12,
       "norm_label": "loginsection"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "js/admin.js",
       "source_location": "L39",
       "id": "js_admin_admincontent",
-      "community": 13,
+      "community": 12,
       "norm_label": "admincontent"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "js/admin.js",
       "source_location": "L40",
       "id": "js_admin_loginform",
-      "community": 13,
+      "community": 12,
       "norm_label": "loginform"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "js/admin.js",
       "source_location": "L41",
       "id": "js_admin_loginerror",
-      "community": 13,
+      "community": 12,
       "norm_label": "loginerror"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "js/admin.js",
       "source_location": "L42",
       "id": "js_admin_btnlogout",
-      "community": 13,
+      "community": 12,
       "norm_label": "btnlogout"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "js/admin.js",
       "source_location": "L64",
       "id": "js_admin_btnlogin",
-      "community": 13,
+      "community": 12,
       "norm_label": "btnlogin"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "js/admin.js",
       "source_location": "L85",
       "id": "js_admin_form",
-      "community": 13,
+      "community": 12,
       "norm_label": "form"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "js/admin.js",
       "source_location": "L86",
       "id": "js_admin_statusel",
-      "community": 13,
+      "community": 12,
       "norm_label": "statusel"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "js/admin.js",
       "source_location": "L87",
       "id": "js_admin_btnsubmit",
-      "community": 13,
+      "community": 12,
       "norm_label": "btnsubmit"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "js/admin.js",
       "source_location": "L88",
       "id": "js_admin_formtitle",
-      "community": 13,
+      "community": 12,
       "norm_label": "formtitle"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "js/admin.js",
       "source_location": "L89",
       "id": "js_admin_artifactslistbody",
-      "community": 13,
+      "community": 12,
       "norm_label": "artifactslistbody"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "js/admin.js",
       "source_location": "L92",
       "id": "js_admin_switchview",
-      "community": 13,
+      "community": 12,
       "norm_label": "switchview()"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "js/admin.js",
       "source_location": "L104",
       "id": "js_admin_showartifactsforstation",
-      "community": 13,
+      "community": 12,
       "norm_label": "showartifactsforstation()"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "js/admin.js",
       "source_location": "L149",
       "id": "js_admin_compressimage",
-      "community": 13,
+      "community": 12,
       "norm_label": "compressimage()"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "js/admin.js",
       "source_location": "L190",
       "id": "js_admin_loadartifacts",
-      "community": 13,
+      "community": 12,
       "norm_label": "loadartifacts()"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "js/admin.js",
       "source_location": "L255",
       "id": "js_admin_loadadmincompleters",
-      "community": 13,
+      "community": 12,
       "norm_label": "loadadmincompleters()"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "js/admin.js",
       "source_location": "L305",
       "id": "js_admin_handleedit",
-      "community": 13,
+      "community": 12,
       "norm_label": "handleedit()"
     },
     {
@@ -315,7 +315,7 @@
       "source_file": "js/admin.js",
       "source_location": "L333",
       "id": "js_admin_handledelete",
-      "community": 13,
+      "community": 12,
       "norm_label": "handledelete()"
     },
     {
@@ -324,7 +324,7 @@
       "source_file": "js/admin.js",
       "source_location": "L344",
       "id": "js_admin_resetformstate",
-      "community": 13,
+      "community": 12,
       "norm_label": "resetformstate()"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "js/admin.js",
       "source_location": "L374",
       "id": "js_admin_qcheck",
-      "community": 13,
+      "community": 12,
       "norm_label": "qcheck"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "js/admin.js",
       "source_location": "L410",
       "id": "js_admin_artifactdata",
-      "community": 13,
+      "community": 12,
       "norm_label": "artifactdata"
     },
     {
@@ -385,7 +385,7 @@
       "label": "cacheImages()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L17",
+      "source_location": "L16",
       "id": "js_app_cacheimages",
       "community": 4,
       "norm_label": "cacheimages()"
@@ -394,7 +394,7 @@
       "label": "syncRegistrations()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L46",
+      "source_location": "L48",
       "id": "js_app_syncregistrations",
       "community": 4,
       "norm_label": "syncregistrations()"
@@ -403,7 +403,7 @@
       "label": "showOfflineReadyNotification()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L64",
+      "source_location": "L66",
       "id": "js_app_showofflinereadynotification",
       "community": 4,
       "norm_label": "showofflinereadynotification()"
@@ -412,7 +412,7 @@
       "label": "getStationData()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L87",
+      "source_location": "L89",
       "id": "js_app_getstationdata",
       "community": 4,
       "norm_label": "getstationdata()"
@@ -421,7 +421,7 @@
       "label": "initData()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L92",
+      "source_location": "L94",
       "id": "js_app_initdata",
       "community": 4,
       "norm_label": "initdata()"
@@ -430,7 +430,7 @@
       "label": "markViewed()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L178",
+      "source_location": "L180",
       "id": "js_app_markviewed",
       "community": 4,
       "norm_label": "markviewed()"
@@ -439,7 +439,7 @@
       "label": "checkCompletion()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L187",
+      "source_location": "L189",
       "id": "js_app_checkcompletion",
       "community": 4,
       "norm_label": "checkcompletion()"
@@ -448,7 +448,7 @@
       "label": "router()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L196",
+      "source_location": "L198",
       "id": "js_app_router",
       "community": 4,
       "norm_label": "router()"
@@ -457,7 +457,7 @@
       "label": "renderHome()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L231",
+      "source_location": "L233",
       "id": "js_app_renderhome",
       "community": 4,
       "norm_label": "renderhome()"
@@ -466,7 +466,7 @@
       "label": "renderStation()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L386",
+      "source_location": "L388",
       "id": "js_app_renderstation",
       "community": 4,
       "norm_label": "renderstation()"
@@ -475,7 +475,7 @@
       "label": "renderGame()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L458",
+      "source_location": "L460",
       "id": "js_app_rendergame",
       "community": 4,
       "norm_label": "rendergame()"
@@ -484,7 +484,7 @@
       "label": "renderArtifact()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L510",
+      "source_location": "L512",
       "id": "js_app_renderartifact",
       "community": 4,
       "norm_label": "renderartifact()"
@@ -493,7 +493,7 @@
       "label": "openScannerModal()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L565",
+      "source_location": "L567",
       "id": "js_app_openscannermodal",
       "community": 4,
       "norm_label": "openscannermodal()"
@@ -502,7 +502,7 @@
       "label": "handleOnboarding()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L625",
+      "source_location": "L627",
       "id": "js_app_handleonboarding",
       "community": 4,
       "norm_label": "handleonboarding()"
@@ -511,7 +511,7 @@
       "label": "showOnboardingModal()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L639",
+      "source_location": "L641",
       "id": "js_app_showonboardingmodal",
       "community": 4,
       "norm_label": "showonboardingmodal()"
@@ -520,7 +520,7 @@
       "label": "setupModal()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L670",
+      "source_location": "L672",
       "id": "js_app_setupmodal",
       "community": 4,
       "norm_label": "setupmodal()"
@@ -529,7 +529,7 @@
       "label": "init()",
       "file_type": "code",
       "source_file": "js/app.js",
-      "source_location": "L807",
+      "source_location": "L809",
       "id": "js_app_init",
       "community": 4,
       "norm_label": "init()"
@@ -540,7 +540,7 @@
       "source_file": "js/firebase-ui.js",
       "source_location": "L1",
       "id": "js_firebase_ui_js",
-      "community": 50,
+      "community": 51,
       "norm_label": "firebase-ui.js"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "js/firebase-ui.js",
       "source_location": "L7",
       "id": "js_firebase_ui_firebaseconfig",
-      "community": 50,
+      "community": 51,
       "norm_label": "firebaseconfig"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "js/firebase-ui.js",
       "source_location": "L64",
       "id": "js_firebase_ui_q",
-      "community": 50,
+      "community": 51,
       "norm_label": "q"
     },
     {
@@ -567,7 +567,7 @@
       "source_file": "js/firebase-ui.js",
       "source_location": "L96",
       "id": "js_firebase_ui_completers",
-      "community": 50,
+      "community": 51,
       "norm_label": "completers"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "js/firebase-ui.js",
       "source_location": "L114",
       "id": "js_firebase_ui_artifacts",
-      "community": 50,
+      "community": 51,
       "norm_label": "artifacts"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_js",
-      "community": 32,
+      "community": 31,
       "norm_label": "html5-qrcode.min.js"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e",
-      "community": 12,
+      "community": 11,
       "norm_label": "e()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_s",
-      "community": 32,
+      "community": 31,
       "norm_label": "s"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_s_constructor",
-      "community": 32,
+      "community": 31,
       "norm_label": ".constructor()"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_s_getkind",
-      "community": 32,
+      "community": 31,
       "norm_label": ".getkind()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_a",
-      "community": 32,
+      "community": 31,
       "norm_label": "a"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_c",
-      "community": 32,
+      "community": 31,
       "norm_label": "c"
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_h",
-      "community": 32,
+      "community": 31,
       "norm_label": "h"
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_u",
-      "community": 18,
+      "community": 15,
       "norm_label": "u"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_u_constructor",
-      "community": 18,
+      "community": 15,
       "norm_label": ".constructor()"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_u_getwidth",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getwidth()"
     },
     {
@@ -819,7 +819,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_u_getheight",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getheight()"
     },
     {
@@ -828,7 +828,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_d",
-      "community": 47,
+      "community": 49,
       "norm_label": "d"
     },
     {
@@ -837,7 +837,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_d_arraycopy",
-      "community": 18,
+      "community": 15,
       "norm_label": ".arraycopy()"
     },
     {
@@ -846,7 +846,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_d_currenttimemillis",
-      "community": 47,
+      "community": 49,
       "norm_label": ".currenttimemillis()"
     },
     {
@@ -864,7 +864,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_g",
-      "community": 32,
+      "community": 31,
       "norm_label": "g"
     },
     {
@@ -873,7 +873,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_g_constructor",
-      "community": 32,
+      "community": 31,
       "norm_label": ".constructor()"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m",
-      "community": 37,
+      "community": 36,
       "norm_label": "m"
     },
     {
@@ -1035,7 +1035,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_numberofleadingzeros",
-      "community": 37,
+      "community": 36,
       "norm_label": ".numberofleadingzeros()"
     },
     {
@@ -1044,7 +1044,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_tohexstring",
-      "community": 37,
+      "community": 36,
       "norm_label": ".tohexstring()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_tobinarystring",
-      "community": 46,
+      "community": 47,
       "norm_label": ".tobinarystring()"
     },
     {
@@ -1071,7 +1071,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_truncdivision",
-      "community": 12,
+      "community": 11,
       "norm_label": ".truncdivision()"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_p_setbulk",
-      "community": 37,
+      "community": 36,
       "norm_label": ".setbulk()"
     },
     {
@@ -1206,7 +1206,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_p_isrange",
-      "community": 24,
+      "community": 23,
       "norm_label": ".isrange()"
     },
     {
@@ -1224,7 +1224,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_p_appendbits",
-      "community": 23,
+      "community": 21,
       "norm_label": ".appendbits()"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_p_tobytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".tobytes()"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_p_getbitarray",
-      "community": 21,
+      "community": 15,
       "norm_label": ".getbitarray()"
     },
     {
@@ -1323,7 +1323,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_getformatinstance",
-      "community": 16,
+      "community": 20,
       "norm_label": ".getformatinstance()"
     },
     {
@@ -1404,7 +1404,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min",
-      "community": 39,
+      "community": 40,
       "norm_label": "_"
     },
     {
@@ -1413,7 +1413,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_decode",
-      "community": 39,
+      "community": 40,
       "norm_label": ".decode()"
     },
     {
@@ -1422,7 +1422,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_shoulddecodeonfallback",
-      "community": 39,
+      "community": 40,
       "norm_label": ".shoulddecodeonfallback()"
     },
     {
@@ -1431,7 +1431,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_encode",
-      "community": 39,
+      "community": 40,
       "norm_label": ".encode()"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_isbrowser",
-      "community": 39,
+      "community": 40,
       "norm_label": ".isbrowser()"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_encodingname",
-      "community": 39,
+      "community": 40,
       "norm_label": ".encodingname()"
     },
     {
@@ -1458,7 +1458,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_encodingcharacterset",
-      "community": 39,
+      "community": 40,
       "norm_label": ".encodingcharacterset()"
     },
     {
@@ -1467,7 +1467,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_decodefallback",
-      "community": 39,
+      "community": 40,
       "norm_label": ".decodefallback()"
     },
     {
@@ -1476,7 +1476,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_isdecodefallbacksupported",
-      "community": 39,
+      "community": 40,
       "norm_label": ".isdecodefallbacksupported()"
     },
     {
@@ -1485,7 +1485,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_encodefallback",
-      "community": 39,
+      "community": 40,
       "norm_label": ".encodefallback()"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n",
-      "community": 21,
+      "community": 26,
       "norm_label": "n"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_constructor",
-      "community": 21,
+      "community": 26,
       "norm_label": ".constructor()"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_parsefrombooleanarray",
-      "community": 21,
+      "community": 26,
       "norm_label": ".parsefrombooleanarray()"
     },
     {
@@ -1710,7 +1710,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_get",
-      "community": 21,
+      "community": 26,
       "norm_label": ".get()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_set",
-      "community": 12,
+      "community": 11,
       "norm_label": ".set()"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_unset",
-      "community": 21,
+      "community": 26,
       "norm_label": ".unset()"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_flip",
-      "community": 25,
+      "community": 24,
       "norm_label": ".flip()"
     },
     {
@@ -1746,7 +1746,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_xor",
-      "community": 21,
+      "community": 15,
       "norm_label": ".xor()"
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_clear",
-      "community": 21,
+      "community": 26,
       "norm_label": ".clear()"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_setregion",
-      "community": 25,
+      "community": 24,
       "norm_label": ".setregion()"
     },
     {
@@ -1773,7 +1773,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_getrow",
-      "community": 37,
+      "community": 36,
       "norm_label": ".getrow()"
     },
     {
@@ -1782,7 +1782,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_setrow",
-      "community": 21,
+      "community": 15,
       "norm_label": ".setrow()"
     },
     {
@@ -1791,7 +1791,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_rotate180",
-      "community": 18,
+      "community": 15,
       "norm_label": ".rotate180()"
     },
     {
@@ -1800,7 +1800,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_getenclosingrectangle",
-      "community": 21,
+      "community": 26,
       "norm_label": ".getenclosingrectangle()"
     },
     {
@@ -1809,7 +1809,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_gettopleftonbit",
-      "community": 34,
+      "community": 35,
       "norm_label": ".gettopleftonbit()"
     },
     {
@@ -1818,7 +1818,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_getbottomrightonbit",
-      "community": 34,
+      "community": 35,
       "norm_label": ".getbottomrightonbit()"
     },
     {
@@ -1827,7 +1827,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_getwidth",
-      "community": 21,
+      "community": 26,
       "norm_label": ".getwidth()"
     },
     {
@@ -1836,7 +1836,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_getheight",
-      "community": 21,
+      "community": 26,
       "norm_label": ".getheight()"
     },
     {
@@ -1845,7 +1845,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_getrowsize",
-      "community": 21,
+      "community": 15,
       "norm_label": ".getrowsize()"
     },
     {
@@ -1854,7 +1854,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_equals",
-      "community": 21,
+      "community": 26,
       "norm_label": ".equals()"
     },
     {
@@ -1872,7 +1872,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_tostring",
-      "community": 21,
+      "community": 26,
       "norm_label": ".tostring()"
     },
     {
@@ -1881,7 +1881,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_buildtostring",
-      "community": 21,
+      "community": 26,
       "norm_label": ".buildtostring()"
     },
     {
@@ -1890,7 +1890,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_n_clone",
-      "community": 21,
+      "community": 26,
       "norm_label": ".clone()"
     },
     {
@@ -1899,7 +1899,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_d_getnotfoundinstance",
-      "community": 47,
+      "community": 49,
       "norm_label": ".getnotfoundinstance()"
     },
     {
@@ -1908,7 +1908,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_constructor",
-      "community": 37,
+      "community": 36,
       "norm_label": ".constructor()"
     },
     {
@@ -1917,7 +1917,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_getblackrow",
-      "community": 37,
+      "community": 36,
       "norm_label": ".getblackrow()"
     },
     {
@@ -1926,7 +1926,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_getblackmatrix",
-      "community": 18,
+      "community": 36,
       "norm_label": ".getblackmatrix()"
     },
     {
@@ -1935,7 +1935,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_createbinarizer",
-      "community": 37,
+      "community": 36,
       "norm_label": ".createbinarizer()"
     },
     {
@@ -1944,7 +1944,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_initarrays",
-      "community": 37,
+      "community": 36,
       "norm_label": ".initarrays()"
     },
     {
@@ -1953,7 +1953,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_m_estimateblackpoint",
-      "community": 37,
+      "community": 36,
       "norm_label": ".estimateblackpoint()"
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o",
-      "community": 43,
+      "community": 44,
       "norm_label": "o"
     },
     {
@@ -2034,7 +2034,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_constructor",
-      "community": 43,
+      "community": 44,
       "norm_label": ".constructor()"
     },
     {
@@ -2043,7 +2043,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_getwidth",
-      "community": 43,
+      "community": 44,
       "norm_label": ".getwidth()"
     },
     {
@@ -2052,7 +2052,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_getheight",
-      "community": 43,
+      "community": 44,
       "norm_label": ".getheight()"
     },
     {
@@ -2061,7 +2061,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_iscropsupported",
-      "community": 43,
+      "community": 44,
       "norm_label": ".iscropsupported()"
     },
     {
@@ -2070,7 +2070,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_crop",
-      "community": 43,
+      "community": 44,
       "norm_label": ".crop()"
     },
     {
@@ -2079,7 +2079,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_isrotatesupported",
-      "community": 43,
+      "community": 44,
       "norm_label": ".isrotatesupported()"
     },
     {
@@ -2088,7 +2088,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_rotatecounterclockwise",
-      "community": 43,
+      "community": 44,
       "norm_label": ".rotatecounterclockwise()"
     },
     {
@@ -2097,7 +2097,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_rotatecounterclockwise45",
-      "community": 43,
+      "community": 44,
       "norm_label": ".rotatecounterclockwise45()"
     },
     {
@@ -2106,7 +2106,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_o_tostring",
-      "community": 18,
+      "community": 15,
       "norm_label": ".tostring()"
     },
     {
@@ -2133,7 +2133,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_b_getrow",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getrow()"
     },
     {
@@ -2142,7 +2142,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_b_getmatrix",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getmatrix()"
     },
     {
@@ -2781,7 +2781,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x",
-      "community": 41,
+      "community": 43,
       "norm_label": "x"
     },
     {
@@ -2790,7 +2790,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_constructor",
-      "community": 47,
+      "community": 49,
       "norm_label": ".constructor()"
     },
     {
@@ -2799,7 +2799,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_gettext",
-      "community": 41,
+      "community": 43,
       "norm_label": ".gettext()"
     },
     {
@@ -2808,7 +2808,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_getrawbytes",
-      "community": 41,
+      "community": 43,
       "norm_label": ".getrawbytes()"
     },
     {
@@ -2817,7 +2817,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_getnumbits",
-      "community": 41,
+      "community": 43,
       "norm_label": ".getnumbits()"
     },
     {
@@ -2826,7 +2826,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_getresultpoints",
-      "community": 41,
+      "community": 43,
       "norm_label": ".getresultpoints()"
     },
     {
@@ -2835,7 +2835,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_getbarcodeformat",
-      "community": 41,
+      "community": 43,
       "norm_label": ".getbarcodeformat()"
     },
     {
@@ -2844,7 +2844,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_getresultmetadata",
-      "community": 24,
+      "community": 43,
       "norm_label": ".getresultmetadata()"
     },
     {
@@ -2853,7 +2853,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_putmetadata",
-      "community": 20,
+      "community": 19,
       "norm_label": ".putmetadata()"
     },
     {
@@ -2871,7 +2871,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_addresultpoints",
-      "community": 41,
+      "community": 23,
       "norm_label": ".addresultpoints()"
     },
     {
@@ -2880,7 +2880,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_gettimestamp",
-      "community": 41,
+      "community": 43,
       "norm_label": ".gettimestamp()"
     },
     {
@@ -2889,7 +2889,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_x_tostring",
-      "community": 41,
+      "community": 43,
       "norm_label": ".tostring()"
     },
     {
@@ -2898,7 +2898,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j",
-      "community": 20,
+      "community": 19,
       "norm_label": "j"
     },
     {
@@ -2907,7 +2907,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_constructor",
-      "community": 20,
+      "community": 19,
       "norm_label": ".constructor()"
     },
     {
@@ -2916,7 +2916,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_getrawbytes",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getrawbytes()"
     },
     {
@@ -2925,7 +2925,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_getnumbits",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getnumbits()"
     },
     {
@@ -2934,7 +2934,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_setnumbits",
-      "community": 20,
+      "community": 19,
       "norm_label": ".setnumbits()"
     },
     {
@@ -2943,7 +2943,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_gettext",
-      "community": 20,
+      "community": 19,
       "norm_label": ".gettext()"
     },
     {
@@ -2952,7 +2952,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_getbytesegments",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getbytesegments()"
     },
     {
@@ -2961,7 +2961,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_geteclevel",
-      "community": 20,
+      "community": 19,
       "norm_label": ".geteclevel()"
     },
     {
@@ -2970,7 +2970,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_geterrorscorrected",
-      "community": 20,
+      "community": 19,
       "norm_label": ".geterrorscorrected()"
     },
     {
@@ -2979,7 +2979,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_seterrorscorrected",
-      "community": 16,
+      "community": 20,
       "norm_label": ".seterrorscorrected()"
     },
     {
@@ -2988,7 +2988,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_geterasures",
-      "community": 20,
+      "community": 19,
       "norm_label": ".geterasures()"
     },
     {
@@ -2997,7 +2997,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_seterasures",
-      "community": 16,
+      "community": 20,
       "norm_label": ".seterasures()"
     },
     {
@@ -3006,7 +3006,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_getother",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getother()"
     },
     {
@@ -3024,7 +3024,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_hasstructuredappend",
-      "community": 20,
+      "community": 19,
       "norm_label": ".hasstructuredappend()"
     },
     {
@@ -3033,7 +3033,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_getstructuredappendparity",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getstructuredappendparity()"
     },
     {
@@ -3042,7 +3042,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_j_getstructuredappendsequencenumber",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getstructuredappendsequencenumber()"
     },
     {
@@ -3051,7 +3051,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_z",
-      "community": 53,
+      "community": 54,
       "norm_label": "z"
     },
     {
@@ -3060,7 +3060,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_z_exp",
-      "community": 53,
+      "community": 54,
       "norm_label": ".exp()"
     },
     {
@@ -3069,7 +3069,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_z_log",
-      "community": 53,
+      "community": 54,
       "norm_label": ".log()"
     },
     {
@@ -3078,7 +3078,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_z_addorsubtract",
-      "community": 53,
+      "community": 54,
       "norm_label": ".addorsubtract()"
     },
     {
@@ -3204,7 +3204,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_k",
-      "community": 32,
+      "community": 31,
       "norm_label": "k"
     },
     {
@@ -3393,7 +3393,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_et_extractbits",
-      "community": 12,
+      "community": 11,
       "norm_label": ".extractbits()"
     },
     {
@@ -3591,7 +3591,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot",
-      "community": 15,
+      "community": 16,
       "norm_label": "ot"
     },
     {
@@ -3600,7 +3600,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_constructor",
-      "community": 15,
+      "community": 16,
       "norm_label": ".constructor()"
     },
     {
@@ -3609,7 +3609,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_getbits",
-      "community": 15,
+      "community": 16,
       "norm_label": ".getbits()"
     },
     {
@@ -3618,7 +3618,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_getpoints",
-      "community": 15,
+      "community": 16,
       "norm_label": ".getpoints()"
     },
     {
@@ -3645,7 +3645,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_st_getnblayers",
-      "community": 12,
+      "community": 11,
       "norm_label": ".getnblayers()"
     },
     {
@@ -3735,7 +3735,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ct_checkandnudgepoints",
-      "community": 15,
+      "community": 16,
       "norm_label": ".checkandnudgepoints()"
     },
     {
@@ -3744,7 +3744,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt",
-      "community": 15,
+      "community": 16,
       "norm_label": "lt"
     },
     {
@@ -3753,7 +3753,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_constructor",
-      "community": 15,
+      "community": 16,
       "norm_label": ".constructor()"
     },
     {
@@ -3762,7 +3762,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_quadrilateraltoquadrilateral",
-      "community": 15,
+      "community": 16,
       "norm_label": ".quadrilateraltoquadrilateral()"
     },
     {
@@ -3771,7 +3771,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_transformpoints",
-      "community": 15,
+      "community": 16,
       "norm_label": ".transformpoints()"
     },
     {
@@ -3780,7 +3780,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_transformpointswithvalues",
-      "community": 15,
+      "community": 16,
       "norm_label": ".transformpointswithvalues()"
     },
     {
@@ -3789,7 +3789,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_squaretoquadrilateral",
-      "community": 15,
+      "community": 16,
       "norm_label": ".squaretoquadrilateral()"
     },
     {
@@ -3798,7 +3798,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_quadrilateraltosquare",
-      "community": 15,
+      "community": 16,
       "norm_label": ".quadrilateraltosquare()"
     },
     {
@@ -3807,7 +3807,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_buildadjoint",
-      "community": 15,
+      "community": 16,
       "norm_label": ".buildadjoint()"
     },
     {
@@ -3816,7 +3816,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_times",
-      "community": 15,
+      "community": 16,
       "norm_label": ".times()"
     },
     {
@@ -3834,7 +3834,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ht_samplegrid",
-      "community": 15,
+      "community": 16,
       "norm_label": ".samplegrid()"
     },
     {
@@ -3843,7 +3843,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ht_samplegridwithtransform",
-      "community": 15,
+      "community": 16,
       "norm_label": ".samplegridwithtransform()"
     },
     {
@@ -4068,7 +4068,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ft_isvalid",
-      "community": 18,
+      "community": 15,
       "norm_label": ".isvalid()"
     },
     {
@@ -4113,7 +4113,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gt",
-      "community": 52,
+      "community": 53,
       "norm_label": "gt"
     },
     {
@@ -4122,7 +4122,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gt_decode",
-      "community": 20,
+      "community": 19,
       "norm_label": ".decode()"
     },
     {
@@ -4131,7 +4131,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gt_reportfoundresultpoints",
-      "community": 52,
+      "community": 53,
       "norm_label": ".reportfoundresultpoints()"
     },
     {
@@ -4140,7 +4140,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gt_reset",
-      "community": 52,
+      "community": 53,
       "norm_label": ".reset()"
     },
     {
@@ -4149,7 +4149,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wt",
-      "community": 24,
+      "community": 23,
       "norm_label": "wt"
     },
     {
@@ -4158,7 +4158,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wt_decode",
-      "community": 24,
+      "community": 23,
       "norm_label": ".decode()"
     },
     {
@@ -4167,7 +4167,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wt_reset",
-      "community": 24,
+      "community": 23,
       "norm_label": ".reset()"
     },
     {
@@ -4176,7 +4176,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wt_dodecode",
-      "community": 24,
+      "community": 23,
       "norm_label": ".dodecode()"
     },
     {
@@ -4203,7 +4203,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wt_patternmatchvariance",
-      "community": 24,
+      "community": 23,
       "norm_label": ".patternmatchvariance()"
     },
     {
@@ -4212,7 +4212,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_mt",
-      "community": 24,
+      "community": 23,
       "norm_label": "mt"
     },
     {
@@ -4221,7 +4221,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_mt_findstartpattern",
-      "community": 24,
+      "community": 23,
       "norm_label": ".findstartpattern()"
     },
     {
@@ -4230,7 +4230,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_mt_decodecode",
-      "community": 24,
+      "community": 23,
       "norm_label": ".decodecode()"
     },
     {
@@ -4239,7 +4239,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_mt_decoderow",
-      "community": 24,
+      "community": 23,
       "norm_label": ".decoderow()"
     },
     {
@@ -4392,7 +4392,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ct_findstartguardpattern",
-      "community": 24,
+      "community": 23,
       "norm_label": ".findstartguardpattern()"
     },
     {
@@ -4572,7 +4572,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_t_decoderow",
-      "community": 24,
+      "community": 23,
       "norm_label": ".decoderow()"
     },
     {
@@ -4770,7 +4770,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_dt_determinenumsysandcheckdigit",
-      "community": 47,
+      "community": 49,
       "norm_label": ".determinenumsysandcheckdigit()"
     },
     {
@@ -4779,7 +4779,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_dt_getbarcodeformat",
-      "community": 24,
+      "community": 23,
       "norm_label": ".getbarcodeformat()"
     },
     {
@@ -4797,7 +4797,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_mt_constructor",
-      "community": 24,
+      "community": 23,
       "norm_label": ".constructor()"
     },
     {
@@ -4806,7 +4806,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_mt_reset",
-      "community": 24,
+      "community": 23,
       "norm_label": ".reset()"
     },
     {
@@ -4914,7 +4914,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_getvalue",
-      "community": 15,
+      "community": 16,
       "norm_label": ".getvalue()"
     },
     {
@@ -4923,7 +4923,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_getchecksumportion",
-      "community": 15,
+      "community": 16,
       "norm_label": ".getchecksumportion()"
     },
     {
@@ -4932,7 +4932,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_tostring",
-      "community": 15,
+      "community": 16,
       "norm_label": ".tostring()"
     },
     {
@@ -4941,7 +4941,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_equals",
-      "community": 15,
+      "community": 16,
       "norm_label": ".equals()"
     },
     {
@@ -4950,7 +4950,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ot_hashcode",
-      "community": 15,
+      "community": 16,
       "norm_label": ".hashcode()"
     },
     {
@@ -4995,7 +4995,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_bt_getresultpoints",
-      "community": 24,
+      "community": 23,
       "norm_label": ".getresultpoints()"
     },
     {
@@ -5040,7 +5040,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_lt_buildbitarray",
-      "community": 15,
+      "community": 16,
       "norm_label": ".buildbitarray()"
     },
     {
@@ -5481,7 +5481,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gt_constructor",
-      "community": 52,
+      "community": 53,
       "norm_label": ".constructor()"
     },
     {
@@ -5517,7 +5517,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wt_constructor",
-      "community": 24,
+      "community": 23,
       "norm_label": ".constructor()"
     },
     {
@@ -5661,7 +5661,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_t_getleftchar",
-      "community": 15,
+      "community": 16,
       "norm_label": ".getleftchar()"
     },
     {
@@ -5670,7 +5670,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_t_getrightchar",
-      "community": 15,
+      "community": 16,
       "norm_label": ".getrightchar()"
     },
     {
@@ -5931,7 +5931,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ee_checkchecksum",
-      "community": 15,
+      "community": 16,
       "norm_label": ".checkchecksum()"
     },
     {
@@ -6003,7 +6003,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ee_isnota1left",
-      "community": 35,
+      "community": 37,
       "norm_label": ".isnota1left()"
     },
     {
@@ -6174,7 +6174,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie",
-      "community": 25,
+      "community": 24,
       "norm_label": "ie"
     },
     {
@@ -6183,7 +6183,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_constructor",
-      "community": 34,
+      "community": 35,
       "norm_label": ".constructor()"
     },
     {
@@ -6192,7 +6192,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_decoderow",
-      "community": 24,
+      "community": 23,
       "norm_label": ".decoderow()"
     },
     {
@@ -6201,7 +6201,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_reset",
-      "community": 25,
+      "community": 24,
       "norm_label": ".reset()"
     },
     {
@@ -6246,7 +6246,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_se",
-      "community": 49,
+      "community": 50,
       "norm_label": "se"
     },
     {
@@ -6255,7 +6255,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_se_constructor",
-      "community": 49,
+      "community": 50,
       "norm_label": ".constructor()"
     },
     {
@@ -6264,7 +6264,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_se_getcount",
-      "community": 49,
+      "community": 50,
       "norm_label": ".getcount()"
     },
     {
@@ -6273,7 +6273,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_se_getdatacodewords",
-      "community": 49,
+      "community": 50,
       "norm_label": ".getdatacodewords()"
     },
     {
@@ -6831,7 +6831,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ge",
-      "community": 34,
+      "community": 35,
       "norm_label": "ge"
     },
     {
@@ -6840,7 +6840,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ge_constructor",
-      "community": 34,
+      "community": 35,
       "norm_label": ".constructor()"
     },
     {
@@ -6849,7 +6849,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ge_decode",
-      "community": 20,
+      "community": 19,
       "norm_label": ".decode()"
     },
     {
@@ -6858,7 +6858,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ge_reset",
-      "community": 34,
+      "community": 35,
       "norm_label": ".reset()"
     },
     {
@@ -6867,7 +6867,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ge_extractpurebits",
-      "community": 34,
+      "community": 35,
       "norm_label": ".extractpurebits()"
     },
     {
@@ -6876,7 +6876,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ge_modulesize",
-      "community": 34,
+      "community": 35,
       "norm_label": ".modulesize()"
     },
     {
@@ -6885,7 +6885,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we",
-      "community": 40,
+      "community": 13,
       "norm_label": "we"
     },
     {
@@ -6894,7 +6894,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_constructor",
-      "community": 40,
+      "community": 13,
       "norm_label": ".constructor()"
     },
     {
@@ -6903,7 +6903,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_getvalue",
-      "community": 40,
+      "community": 13,
       "norm_label": ".getvalue()"
     },
     {
@@ -6912,7 +6912,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_getbits",
-      "community": 40,
+      "community": 13,
       "norm_label": ".getbits()"
     },
     {
@@ -6930,7 +6930,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_tostring",
-      "community": 40,
+      "community": 13,
       "norm_label": ".tostring()"
     },
     {
@@ -6939,7 +6939,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_equals",
-      "community": 40,
+      "community": 13,
       "norm_label": ".equals()"
     },
     {
@@ -6948,7 +6948,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_forbits",
-      "community": 40,
+      "community": 13,
       "norm_label": ".forbits()"
     },
     {
@@ -7011,7 +7011,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_me_getdatamask",
-      "community": 25,
+      "community": 24,
       "norm_label": ".getdatamask()"
     },
     {
@@ -7110,7 +7110,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ce_getversionnumber",
-      "community": 17,
+      "community": 18,
       "norm_label": ".getversionnumber()"
     },
     {
@@ -7137,7 +7137,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ce_getdimensionforversion",
-      "community": 25,
+      "community": 24,
       "norm_label": ".getdimensionforversion()"
     },
     {
@@ -7146,7 +7146,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ce_getecblocksforlevel",
-      "community": 19,
+      "community": 39,
       "norm_label": ".getecblocksforlevel()"
     },
     {
@@ -7164,7 +7164,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ce_getversionfornumber",
-      "community": 19,
+      "community": 39,
       "norm_label": ".getversionfornumber()"
     },
     {
@@ -7182,7 +7182,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ce_buildfunctionpattern",
-      "community": 25,
+      "community": 24,
       "norm_label": ".buildfunctionpattern()"
     },
     {
@@ -7200,7 +7200,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ee_unmaskbitmatrix",
-      "community": 25,
+      "community": 24,
       "norm_label": ".unmaskbitmatrix()"
     },
     {
@@ -7209,7 +7209,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_readformatinformation",
-      "community": 25,
+      "community": 24,
       "norm_label": ".readformatinformation()"
     },
     {
@@ -7218,7 +7218,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_readversion",
-      "community": 25,
+      "community": 24,
       "norm_label": ".readversion()"
     },
     {
@@ -7227,7 +7227,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_copybit",
-      "community": 25,
+      "community": 24,
       "norm_label": ".copybit()"
     },
     {
@@ -7236,7 +7236,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_readcodewords",
-      "community": 25,
+      "community": 24,
       "norm_label": ".readcodewords()"
     },
     {
@@ -7245,7 +7245,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_remask",
-      "community": 25,
+      "community": 24,
       "norm_label": ".remask()"
     },
     {
@@ -7254,7 +7254,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_setmirror",
-      "community": 25,
+      "community": 24,
       "norm_label": ".setmirror()"
     },
     {
@@ -7263,7 +7263,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ie_mirror",
-      "community": 25,
+      "community": 24,
       "norm_label": ".mirror()"
     },
     {
@@ -7281,7 +7281,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_se_getnumdatacodewords",
-      "community": 49,
+      "community": 50,
       "norm_label": ".getnumdatacodewords()"
     },
     {
@@ -7290,7 +7290,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_se_getcodewords",
-      "community": 49,
+      "community": 50,
       "norm_label": ".getcodewords()"
     },
     {
@@ -7299,7 +7299,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_constructor",
-      "community": 12,
+      "community": 11,
       "norm_label": ".constructor()"
     },
     {
@@ -7317,7 +7317,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_getcharactercountbits",
-      "community": 19,
+      "community": 39,
       "norm_label": ".getcharactercountbits()"
     },
     {
@@ -7326,7 +7326,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_getvalue",
-      "community": 12,
+      "community": 11,
       "norm_label": ".getvalue()"
     },
     {
@@ -7335,7 +7335,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_getbits",
-      "community": 12,
+      "community": 11,
       "norm_label": ".getbits()"
     },
     {
@@ -7344,7 +7344,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_equals",
-      "community": 12,
+      "community": 11,
       "norm_label": ".equals()"
     },
     {
@@ -7353,7 +7353,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_tostring",
-      "community": 12,
+      "community": 11,
       "norm_label": ".tostring()"
     },
     {
@@ -7434,7 +7434,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye",
-      "community": 10,
+      "community": 41,
       "norm_label": "ye"
     },
     {
@@ -7443,7 +7443,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_constructor",
-      "community": 10,
+      "community": 17,
       "norm_label": ".constructor()"
     },
     {
@@ -7452,7 +7452,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_ismirrored",
-      "community": 10,
+      "community": 41,
       "norm_label": ".ismirrored()"
     },
     {
@@ -7461,7 +7461,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_applymirroredcorrection",
-      "community": 10,
+      "community": 41,
       "norm_label": ".applymirroredcorrection()"
     },
     {
@@ -7470,7 +7470,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ne_decodebooleanarray",
-      "community": 21,
+      "community": 26,
       "norm_label": ".decodebooleanarray()"
     },
     {
@@ -7479,7 +7479,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ne_decodebitmatrix",
-      "community": 25,
+      "community": 24,
       "norm_label": ".decodebitmatrix()"
     },
     {
@@ -7488,7 +7488,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ne_decodebitmatrixparser",
-      "community": 25,
+      "community": 24,
       "norm_label": ".decodebitmatrixparser()"
     },
     {
@@ -7866,7 +7866,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_le_decode",
-      "community": 20,
+      "community": 19,
       "norm_label": ".decode()"
     },
     {
@@ -7884,7 +7884,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_le_extractpurebits",
-      "community": 34,
+      "community": 35,
       "norm_label": ".extractpurebits()"
     },
     {
@@ -7893,7 +7893,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_le_modulesize",
-      "community": 34,
+      "community": 35,
       "norm_label": ".modulesize()"
     },
     {
@@ -7920,7 +7920,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pe_tointarray",
-      "community": 35,
+      "community": 37,
       "norm_label": ".tointarray()"
     },
     {
@@ -7938,7 +7938,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve",
-      "community": 10,
+      "community": 17,
       "norm_label": "ve"
     },
     {
@@ -7947,7 +7947,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_constructor",
-      "community": 10,
+      "community": 17,
       "norm_label": ".constructor()"
     },
     {
@@ -7956,7 +7956,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getbits",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getbits()"
     },
     {
@@ -7965,7 +7965,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getpoints",
-      "community": 20,
+      "community": 19,
       "norm_label": ".getpoints()"
     },
     {
@@ -7974,7 +7974,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fe_detectmultiple",
-      "community": 21,
+      "community": 26,
       "norm_label": ".detectmultiple()"
     },
     {
@@ -8037,7 +8037,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_xe_constructor",
-      "community": 18,
+      "community": 15,
       "norm_label": ".constructor()"
     },
     {
@@ -8316,7 +8316,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_constructor_1",
-      "community": 10,
+      "community": 17,
       "norm_label": ".constructor_1()"
     },
     {
@@ -8325,7 +8325,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_constructor_2",
-      "community": 10,
+      "community": 17,
       "norm_label": ".constructor_2()"
     },
     {
@@ -8334,7 +8334,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_merge",
-      "community": 10,
+      "community": 17,
       "norm_label": ".merge()"
     },
     {
@@ -8352,7 +8352,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getminx",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getminx()"
     },
     {
@@ -8361,7 +8361,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getmaxx",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getmaxx()"
     },
     {
@@ -8370,7 +8370,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getminy",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getminy()"
     },
     {
@@ -8379,7 +8379,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getmaxy",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getmaxy()"
     },
     {
@@ -8388,7 +8388,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_gettopleft",
-      "community": 10,
+      "community": 17,
       "norm_label": ".gettopleft()"
     },
     {
@@ -8397,7 +8397,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_gettopright",
-      "community": 10,
+      "community": 17,
       "norm_label": ".gettopright()"
     },
     {
@@ -8406,7 +8406,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getbottomleft",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getbottomleft()"
     },
     {
@@ -8415,7 +8415,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ve_getbottomright",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getbottomright()"
     },
     {
@@ -8424,7 +8424,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze",
-      "community": 31,
+      "community": 13,
       "norm_label": "ze"
     },
     {
@@ -8433,7 +8433,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_constructor",
-      "community": 31,
+      "community": 13,
       "norm_label": ".constructor()"
     },
     {
@@ -8442,7 +8442,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getcolumncount",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getcolumncount()"
     },
     {
@@ -8451,7 +8451,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_geterrorcorrectionlevel",
-      "community": 31,
+      "community": 13,
       "norm_label": ".geterrorcorrectionlevel()"
     },
     {
@@ -8460,7 +8460,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getrowcount",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getrowcount()"
     },
     {
@@ -8469,7 +8469,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getrowcountupperpart",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getrowcountupperpart()"
     },
     {
@@ -8478,7 +8478,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getrowcountlowerpart",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getrowcountlowerpart()"
     },
     {
@@ -8505,7 +8505,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ge_tostring",
-      "community": 34,
+      "community": 35,
       "norm_label": ".tostring()"
     },
     {
@@ -8514,7 +8514,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_getcodewordnearby",
-      "community": 10,
+      "community": 41,
       "norm_label": ".getcodewordnearby()"
     },
     {
@@ -8523,7 +8523,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_imagerowtocodewordindex",
-      "community": 10,
+      "community": 41,
       "norm_label": ".imagerowtocodewordindex()"
     },
     {
@@ -8532,7 +8532,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_setcodeword",
-      "community": 10,
+      "community": 41,
       "norm_label": ".setcodeword()"
     },
     {
@@ -8541,7 +8541,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_getcodeword",
-      "community": 10,
+      "community": 41,
       "norm_label": ".getcodeword()"
     },
     {
@@ -8550,7 +8550,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_getboundingbox",
-      "community": 10,
+      "community": 41,
       "norm_label": ".getboundingbox()"
     },
     {
@@ -8559,7 +8559,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ye_getcodewords",
-      "community": 10,
+      "community": 41,
       "norm_label": ".getcodewords()"
     },
     {
@@ -8577,7 +8577,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_xe_setvalue",
-      "community": 35,
+      "community": 37,
       "norm_label": ".setvalue()"
     },
     {
@@ -8586,7 +8586,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_xe_getvalue",
-      "community": 35,
+      "community": 37,
       "norm_label": ".getvalue()"
     },
     {
@@ -8604,7 +8604,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_setrownumbers",
-      "community": 40,
+      "community": 13,
       "norm_label": ".setrownumbers()"
     },
     {
@@ -8613,7 +8613,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_adjustcompleteindicatorcolumnrownumbers",
-      "community": 10,
+      "community": 17,
       "norm_label": ".adjustcompleteindicatorcolumnrownumbers()"
     },
     {
@@ -8622,7 +8622,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_getrowheights",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getrowheights()"
     },
     {
@@ -8631,7 +8631,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_adjustincompleteindicatorcolumnrownumbers",
-      "community": 10,
+      "community": 17,
       "norm_label": ".adjustincompleteindicatorcolumnrownumbers()"
     },
     {
@@ -8640,7 +8640,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_getbarcodemetadata",
-      "community": 35,
+      "community": 37,
       "norm_label": ".getbarcodemetadata()"
     },
     {
@@ -8649,7 +8649,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_removeincorrectcodewords",
-      "community": 31,
+      "community": 13,
       "norm_label": ".removeincorrectcodewords()"
     },
     {
@@ -8658,7 +8658,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_we_isleft",
-      "community": 16,
+      "community": 13,
       "norm_label": ".isleft()"
     },
     {
@@ -8667,7 +8667,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je",
-      "community": 26,
+      "community": 25,
       "norm_label": "je"
     },
     {
@@ -8676,7 +8676,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_constructor",
-      "community": 31,
+      "community": 13,
       "norm_label": ".constructor()"
     },
     {
@@ -8685,7 +8685,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_getdetectionresultcolumns",
-      "community": 26,
+      "community": 25,
       "norm_label": ".getdetectionresultcolumns()"
     },
     {
@@ -8694,7 +8694,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustindicatorcolumnrownumbers",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustindicatorcolumnrownumbers()"
     },
     {
@@ -8703,7 +8703,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumbersandgetcount",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumbersandgetcount()"
     },
     {
@@ -8712,7 +8712,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumbersbyrow",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumbersbyrow()"
     },
     {
@@ -8721,7 +8721,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumbersfrombothri",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumbersfrombothri()"
     },
     {
@@ -8730,7 +8730,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumbersfromrri",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumbersfromrri()"
     },
     {
@@ -8739,7 +8739,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumbersfromlri",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumbersfromlri()"
     },
     {
@@ -8748,7 +8748,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumberifvalid",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumberifvalid()"
     },
     {
@@ -8757,7 +8757,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumbers",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumbers()"
     },
     {
@@ -8766,7 +8766,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_adjustrownumber",
-      "community": 26,
+      "community": 25,
       "norm_label": ".adjustrownumber()"
     },
     {
@@ -8775,7 +8775,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_getbarcodecolumncount",
-      "community": 35,
+      "community": 37,
       "norm_label": ".getbarcodecolumncount()"
     },
     {
@@ -8784,7 +8784,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_getbarcoderowcount",
-      "community": 35,
+      "community": 37,
       "norm_label": ".getbarcoderowcount()"
     },
     {
@@ -8793,7 +8793,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_getbarcodeeclevel",
-      "community": 35,
+      "community": 37,
       "norm_label": ".getbarcodeeclevel()"
     },
     {
@@ -8802,7 +8802,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_setboundingbox",
-      "community": 10,
+      "community": 17,
       "norm_label": ".setboundingbox()"
     },
     {
@@ -8811,7 +8811,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_getboundingbox",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getboundingbox()"
     },
     {
@@ -8820,7 +8820,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_setdetectionresultcolumn",
-      "community": 10,
+      "community": 17,
       "norm_label": ".setdetectionresultcolumn()"
     },
     {
@@ -8829,7 +8829,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_getdetectionresultcolumn",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getdetectionresultcolumn()"
     },
     {
@@ -8838,7 +8838,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_je_tostring",
-      "community": 26,
+      "community": 25,
       "norm_label": ".tostring()"
     },
     {
@@ -8847,7 +8847,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_hasvalidrownumber",
-      "community": 26,
+      "community": 25,
       "norm_label": ".hasvalidrownumber()"
     },
     {
@@ -8856,7 +8856,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_isvalidrownumber",
-      "community": 26,
+      "community": 25,
       "norm_label": ".isvalidrownumber()"
     },
     {
@@ -8865,7 +8865,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_setrownumberasrowindicatorcolumn",
-      "community": 40,
+      "community": 13,
       "norm_label": ".setrownumberasrowindicatorcolumn()"
     },
     {
@@ -8874,7 +8874,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getwidth",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getwidth()"
     },
     {
@@ -8883,7 +8883,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getstartx",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getstartx()"
     },
     {
@@ -8892,7 +8892,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getendx",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getendx()"
     },
     {
@@ -8901,7 +8901,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getbucket",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getbucket()"
     },
     {
@@ -8910,7 +8910,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getvalue",
-      "community": 35,
+      "community": 37,
       "norm_label": ".getvalue()"
     },
     {
@@ -8919,7 +8919,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_getrownumber",
-      "community": 26,
+      "community": 25,
       "norm_label": ".getrownumber()"
     },
     {
@@ -8928,7 +8928,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_setrownumber",
-      "community": 26,
+      "community": 25,
       "norm_label": ".setrownumber()"
     },
     {
@@ -8937,7 +8937,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ze_tostring",
-      "community": 31,
+      "community": 13,
       "norm_label": ".tostring()"
     },
     {
@@ -8946,7 +8946,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_qe",
-      "community": 45,
+      "community": 46,
       "norm_label": "qe"
     },
     {
@@ -8955,7 +8955,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_qe_initialize",
-      "community": 45,
+      "community": 46,
       "norm_label": ".initialize()"
     },
     {
@@ -8964,7 +8964,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_qe_getdecodedvalue",
-      "community": 45,
+      "community": 46,
       "norm_label": ".getdecodedvalue()"
     },
     {
@@ -8973,7 +8973,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_qe_samplebitcounts",
-      "community": 45,
+      "community": 46,
       "norm_label": ".samplebitcounts()"
     },
     {
@@ -8982,7 +8982,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_qe_getdecodedcodewordvalue",
-      "community": 45,
+      "community": 46,
       "norm_label": ".getdecodedcodewordvalue()"
     },
     {
@@ -8991,7 +8991,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_qe_getbitvalue",
-      "community": 45,
+      "community": 46,
       "norm_label": ".getbitvalue()"
     },
     {
@@ -9000,7 +9000,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_qe_getclosestdecodedvalue",
-      "community": 45,
+      "community": 46,
       "norm_label": ".getclosestdecodedvalue()"
     },
     {
@@ -9243,7 +9243,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_flush",
-      "community": 12,
+      "community": 11,
       "norm_label": ".flush()"
     },
     {
@@ -9252,7 +9252,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_e_close",
-      "community": 12,
+      "community": 11,
       "norm_label": ".close()"
     },
     {
@@ -9351,7 +9351,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_er_size",
-      "community": 15,
+      "community": 16,
       "norm_label": ".size()"
     },
     {
@@ -9405,7 +9405,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_rr",
-      "community": 46,
+      "community": 47,
       "norm_label": "rr()"
     },
     {
@@ -9495,7 +9495,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr",
-      "community": 16,
+      "community": 20,
       "norm_label": "sr"
     },
     {
@@ -9504,7 +9504,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_constructor",
-      "community": 16,
+      "community": 20,
       "norm_label": ".constructor()"
     },
     {
@@ -9513,7 +9513,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_decode",
-      "community": 10,
+      "community": 17,
       "norm_label": ".decode()"
     },
     {
@@ -9522,7 +9522,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_merge",
-      "community": 16,
+      "community": 13,
       "norm_label": ".merge()"
     },
     {
@@ -9531,7 +9531,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_adjustboundingbox",
-      "community": 16,
+      "community": 13,
       "norm_label": ".adjustboundingbox()"
     },
     {
@@ -9540,7 +9540,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getmax",
-      "community": 16,
+      "community": 13,
       "norm_label": ".getmax()"
     },
     {
@@ -9549,7 +9549,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getbarcodemetadata",
-      "community": 31,
+      "community": 13,
       "norm_label": ".getbarcodemetadata()"
     },
     {
@@ -9558,7 +9558,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getrowindicatorcolumn",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getrowindicatorcolumn()"
     },
     {
@@ -9567,7 +9567,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_adjustcodewordcount",
-      "community": 35,
+      "community": 37,
       "norm_label": ".adjustcodewordcount()"
     },
     {
@@ -9576,7 +9576,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_createdecoderresult",
-      "community": 35,
+      "community": 37,
       "norm_label": ".createdecoderresult()"
     },
     {
@@ -9585,7 +9585,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_createdecoderresultfromambiguousvalues",
-      "community": 16,
+      "community": 20,
       "norm_label": ".createdecoderresultfromambiguousvalues()"
     },
     {
@@ -9594,7 +9594,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_createbarcodematrix",
-      "community": 35,
+      "community": 37,
       "norm_label": ".createbarcodematrix()"
     },
     {
@@ -9603,7 +9603,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_isvalidbarcodecolumn",
-      "community": 16,
+      "community": 17,
       "norm_label": ".isvalidbarcodecolumn()"
     },
     {
@@ -9612,7 +9612,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getstartcolumn",
-      "community": 10,
+      "community": 17,
       "norm_label": ".getstartcolumn()"
     },
     {
@@ -9621,7 +9621,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_detectcodeword",
-      "community": 16,
+      "community": 20,
       "norm_label": ".detectcodeword()"
     },
     {
@@ -9630,7 +9630,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getmodulebitcount",
-      "community": 16,
+      "community": 20,
       "norm_label": ".getmodulebitcount()"
     },
     {
@@ -9639,7 +9639,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getnumberofeccodewords",
-      "community": 16,
+      "community": 20,
       "norm_label": ".getnumberofeccodewords()"
     },
     {
@@ -9648,7 +9648,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_adjustcodewordstartcolumn",
-      "community": 16,
+      "community": 20,
       "norm_label": ".adjustcodewordstartcolumn()"
     },
     {
@@ -9657,7 +9657,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_checkcodewordskew",
-      "community": 16,
+      "community": 20,
       "norm_label": ".checkcodewordskew()"
     },
     {
@@ -9666,7 +9666,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_decodecodewords",
-      "community": 16,
+      "community": 20,
       "norm_label": ".decodecodewords()"
     },
     {
@@ -9684,7 +9684,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_verifycodewordcount",
-      "community": 16,
+      "community": 20,
       "norm_label": ".verifycodewordcount()"
     },
     {
@@ -9693,7 +9693,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getbitcountforcodeword",
-      "community": 16,
+      "community": 20,
       "norm_label": ".getbitcountforcodeword()"
     },
     {
@@ -9702,7 +9702,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getcodewordbucketnumber",
-      "community": 16,
+      "community": 20,
       "norm_label": ".getcodewordbucketnumber()"
     },
     {
@@ -9711,7 +9711,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getcodewordbucketnumber_number",
-      "community": 16,
+      "community": 20,
       "norm_label": ".getcodewordbucketnumber_number()"
     },
     {
@@ -9720,7 +9720,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getcodewordbucketnumber_int32array",
-      "community": 16,
+      "community": 20,
       "norm_label": ".getcodewordbucketnumber_int32array()"
     },
     {
@@ -9747,7 +9747,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ar_decode",
-      "community": 20,
+      "community": 19,
       "norm_label": ".decode()"
     },
     {
@@ -9756,7 +9756,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ar_decodemultiple",
-      "community": 47,
+      "community": 49,
       "norm_label": ".decodemultiple()"
     },
     {
@@ -9810,7 +9810,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr",
-      "community": 23,
+      "community": 21,
       "norm_label": "cr"
     },
     {
@@ -9918,7 +9918,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr",
-      "community": 36,
+      "community": 34,
       "norm_label": "fr"
     },
     {
@@ -9927,7 +9927,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_constructor",
-      "community": 36,
+      "community": 34,
       "norm_label": ".constructor()"
     },
     {
@@ -9936,7 +9936,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_applymaskpenaltyrule1",
-      "community": 36,
+      "community": 34,
       "norm_label": ".applymaskpenaltyrule1()"
     },
     {
@@ -9945,7 +9945,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_applymaskpenaltyrule2",
-      "community": 18,
+      "community": 34,
       "norm_label": ".applymaskpenaltyrule2()"
     },
     {
@@ -9954,7 +9954,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_applymaskpenaltyrule3",
-      "community": 36,
+      "community": 34,
       "norm_label": ".applymaskpenaltyrule3()"
     },
     {
@@ -9963,7 +9963,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_iswhitehorizontal",
-      "community": 36,
+      "community": 34,
       "norm_label": ".iswhitehorizontal()"
     },
     {
@@ -9972,7 +9972,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_iswhitevertical",
-      "community": 36,
+      "community": 34,
       "norm_label": ".iswhitevertical()"
     },
     {
@@ -9981,7 +9981,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_applymaskpenaltyrule4",
-      "community": 36,
+      "community": 34,
       "norm_label": ".applymaskpenaltyrule4()"
     },
     {
@@ -9990,7 +9990,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_getdatamaskbit",
-      "community": 17,
+      "community": 18,
       "norm_label": ".getdatamaskbit()"
     },
     {
@@ -9999,7 +9999,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_fr_applymaskpenaltyrule1internal",
-      "community": 36,
+      "community": 34,
       "norm_label": ".applymaskpenaltyrule1internal()"
     },
     {
@@ -10026,7 +10026,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gr_getheight",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getheight()"
     },
     {
@@ -10035,7 +10035,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gr_getwidth",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getwidth()"
     },
     {
@@ -10044,7 +10044,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gr_get",
-      "community": 34,
+      "community": 35,
       "norm_label": ".get()"
     },
     {
@@ -10053,7 +10053,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gr_getarray",
-      "community": 36,
+      "community": 34,
       "norm_label": ".getarray()"
     },
     {
@@ -10062,7 +10062,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gr_setnumber",
-      "community": 17,
+      "community": 18,
       "norm_label": ".setnumber()"
     },
     {
@@ -10071,7 +10071,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gr_setboolean",
-      "community": 17,
+      "community": 18,
       "norm_label": ".setboolean()"
     },
     {
@@ -10080,7 +10080,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_gr_clear",
-      "community": 37,
+      "community": 36,
       "norm_label": ".clear()"
     },
     {
@@ -10107,7 +10107,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr",
-      "community": 19,
+      "community": 32,
       "norm_label": "wr"
     },
     {
@@ -10116,7 +10116,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_constructor",
-      "community": 19,
+      "community": 32,
       "norm_label": ".constructor()"
     },
     {
@@ -10125,7 +10125,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_getmode",
-      "community": 19,
+      "community": 32,
       "norm_label": ".getmode()"
     },
     {
@@ -10134,7 +10134,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_geteclevel",
-      "community": 20,
+      "community": 19,
       "norm_label": ".geteclevel()"
     },
     {
@@ -10143,7 +10143,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_getversion",
-      "community": 19,
+      "community": 32,
       "norm_label": ".getversion()"
     },
     {
@@ -10152,7 +10152,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_getmaskpattern",
-      "community": 19,
+      "community": 32,
       "norm_label": ".getmaskpattern()"
     },
     {
@@ -10161,7 +10161,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_getmatrix",
-      "community": 19,
+      "community": 32,
       "norm_label": ".getmatrix()"
     },
     {
@@ -10170,7 +10170,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_tostring",
-      "community": 19,
+      "community": 32,
       "norm_label": ".tostring()"
     },
     {
@@ -10179,7 +10179,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_setmode",
-      "community": 19,
+      "community": 32,
       "norm_label": ".setmode()"
     },
     {
@@ -10188,7 +10188,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_seteclevel",
-      "community": 19,
+      "community": 32,
       "norm_label": ".seteclevel()"
     },
     {
@@ -10197,7 +10197,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_setversion",
-      "community": 19,
+      "community": 32,
       "norm_label": ".setversion()"
     },
     {
@@ -10206,7 +10206,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_setmaskpattern",
-      "community": 19,
+      "community": 32,
       "norm_label": ".setmaskpattern()"
     },
     {
@@ -10215,7 +10215,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_setmatrix",
-      "community": 19,
+      "community": 32,
       "norm_label": ".setmatrix()"
     },
     {
@@ -10224,7 +10224,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_wr_isvalidmaskpattern",
-      "community": 19,
+      "community": 32,
       "norm_label": ".isvalidmaskpattern()"
     },
     {
@@ -10242,7 +10242,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr",
-      "community": 17,
+      "community": 18,
       "norm_label": "pr"
     },
     {
@@ -10251,7 +10251,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_constructor",
-      "community": 17,
+      "community": 18,
       "norm_label": ".constructor()"
     },
     {
@@ -10260,7 +10260,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_clearmatrix",
-      "community": 17,
+      "community": 18,
       "norm_label": ".clearmatrix()"
     },
     {
@@ -10269,7 +10269,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_buildmatrix",
-      "community": 17,
+      "community": 18,
       "norm_label": ".buildmatrix()"
     },
     {
@@ -10278,7 +10278,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedbasicpatterns",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedbasicpatterns()"
     },
     {
@@ -10287,7 +10287,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedtypeinfo",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedtypeinfo()"
     },
     {
@@ -10296,7 +10296,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_maybeembedversioninfo",
-      "community": 17,
+      "community": 18,
       "norm_label": ".maybeembedversioninfo()"
     },
     {
@@ -10305,7 +10305,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embeddatabits",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embeddatabits()"
     },
     {
@@ -10314,7 +10314,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_findmsbset",
-      "community": 17,
+      "community": 18,
       "norm_label": ".findmsbset()"
     },
     {
@@ -10323,7 +10323,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_calculatebchcode",
-      "community": 17,
+      "community": 18,
       "norm_label": ".calculatebchcode()"
     },
     {
@@ -10332,7 +10332,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_maketypeinfobits",
-      "community": 17,
+      "community": 18,
       "norm_label": ".maketypeinfobits()"
     },
     {
@@ -10341,7 +10341,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_makeversioninfobits",
-      "community": 17,
+      "community": 18,
       "norm_label": ".makeversioninfobits()"
     },
     {
@@ -10350,7 +10350,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_isempty",
-      "community": 17,
+      "community": 18,
       "norm_label": ".isempty()"
     },
     {
@@ -10359,7 +10359,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedtimingpatterns",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedtimingpatterns()"
     },
     {
@@ -10368,7 +10368,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embeddarkdotatleftbottomcorner",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embeddarkdotatleftbottomcorner()"
     },
     {
@@ -10377,7 +10377,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedhorizontalseparationpattern",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedhorizontalseparationpattern()"
     },
     {
@@ -10386,7 +10386,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedverticalseparationpattern",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedverticalseparationpattern()"
     },
     {
@@ -10395,7 +10395,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedpositionadjustmentpattern",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedpositionadjustmentpattern()"
     },
     {
@@ -10404,7 +10404,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedpositiondetectionpattern",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedpositiondetectionpattern()"
     },
     {
@@ -10413,7 +10413,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_embedpositiondetectionpatternsandseparators",
-      "community": 17,
+      "community": 18,
       "norm_label": ".embedpositiondetectionpatternsandseparators()"
     },
     {
@@ -10422,7 +10422,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_pr_maybeembedpositionadjustmentpatterns",
-      "community": 17,
+      "community": 18,
       "norm_label": ".maybeembedpositionadjustmentpatterns()"
     },
     {
@@ -10458,7 +10458,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_constructor",
-      "community": 23,
+      "community": 21,
       "norm_label": ".constructor()"
     },
     {
@@ -10467,7 +10467,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_calculatemaskpenalty",
-      "community": 36,
+      "community": 34,
       "norm_label": ".calculatemaskpenalty()"
     },
     {
@@ -10476,7 +10476,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_encode",
-      "community": 19,
+      "community": 39,
       "norm_label": ".encode()"
     },
     {
@@ -10485,7 +10485,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_recommendversion",
-      "community": 19,
+      "community": 39,
       "norm_label": ".recommendversion()"
     },
     {
@@ -10494,7 +10494,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_calculatebitsneeded",
-      "community": 19,
+      "community": 39,
       "norm_label": ".calculatebitsneeded()"
     },
     {
@@ -10503,7 +10503,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_getalphanumericcode",
-      "community": 23,
+      "community": 21,
       "norm_label": ".getalphanumericcode()"
     },
     {
@@ -10512,7 +10512,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_choosemode",
-      "community": 23,
+      "community": 21,
       "norm_label": ".choosemode()"
     },
     {
@@ -10521,7 +10521,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_isonlydoublebytekanji",
-      "community": 23,
+      "community": 21,
       "norm_label": ".isonlydoublebytekanji()"
     },
     {
@@ -10530,7 +10530,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_choosemaskpattern",
-      "community": 19,
+      "community": 39,
       "norm_label": ".choosemaskpattern()"
     },
     {
@@ -10539,7 +10539,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_chooseversion",
-      "community": 19,
+      "community": 39,
       "norm_label": ".chooseversion()"
     },
     {
@@ -10548,7 +10548,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_willfit",
-      "community": 19,
+      "community": 39,
       "norm_label": ".willfit()"
     },
     {
@@ -10566,7 +10566,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_getnumdatabytesandnumecbytesforblockid",
-      "community": 23,
+      "community": 21,
       "norm_label": ".getnumdatabytesandnumecbytesforblockid()"
     },
     {
@@ -10575,7 +10575,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_interleavewithecbytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".interleavewithecbytes()"
     },
     {
@@ -10584,7 +10584,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_generateecbytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".generateecbytes()"
     },
     {
@@ -10593,7 +10593,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_appendmodeinfo",
-      "community": 23,
+      "community": 21,
       "norm_label": ".appendmodeinfo()"
     },
     {
@@ -10602,7 +10602,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_appendlengthinfo",
-      "community": 19,
+      "community": 39,
       "norm_label": ".appendlengthinfo()"
     },
     {
@@ -10611,7 +10611,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_appendbytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".appendbytes()"
     },
     {
@@ -10620,7 +10620,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_getdigit",
-      "community": 23,
+      "community": 21,
       "norm_label": ".getdigit()"
     },
     {
@@ -10629,7 +10629,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_isdigit",
-      "community": 23,
+      "community": 21,
       "norm_label": ".isdigit()"
     },
     {
@@ -10638,7 +10638,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_appendnumericbytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".appendnumericbytes()"
     },
     {
@@ -10647,7 +10647,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_appendalphanumericbytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".appendalphanumericbytes()"
     },
     {
@@ -10656,7 +10656,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_append8bitbytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".append8bitbytes()"
     },
     {
@@ -10665,7 +10665,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_appendkanjibytes",
-      "community": 23,
+      "community": 21,
       "norm_label": ".appendkanjibytes()"
     },
     {
@@ -10674,7 +10674,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_cr_appendeci",
-      "community": 23,
+      "community": 21,
       "norm_label": ".appendeci()"
     },
     {
@@ -10728,7 +10728,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ir_renderresult",
-      "community": 18,
+      "community": 15,
       "norm_label": ".renderresult()"
     },
     {
@@ -10737,7 +10737,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getrow",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getrow()"
     },
     {
@@ -10746,7 +10746,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getmatrix",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getmatrix()"
     },
     {
@@ -10755,7 +10755,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_iscropsupported",
-      "community": 16,
+      "community": 20,
       "norm_label": ".iscropsupported()"
     },
     {
@@ -10764,7 +10764,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_crop",
-      "community": 16,
+      "community": 20,
       "norm_label": ".crop()"
     },
     {
@@ -10773,7 +10773,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_renderthumbnail",
-      "community": 18,
+      "community": 15,
       "norm_label": ".renderthumbnail()"
     },
     {
@@ -10782,7 +10782,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getthumbnailwidth",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getthumbnailwidth()"
     },
     {
@@ -10791,7 +10791,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_getthumbnailheight",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getthumbnailheight()"
     },
     {
@@ -10800,7 +10800,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_reversehorizontal",
-      "community": 16,
+      "community": 20,
       "norm_label": ".reversehorizontal()"
     },
     {
@@ -10809,7 +10809,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_sr_invert",
-      "community": 16,
+      "community": 20,
       "norm_label": ".invert()"
     },
     {
@@ -10818,7 +10818,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_r_getrow",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getrow()"
     },
     {
@@ -10827,7 +10827,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_r_getmatrix",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getmatrix()"
     },
     {
@@ -10872,7 +10872,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr",
-      "community": 12,
+      "community": 11,
       "norm_label": "yr"
     },
     {
@@ -10881,7 +10881,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr",
-      "community": 12,
+      "community": 11,
       "norm_label": "nr"
     },
     {
@@ -10890,7 +10890,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_iscompact",
-      "community": 12,
+      "community": 11,
       "norm_label": ".iscompact()"
     },
     {
@@ -10899,7 +10899,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_setcompact",
-      "community": 12,
+      "community": 11,
       "norm_label": ".setcompact()"
     },
     {
@@ -10917,7 +10917,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_setsize",
-      "community": 12,
+      "community": 11,
       "norm_label": ".setsize()"
     },
     {
@@ -10926,7 +10926,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_getlayers",
-      "community": 12,
+      "community": 11,
       "norm_label": ".getlayers()"
     },
     {
@@ -10935,7 +10935,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_setlayers",
-      "community": 12,
+      "community": 11,
       "norm_label": ".setlayers()"
     },
     {
@@ -10944,7 +10944,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_getcodewords",
-      "community": 26,
+      "community": 25,
       "norm_label": ".getcodewords()"
     },
     {
@@ -10953,7 +10953,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_setcodewords",
-      "community": 12,
+      "community": 11,
       "norm_label": ".setcodewords()"
     },
     {
@@ -10962,7 +10962,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_getmatrix",
-      "community": 18,
+      "community": 15,
       "norm_label": ".getmatrix()"
     },
     {
@@ -10971,7 +10971,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_nr_setmatrix",
-      "community": 12,
+      "community": 11,
       "norm_label": ".setmatrix()"
     },
     {
@@ -10989,7 +10989,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_dr_min",
-      "community": 36,
+      "community": 34,
       "norm_label": ".min()"
     },
     {
@@ -11016,7 +11016,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_rr_constructor",
-      "community": 46,
+      "community": 47,
       "norm_label": ".constructor()"
     },
     {
@@ -11025,7 +11025,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_rr_appendto",
-      "community": 46,
+      "community": 47,
       "norm_label": ".appendto()"
     },
     {
@@ -11043,7 +11043,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_rr_addbinaryshift",
-      "community": 46,
+      "community": 47,
       "norm_label": ".addbinaryshift()"
     },
     {
@@ -11052,7 +11052,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_rr_tostring",
-      "community": 46,
+      "community": 47,
       "norm_label": ".tostring()"
     },
     {
@@ -11106,7 +11106,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_kr",
-      "community": 32,
+      "community": 31,
       "norm_label": "kr"
     },
     {
@@ -11115,7 +11115,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_ur",
-      "community": 32,
+      "community": 31,
       "norm_label": "ur"
     },
     {
@@ -11124,7 +11124,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_hr",
-      "community": 32,
+      "community": 31,
       "norm_label": "hr"
     },
     {
@@ -11259,7 +11259,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_zr",
-      "community": 32,
+      "community": 31,
       "norm_label": "zr"
     },
     {
@@ -11322,7 +11322,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_constructor",
-      "community": 12,
+      "community": 11,
       "norm_label": ".constructor()"
     },
     {
@@ -11331,7 +11331,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_encodebytes",
-      "community": 12,
+      "community": 11,
       "norm_label": ".encodebytes()"
     },
     {
@@ -11340,7 +11340,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_encode",
-      "community": 12,
+      "community": 11,
       "norm_label": ".encode()"
     },
     {
@@ -11349,7 +11349,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_drawbullseye",
-      "community": 12,
+      "community": 11,
       "norm_label": ".drawbullseye()"
     },
     {
@@ -11358,7 +11358,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_generatemodemessage",
-      "community": 12,
+      "community": 11,
       "norm_label": ".generatemodemessage()"
     },
     {
@@ -11367,7 +11367,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_drawmodemessage",
-      "community": 12,
+      "community": 11,
       "norm_label": ".drawmodemessage()"
     },
     {
@@ -11376,7 +11376,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_generatecheckwords",
-      "community": 12,
+      "community": 11,
       "norm_label": ".generatecheckwords()"
     },
     {
@@ -11385,7 +11385,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_bitstowords",
-      "community": 12,
+      "community": 11,
       "norm_label": ".bitstowords()"
     },
     {
@@ -11394,7 +11394,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_getgf",
-      "community": 12,
+      "community": 11,
       "norm_label": ".getgf()"
     },
     {
@@ -11403,7 +11403,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_stuffbits",
-      "community": 12,
+      "community": 11,
       "norm_label": ".stuffbits()"
     },
     {
@@ -11412,7 +11412,7 @@
       "source_file": "js/html5-qrcode.min.js",
       "source_location": "L1",
       "id": "js_html5_qrcode_min_yr_totalbitsinlayer",
-      "community": 12,
+      "community": 11,
       "norm_label": ".totalbitsinlayer()"
     },
     {
@@ -11691,7 +11691,7 @@
       "source_file": "brand_guideline.md",
       "source_location": "L1",
       "id": "brand_guideline_md",
-      "community": 54,
+      "community": 55,
       "norm_label": "brand_guideline.md"
     },
     {
@@ -11700,7 +11700,7 @@
       "source_file": "gemini.md",
       "source_location": "L1",
       "id": "gemini_md",
-      "community": 55,
+      "community": 56,
       "norm_label": "gemini.md"
     },
     {
@@ -11708,7 +11708,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L1",
-      "community": 11,
+      "community": 10,
       "norm_label": "system_analysis.md",
       "id": "system_analysis_md"
     },
@@ -11717,7 +11717,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L1",
-      "community": 11,
+      "community": 10,
       "norm_label": "msu aga khan museum interactive qr code system \u2014 system analysis",
       "id": "capstone_system_analysis_msu_aga_khan_museum_interactive_qr_code_system_system_analysis"
     },
@@ -11726,7 +11726,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L7",
-      "community": 11,
+      "community": 10,
       "norm_label": "executive overview: system purpose & core capabilities",
       "id": "capstone_system_analysis_executive_overview_system_purpose_core_capabilities"
     },
@@ -11735,7 +11735,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L9",
-      "community": 11,
+      "community": 10,
       "norm_label": "1. system purpose (the \"why\")",
       "id": "capstone_system_analysis_1_system_purpose_the_why"
     },
@@ -11744,7 +11744,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L16",
-      "community": 11,
+      "community": 10,
       "norm_label": "2. what the system does (core features)",
       "id": "capstone_system_analysis_2_what_the_system_does_core_features"
     },
@@ -11753,7 +11753,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L27",
-      "community": 11,
+      "community": 10,
       "norm_label": "3. how the system works (technical overview)",
       "id": "capstone_system_analysis_3_how_the_system_works_technical_overview"
     },
@@ -11762,7 +11762,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L40",
-      "community": 11,
+      "community": 10,
       "norm_label": "1. entity-relationship diagram (erd)",
       "id": "capstone_system_analysis_1_entity_relationship_diagram_erd"
     },
@@ -11771,7 +11771,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L44",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (erdiagram)",
       "id": "capstone_system_analysis_codeblock_1"
     },
@@ -11780,7 +11780,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L86",
-      "community": 11,
+      "community": 10,
       "norm_label": "data modeling & storage strategy",
       "id": "capstone_system_analysis_data_modeling_storage_strategy"
     },
@@ -11789,7 +11789,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L97",
-      "community": 11,
+      "community": 10,
       "norm_label": "2. use case diagram",
       "id": "capstone_system_analysis_2_use_case_diagram"
     },
@@ -11798,7 +11798,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L101",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (graph td)",
       "id": "capstone_system_analysis_codeblock_2"
     },
@@ -11807,7 +11807,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L158",
-      "community": 11,
+      "community": 10,
       "norm_label": "3. hierarchical input \u2013 process \u2013 output (hipo)",
       "id": "capstone_system_analysis_3_hierarchical_input_process_output_hipo"
     },
@@ -11816,7 +11816,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L162",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (graph td)",
       "id": "capstone_system_analysis_codeblock_3"
     },
@@ -11825,7 +11825,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L211",
-      "community": 11,
+      "community": 10,
       "norm_label": "4. input-process-output (ipo) for login",
       "id": "capstone_system_analysis_4_input_process_output_ipo_for_login"
     },
@@ -11834,7 +11834,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L223",
-      "community": 11,
+      "community": 10,
       "norm_label": "5. input-process-output (ipo) for qr code scanning",
       "id": "capstone_system_analysis_5_input_process_output_ipo_for_qr_code_scanning"
     },
@@ -11843,7 +11843,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L235",
-      "community": 11,
+      "community": 10,
       "norm_label": "6. client-server architecture",
       "id": "capstone_system_analysis_6_client_server_architecture"
     },
@@ -11852,7 +11852,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L239",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (graph lr)",
       "id": "capstone_system_analysis_codeblock_4"
     },
@@ -11861,7 +11861,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L276",
-      "community": 11,
+      "community": 10,
       "norm_label": "components breakdown",
       "id": "capstone_system_analysis_components_breakdown"
     },
@@ -11870,7 +11870,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L303",
-      "community": 11,
+      "community": 10,
       "norm_label": "7. proposed workflow vs. traditional workflow",
       "id": "capstone_system_analysis_7_proposed_workflow_vs_traditional_workflow"
     },
@@ -11879,7 +11879,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L307",
-      "community": 11,
+      "community": 10,
       "norm_label": "7.1 traditional workflow (process model)",
       "id": "capstone_system_analysis_7_1_traditional_workflow_process_model"
     },
@@ -11888,7 +11888,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L311",
-      "community": 11,
+      "community": 10,
       "norm_label": "mermaid process flowchart",
       "id": "capstone_system_analysis_mermaid_process_flowchart"
     },
@@ -11897,7 +11897,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L312",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (flowchart td)",
       "id": "capstone_system_analysis_codeblock_5"
     },
@@ -11906,7 +11906,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L330",
-      "community": 11,
+      "community": 10,
       "norm_label": "visual schema (reference screenshot)",
       "id": "capstone_system_analysis_visual_schema_reference_screenshot"
     },
@@ -11915,7 +11915,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L335",
-      "community": 11,
+      "community": 10,
       "norm_label": "7.2 proposed workflow (process model)",
       "id": "capstone_system_analysis_7_2_proposed_workflow_process_model"
     },
@@ -11924,7 +11924,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L339",
-      "community": 11,
+      "community": 10,
       "norm_label": "mermaid process flowchart",
       "id": "capstone_system_analysis_mermaid_process_flowchart_339"
     },
@@ -11933,7 +11933,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L340",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (flowchart td)",
       "id": "capstone_system_analysis_codeblock_6"
     },
@@ -11942,7 +11942,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L361",
-      "community": 11,
+      "community": 10,
       "norm_label": "visual schema (reference screenshot)",
       "id": "capstone_system_analysis_visual_schema_reference_screenshot_361"
     },
@@ -11951,7 +11951,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L366",
-      "community": 11,
+      "community": 10,
       "norm_label": "7.3 comparative analysis (value proposition)",
       "id": "capstone_system_analysis_7_3_comparative_analysis_value_proposition"
     },
@@ -11960,7 +11960,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L380",
-      "community": 11,
+      "community": 10,
       "norm_label": "7.4 detailed technical execution sequences",
       "id": "capstone_system_analysis_7_4_detailed_technical_execution_sequences"
     },
@@ -11969,7 +11969,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L384",
-      "community": 11,
+      "community": 10,
       "norm_label": "7.4.1 visitor exploration sequence",
       "id": "capstone_system_analysis_7_4_1_visitor_exploration_sequence"
     },
@@ -11978,7 +11978,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L388",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (sequencediagram)",
       "id": "capstone_system_analysis_codeblock_7"
     },
@@ -11987,7 +11987,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L441",
-      "community": 11,
+      "community": 10,
       "norm_label": "7.5 admin content management workflow",
       "id": "capstone_system_analysis_7_5_admin_content_management_workflow"
     },
@@ -11996,7 +11996,7 @@
       "file_type": "document",
       "source_file": "system_analysis.md",
       "source_location": "L445",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:mermaid (flowchart td)",
       "id": "capstone_system_analysis_codeblock_8"
     },
@@ -47808,5 +47808,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a028abb17d05d5c5b0c93d9693ede05114d727a2"
+  "built_at_commit": "cdba34f68e2cc53189a2759f9dff6dce2e958ac4"
 }

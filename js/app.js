@@ -13,15 +13,17 @@ const STATIONS = ['station1', 'station2', 'station3'];
 const appContent = document.getElementById('app-content');
 let html5QrcodeScanner = null; // Global reference to the scanner
 
-// Image Caching Logic (Local JSON files are cached by SW automatically)
 async function cacheImages(artifacts) {
     try {
         if (!('caches' in window)) return;
         const CACHE_NAME = 'msu-museum-images';
         const cache = await caches.open(CACHE_NAME);
 
-        // Pre-fetch and cache image URLs defined in the local JSON
-        const imageUrls = artifacts.map(a => a.image).filter(url => url);
+        // Filter out URLs that are empty OR are actually Base64 strings ('data:')
+        const imageUrls = artifacts
+            .map(a => a.image)
+            .filter(url => url && !url.startsWith('data:'));
+
         for (const url of imageUrls) {
             const cachedUrl = await cache.match(url);
             if (!cachedUrl) {
@@ -35,7 +37,7 @@ async function cacheImages(artifacts) {
                 }
             }
         }
-        console.log("Images from local JSON cached completely!");
+        console.log("Network-hosted images cached completely!");
         showOfflineReadyNotification();
     } catch (e) {
         console.error("Image cache error:", e);
