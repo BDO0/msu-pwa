@@ -1,16 +1,16 @@
-# Graph Report - Capstone  (2026-06-03)
+# Graph Report - Capstone  (2026-06-04)
 
 ## Corpus Check
-- 9 files · ~67,386 words
+- 9 files · ~67,462 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1354 nodes · 3360 edges · 58 communities (24 shown, 34 thin omitted)
+- 1354 nodes · 3360 edges · 56 communities (21 shown, 35 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `54d4288c`
+- Built from commit: `a028abb1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -50,12 +50,14 @@
 - [[_COMMUNITY_Community 32|Community 32]]
 - [[_COMMUNITY_Community 33|Community 33]]
 - [[_COMMUNITY_Community 34|Community 34]]
-- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
 - [[_COMMUNITY_Community 41|Community 41]]
 - [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
 - [[_COMMUNITY_Community 44|Community 44]]
 - [[_COMMUNITY_Community 45|Community 45]]
 - [[_COMMUNITY_Community 46|Community 46]]
@@ -66,8 +68,6 @@
 - [[_COMMUNITY_Community 51|Community 51]]
 - [[_COMMUNITY_Community 52|Community 52]]
 - [[_COMMUNITY_Community 53|Community 53]]
-- [[_COMMUNITY_Community 54|Community 54]]
-- [[_COMMUNITY_Community 55|Community 55]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `f` - 60 edges
@@ -89,7 +89,7 @@
 - `renderGame()` --calls--> `initDarangenGame()`  [EXTRACTED]
   js/app.js → js/matchup.js
 
-## Communities (58 total, 34 thin omitted)
+## Communities (56 total, 35 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
@@ -127,59 +127,55 @@ Nodes (4): ae, ce, oe, pe
 Cohesion: 0.09
 Nodes (3): b, l, r()
 
-### Community 10 - "Community 10"
+### Community 11 - "Community 11"
 Cohesion: 0.06
 Nodes (32): 1. Entity-Relationship Diagram (ERD), 1. System Purpose (The "Why"), 2. Use Case Diagram, 2. What the System Does (Core Features), 3. Hierarchical Input – Process – Output (HIPO), 3. How the System Works (Technical Overview), 4. Input-Process-Output (IPO) for Login, 5. Input-Process-Output (IPO) for QR Code Scanning (+24 more)
 
-### Community 11 - "Community 11"
+### Community 12 - "Community 12"
 Cohesion: 0.1
 Nodes (3): e(), Nr, yr
 
-### Community 12 - "Community 12"
+### Community 13 - "Community 13"
 Cohesion: 0.08
 Nodes (23): adminContent, app, artifactData, artifactsListBody, auth, btnLogin, btnLogout, btnSubmit (+15 more)
 
-### Community 13 - "Community 13"
+### Community 14 - "Community 14"
 Cohesion: 0.14
 Nodes (4): br(), gr, mr, Vr
 
-### Community 30 - "Community 30"
-Cohesion: 0.15
-Nodes (4): a, c, O, s
-
 ### Community 32 - "Community 32"
+Cohesion: 0.16
+Nodes (10): a, c, g, h, Hr, K, kr, s (+2 more)
+
+### Community 33 - "Community 33"
 Cohesion: 0.24
 Nodes (3): constructor(), de, lr
 
-### Community 46 - "Community 46"
-Cohesion: 0.22
-Nodes (7): g, h, Hr, K, kr, Ur, zr
-
-### Community 47 - "Community 47"
+### Community 44 - "Community 44"
 Cohesion: 0.33
 Nodes (6): fs, images, imagesDir, path, processImages(), sharp
 
-### Community 52 - "Community 52"
+### Community 50 - "Community 50"
 Cohesion: 0.4
 Nodes (4): artifacts, completers, firebaseConfig, q
 
-### Community 53 - "Community 53"
+### Community 51 - "Community 51"
 Cohesion: 0.5
 Nodes (3): ASSETS_TO_CACHE, fetchedResponse, isFirebaseStorage
 
 ## Knowledge Gaps
 - **72 isolated node(s):** `fs`, `path`, `imagesDir`, `images`, `ASSETS_TO_CACHE` (+67 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `f` connect `Community 6` to `Community 32`, `Community 46`?**
+- **Why does `f` connect `Community 6` to `Community 32`, `Community 33`?**
   _High betweenness centrality (0.057) - this node is a cross-community bridge._
-- **Why does `N` connect `Community 20` to `Community 33`, `Community 2`, `Community 35`, `Community 11`, `Community 46`, `Community 24`, `Community 26`?**
+- **Why does `N` connect `Community 21` to `Community 32`, `Community 2`, `Community 34`, `Community 37`, `Community 12`, `Community 18`, `Community 25`, `Community 27`?**
   _High betweenness centrality (0.050) - this node is a cross-community bridge._
-- **Why does `ft` connect `Community 1` to `Community 0`, `Community 19`, `Community 46`?**
+- **Why does `ft` connect `Community 1` to `Community 32`, `Community 0`, `Community 18`?**
   _High betweenness centrality (0.033) - this node is a cross-community bridge._
 - **What connects `fs`, `path`, `imagesDir` to the rest of the system?**
   _72 weakly-connected nodes found - possible documentation gaps or missing edges._

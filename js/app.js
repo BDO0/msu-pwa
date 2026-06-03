@@ -17,7 +17,7 @@ let html5QrcodeScanner = null; // Global reference to the scanner
 async function cacheImages(artifacts) {
     try {
         if (!('caches' in window)) return;
-        const CACHE_NAME = 'msu-museum-cache-v1';
+        const CACHE_NAME = 'msu-museum-images';
         const cache = await caches.open(CACHE_NAME);
 
         // Pre-fetch and cache image URLs defined in the local JSON
@@ -333,6 +333,8 @@ async function renderHome() {
                 completersList.innerHTML = '<li>No completers yet. Be the first!</li>';
             }
         });
+    } else {
+        completersList.innerHTML = '<li>Connect to internet to view official completers</li>';
     }
 
     // Modal Registration Logic
