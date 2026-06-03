@@ -101,5 +101,8 @@ const firebaseConfig = {
         // Set firebaseAPI to null so app.js knows to fall back to local JSON
         console.warn("Firebase could not be loaded (offline or CDN unreachable). Running in offline mode.", error.message);
         window.firebaseAPI = null;
+    } finally {
+        // Always fire this event so app.js knows Firebase setup is done (success or failure)
+        window.dispatchEvent(new CustomEvent('firebaseReady'));
     }
 })();
