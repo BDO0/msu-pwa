@@ -90,69 +90,35 @@ function getStationData(stationId) {
     return state.stationsData[stationId] || null;
 }
 
-// Load all data on init to know total artifacts
+// Load all data on init — Firebase only (Firestore IndexedDB persistence handles offline caching)
 async function initData() {
     state.totalArtifacts = 0;
     const stationMap = {};
     let allArtifacts = [];
-    
-    // 1. Fetching from Firebase (Admin Panel source of truth)
+
     if (window.firebaseAPI) {
         try {
             const firebaseArtifacts = await window.firebaseAPI.getAllArtifacts();
-            
-            // If it returns an array (even empty), we are connected to Firebase
+
             if (firebaseArtifacts !== null) {
-                console.log("Firebase Connection Active. Artifacts found:", firebaseArtifacts.length);
+                console.log("Firebase/IndexedDB cache active. Artifacts found:", firebaseArtifacts.length);
                 allArtifacts = firebaseArtifacts;
-                
-                // Initialize default station structure
+
                 stationMap['station1'] = { id: 'station1', name: 'Weapons & Tools', artifacts: [] };
                 stationMap['station2'] = { id: 'station2', name: 'Musical Instruments', artifacts: [] };
                 stationMap['station3'] = { id: 'station3', name: 'Animals', artifacts: [] };
-                
+
                 firebaseArtifacts.forEach(art => {
                     const st = art.station || 'station1';
                     if (stationMap[st]) stationMap[st].artifacts.push(art);
                 });
             }
         } catch (e) {
-            console.warn("Firebase fetch failed, falling back to local JSON.", e);
-        }
-    }
-
-    // 2. Fallback to Local JSON files if no artifacts were fetched (either offline or empty database)
-    if (allArtifacts.length === 0) {
-        try {
-            console.log("Firebase unreachable. Loading data from local JSON fallback.");
-            const [res1, res2, res3] = await Promise.all([
-                fetch('./data/station1.json'),
-                fetch('./data/station2.json'),
-                fetch('./data/station3.json')
-            ]);
-            
-            if (res1.ok) {
-                const data1 = await res1.json();
-                stationMap[data1.id] = data1;
-                allArtifacts = allArtifacts.concat(data1.artifacts);
-            }
-            if (res2.ok) {
-                const data2 = await res2.json();
-                stationMap[data2.id] = data2;
-                allArtifacts = allArtifacts.concat(data2.artifacts);
-            }
-            if (res3.ok) {
-                const data3 = await res3.json();
-                stationMap[data3.id] = data3;
-                allArtifacts = allArtifacts.concat(data3.artifacts);
-            }
-        } catch (e) {
-            console.error("Error loading local JSON data:", e);
+            console.warn("Firebase fetch failed:", e);
         }
     }
 
     if (allArtifacts.length > 0) {
-        // Run image caching logic to ensure external images are cached
         await cacheImages(allArtifacts);
 
         // Sanitize viewed artifacts: remove any IDs that were deleted
@@ -163,16 +129,27 @@ async function initData() {
             localStorage.setItem('viewedArtifacts', JSON.stringify(state.viewedArtifacts));
         }
     } else {
-        console.warn("No artifacts found in local JSON files.");
+        // No data available — user may never have connected to internet with this app
+        console.warn("No artifact data available.");
+        appContent.innerHTML = `
+            <div style="text-align:center; padding: 60px 20px; color: var(--cream);">
+                <div style="font-size: 3rem; margin-bottom: 16px;">📡</div>
+                <h2 style="color: var(--gold); font-family: var(--font-heading);">Connect to Load Museum</h2>
+                <p style="color: var(--cream-dim); margin-top: 10px; max-width: 320px; margin-inline: auto;">
+                    Please connect to the internet the first time you open this app. 
+                    After that, everything works offline automatically.
+                </p>
+            </div>`;
+        return; // Stop here — don't set stationsData or call router
     }
 
     state.stationsData = stationMap;
     for (const st in stationMap) {
-        if(stationMap[st].artifacts) {
+        if (stationMap[st].artifacts) {
             state.totalArtifacts += stationMap[st].artifacts.length;
         }
     }
-    
+
     checkCompletion();
 }
 
