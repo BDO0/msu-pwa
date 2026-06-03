@@ -1,8 +1,6 @@
-// Firebase Configuration Placeholder
-// REPLACE these with your actual Firebase project settings.
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, limit, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+// Firebase is loaded dynamically so the app works offline even if the CDN is unreachable.
+// If Firebase cannot be loaded (e.g. user is offline on first visit), window.firebaseAPI
+// is set to null and the app falls back to local JSON data gracefully.
 
 const firebaseConfig = {
   apiKey: "AIzaSyA1VJmRQK1bKATahlKxBiizbbS6XhB91nI",
@@ -14,111 +12,94 @@ const firebaseConfig = {
   measurementId: "G-MVBB6KGDJK"
 };
 
-let app, db, auth;
-let isFirebaseInitialized = false;
+// Self-invoking async function so we can use await without blocking the module
+(async () => {
+    try {
+        // Dynamic imports — if CDN is offline, this throws and we catch it gracefully
+        const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js");
+        const { getFirestore, collection, addDoc, getDocs, query, where, orderBy, limit, enableIndexedDbPersistence } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
+        const { getAuth, signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js");
 
-try {
-    app = initializeApp(firebaseConfig);
-    db = getFirestore(app);
-    auth = getAuth(app);
-    
-    // Enable offline persistence
-    enableIndexedDbPersistence(db).catch((err) => {
-        if (err.code == 'failed-precondition') {
-            console.warn("Persistence failed: multiple tabs open.");
-        } else if (err.code == 'unimplemented') {
-            console.warn("Persistence not supported by this browser.");
-        }
-    });
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
 
-    // If we reach here with actual credentials, it worked.
-    // Since these are placeholders, it might throw later during DB access, which we'll handle gracefully.
-    isFirebaseInitialized = true;
-} catch (error) {
-    console.warn("Firebase failed to initialize. Check your config keys.", error);
-}
-
-// Attach functions to window so app.js can use them
-window.firebaseAPI = {
-    adminLogin: async (email, password) => {
-        if (!isFirebaseInitialized || !auth || firebaseConfig.apiKey === "YOUR_API_KEY") {
-            return { success: false, error: "Firebase not properly configured or offline." };
-        }
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
-            return { success: true };
-        } catch (error) {
-            return { success: false, error: error.message };
-        }
-    },
-    
-    registerCompleter: async (name, studentId) => {
-        if (!isFirebaseInitialized || firebaseConfig.apiKey === "YOUR_API_KEY") {
-            // Mock success if offline or using placeholder
-            console.log("Mock Registration:", { name, studentId });
-            return { success: true, mock: true };
-        }
-        
-        try {
-            // Check for duplicate student ID
-            const q = query(collection(db, "completers"), where("studentId", "==", studentId));
-            const querySnapshot = await getDocs(q);
-            if (!querySnapshot.empty) {
-                return { success: false, error: "Student ID already registered." };
+        // Enable offline persistence for Firestore (cached reads when offline)
+        enableIndexedDbPersistence(db).catch((err) => {
+            if (err.code == 'failed-precondition') {
+                console.warn("Persistence failed: multiple tabs open.");
+            } else if (err.code == 'unimplemented') {
+                console.warn("Persistence not supported by this browser.");
             }
+        });
 
-            // Save doc
-            await addDoc(collection(db, "completers"), {
-                name: name,
-                studentId: studentId,
-                completionDate: new Date().toISOString()
-            });
+        // Attach functions to window so app.js can use them
+        window.firebaseAPI = {
+            adminLogin: async (email, password) => {
+                try {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    return { success: true };
+                } catch (error) {
+                    return { success: false, error: error.message };
+                }
+            },
 
-            return { success: true };
-        } catch (error) {
-            console.error("Error registering:", error);
-            return { success: false, error: error.message };
-        }
-    },
-    
-    getCompleters: async () => {
-        if (!isFirebaseInitialized || firebaseConfig.apiKey === "YOUR_API_KEY") {
-            // Mock data
-            return [
-                { name: "Abdulsalam Abdulgani", completionDate: new Date().toISOString() },
-                { name: "Mohammad Farhan Dipatuan", completionDate: new Date(Date.now() - 86400000).toISOString() }
-            ];
-        }
+            registerCompleter: async (name, studentId) => {
+                try {
+                    const q = query(collection(db, "completers"), where("studentId", "==", studentId));
+                    const querySnapshot = await getDocs(q);
+                    if (!querySnapshot.empty) {
+                        return { success: false, error: "Student ID already registered." };
+                    }
+                    await addDoc(collection(db, "completers"), {
+                        name: name,
+                        studentId: studentId,
+                        completionDate: new Date().toISOString()
+                    });
+                    return { success: true };
+                } catch (error) {
+                    console.error("Error registering:", error);
+                    return { success: false, error: error.message };
+                }
+            },
 
-        try {
-            const q = query(collection(db, "completers"), orderBy("completionDate", "desc"), limit(10));
-            const querySnapshot = await getDocs(q);
-            let completers = [];
-            querySnapshot.forEach((doc) => {
-                completers.push(doc.data());
-            });
-            return completers;
-        } catch (error) {
-            console.error("Error fetching completers:", error);
-            return null;
-        }
-    },
-    
-    getAllArtifacts: async () => {
-        if (!isFirebaseInitialized || firebaseConfig.apiKey === "YOUR_API_KEY") {
-            return null;
-        }
-        try {
-            const q = query(collection(db, "artifacts"));
-            const querySnapshot = await getDocs(q);
-            let artifacts = [];
-            querySnapshot.forEach((doc) => {
-                artifacts.push(doc.data());
-            });
-            return artifacts;
-        } catch (error) {
-            console.error("Error fetching artifacts:", error);
-            return null;
-        }
+            getCompleters: async () => {
+                try {
+                    const q = query(collection(db, "completers"), orderBy("completionDate", "desc"), limit(10));
+                    const querySnapshot = await getDocs(q);
+                    let completers = [];
+                    querySnapshot.forEach((doc) => {
+                        completers.push(doc.data());
+                    });
+                    return completers;
+                } catch (error) {
+                    console.error("Error fetching completers:", error);
+                    return null;
+                }
+            },
+
+            getAllArtifacts: async () => {
+                try {
+                    const q = query(collection(db, "artifacts"));
+                    const querySnapshot = await getDocs(q);
+                    let artifacts = [];
+                    querySnapshot.forEach((doc) => {
+                        artifacts.push(doc.data());
+                    });
+                    return artifacts;
+                } catch (error) {
+                    console.error("Error fetching artifacts:", error);
+                    return null;
+                }
+            }
+        };
+
+        console.log("Firebase loaded and ready.");
+
+    } catch (error) {
+        // Firebase CDN is unreachable (e.g. user is offline on first visit)
+        // Set firebaseAPI to null so app.js knows to fall back to local JSON
+        console.warn("Firebase could not be loaded (offline or CDN unreachable). Running in offline mode.", error.message);
+        window.firebaseAPI = null;
     }
-};
+})();
