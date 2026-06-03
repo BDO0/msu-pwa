@@ -124,9 +124,9 @@ async function initData() {
         try {
             console.log("Firebase unreachable. Loading data from local JSON fallback.");
             const [res1, res2, res3] = await Promise.all([
-                fetch('/data/station1.json'),
-                fetch('/data/station2.json'),
-                fetch('/data/station3.json')
+                fetch('./data/station1.json'),
+                fetch('./data/station2.json'),
+                fetch('./data/station3.json')
             ]);
             
             if (res1.ok) {

@@ -1,27 +1,27 @@
-const CACHE_NAME = 'msu-museum-cache-v17';
+const CACHE_NAME = 'msu-museum-cache-v18';
 const ASSETS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/admin.html',
-    '/css/styles.css',
-    '/css/matchup.css',
-    '/js/app.js',
-    '/js/admin.js',
-    '/js/matchup.js',
-    '/js/firebase-ui.js',
-    '/js/html5-qrcode.min.js',
-    '/manifest.json',
-    '/data/station1.json',
-    '/data/station2.json',
-    '/data/station3.json',
-    '/images/Chapter1.webp',
-    '/images/chapter2.webp',
-    '/images/chapter3.webp',
-    '/images/Kampilan.webp',
-    '/images/Kris.webp',
-    '/images/Panolong.webp',
-    '/images/icons/icon-192x192.png',
-    '/images/icons/icon-512x512.png',
+    './',
+    './index.html',
+    './admin.html',
+    './css/styles.css',
+    './css/matchup.css',
+    './js/app.js',
+    './js/admin.js',
+    './js/matchup.js',
+    './js/firebase-ui.js',
+    './js/html5-qrcode.min.js',
+    './manifest.json',
+    './data/station1.json',
+    './data/station2.json',
+    './data/station3.json',
+    './images/Chapter1.webp',
+    './images/chapter2.webp',
+    './images/chapter3.webp',
+    './images/Kampilan.webp',
+    './images/Kris.webp',
+    './images/Panolong.webp',
+    './images/icons/icon-192x192.png',
+    './images/icons/icon-512x512.png',
     'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'
 ];
 
@@ -115,7 +115,7 @@ self.addEventListener('fetch', (event) => {
                     ).catch(() => {
                         // Offline fallback for navigation requests
                         if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
-                            return caches.match('/index.html');
+                            return caches.match('./index.html');
                         }
                         return new Response('Offline', { status: 503, statusText: 'Service Unavailable' });
                     });
