@@ -34,6 +34,19 @@ let currentDocId = null;
 let currentExistingImage = null; // Store image during edit
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Wire sound toggle
+    const btnSoundToggle = document.getElementById('btn-sound-toggle');
+    if (btnSoundToggle && window.audioManager) {
+        const updateIcon = () => {
+            btnSoundToggle.textContent = window.audioManager.isEnabled() ? '🔊' : '🔇';
+        };
+        updateIcon();
+        btnSoundToggle.addEventListener('click', () => {
+            window.audioManager.setEnabled(!window.audioManager.isEnabled());
+            updateIcon();
+            window.audioManager?.playSound("click");
+        });
+    }
     // --- Authentication UI & Logic ---
     const loginSection = document.getElementById('login-section');
     const adminContent = document.getElementById('admin-content');
@@ -59,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        window.audioManager?.playSound("click");
         const email = document.getElementById('login-email').value;
         const pass = document.getElementById('login-pass').value;
         const btnLogin = document.getElementById('btn-login');
@@ -78,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnLogout.addEventListener('click', () => {
+        window.audioManager?.playSound("click");
         signOut(auth);
     });
 
@@ -120,17 +135,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('btn-view-add').addEventListener('click', () => {
+        window.audioManager?.playSound("click");
         resetFormState();
         switchView('view-form');
     });
 
     document.getElementById('btn-view-edit').addEventListener('click', () => {
+        window.audioManager?.playSound("click");
         document.getElementById('manage-title').innerText = "Choose a Station";
         document.getElementById('manage-subtitle').innerText = "Select which station's artifacts you want to edit.";
         switchView('view-manage');
     });
 
     document.getElementById('btn-view-delete').addEventListener('click', () => {
+        window.audioManager?.playSound("click");
         document.getElementById('manage-title').innerText = "Choose a Station";
         document.getElementById('manage-subtitle').innerText = "Select which station's artifacts you want to delete.";
         switchView('view-manage');
@@ -140,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-back-to-dash-manage').addEventListener('click', () => switchView('view-dashboard'));
     
     document.getElementById('btn-view-completers').addEventListener('click', () => {
+        window.audioManager?.playSound("click");
         switchView('view-completers');
         loadAdminCompleters();
     });

@@ -115,6 +115,7 @@ function runRotationPhase(container, artifact, allArtifacts, onSolved) {
         tile.style.transform = `rotate(${state * 90}deg)`;
 
         tile.addEventListener('click', () => {
+            window.audioManager?.playSound("rotate");
             let s = parseInt(tile.dataset.state);
             s = (s + 1) % 4;
             tile.dataset.state = s;
@@ -124,6 +125,7 @@ function runRotationPhase(container, artifact, allArtifacts, onSolved) {
 
             if (s === 0) {
                 tile.classList.add('correct');
+                window.audioManager?.playSound("correct");
             } else {
                 tile.classList.remove('correct');
             }
@@ -131,6 +133,7 @@ function runRotationPhase(container, artifact, allArtifacts, onSolved) {
             if (tiles.every(t => parseInt(t.dataset.state) === 0)) {
                 // Lock all tiles
                 tiles.forEach(t => { t.style.pointerEvents = 'none'; });
+                window.audioManager?.playSound("celebrate");
                 // Brief flash then proceed
                 setTimeout(() => {
                     gridPop(grid);
@@ -211,12 +214,14 @@ function runNamePhase(container, artifact, allArtifacts, onCorrect, onGameOver) 
         btn.addEventListener('click', () => {
             if (choice.id === artifact.id) {
                 // ✅ Correct
+                window.audioManager?.playSound("correct");
                 btn.classList.add('correct-answer');
                 grid.querySelectorAll('.choice-btn').forEach(b => b.style.pointerEvents = 'none');
                 saveGameWin(artifact.id);
                 setTimeout(onCorrect, 900);
             } else {
                 // ❌ Wrong — only shake this button, never reveal the answer
+                window.audioManager?.playSound("wrong");
                 lives--;
                 renderLives();
                 btn.classList.add('wrong-answer');
@@ -266,6 +271,7 @@ function showGameOver(container, onReplay) {
 
 function showVictory(container, onComplete) {
     container.innerHTML = '';
+    window.audioManager?.playSound("celebrate");
 
     const screen = document.createElement('div');
     screen.className = 'victory-screen game-phase-enter';
@@ -471,6 +477,7 @@ function renderWordWeaverRound(container, artifact, allArtifacts, totalRounds, r
     // ── Tile click = fill first empty letter slot ─────────────────────────────
     function onTileClick(tileIdx, letter, tile) {
         if (tile.classList.contains('used')) return;
+        window.audioManager?.playSound("click");
 
         // Find the next unfilled letter slot (left to right)
         const nextEmpty = letterSlotIndices.find(si => !filledSlots.some(f => f.slotIndex === si));
@@ -481,6 +488,7 @@ function renderWordWeaverRound(container, artifact, allArtifacts, totalRounds, r
 
         if (letter === expectedLetter) {
             // Correct letter for this slot
+            window.audioManager?.playSound("correct");
             tile.classList.add('used');
             slotEls[nextEmpty].textContent = letter;
             slotEls[nextEmpty].classList.add('filled');
@@ -489,10 +497,14 @@ function renderWordWeaverRound(container, artifact, allArtifacts, totalRounds, r
             checkSolvedSlots();
             updateBlur();
 
+            // Reveal sound on each correct step
+            window.audioManager?.playSound("reveal");
+
             // Check win
             if (filledSlots.length === letterSlotIndices.length) {
                 // All slots filled correctly — win!
                 lockAll();
+                window.audioManager?.playSound("celebrate");
                 setTimeout(() => {
                     artifactImg.style.filter = 'blur(0px)';
                     imgLabel.innerText = artifact.name;
@@ -500,19 +512,9 @@ function renderWordWeaverRound(container, artifact, allArtifacts, totalRounds, r
                     saveGameWin(artifact.id);
                 }, 400);
             }
-        } else if (!answerLetterSet.has(letter)) {
-            // Decoy letter — shake and return
-            tile.classList.add('decoy-shake');
-            setTimeout(() => tile.classList.remove('decoy-shake'), 450);
-
-            lives--;
-            renderLives();
-            if (lives <= 0) {
-                lockAll();
-                setTimeout(() => onGameOver(), 700);
-            }
         } else {
-            // Letter is in the word but wrong position — shake (wrong order)
+            // Decoy letter or wrong position
+            window.audioManager?.playSound("wrong");
             tile.classList.add('decoy-shake');
             setTimeout(() => tile.classList.remove('decoy-shake'), 450);
 
@@ -563,6 +565,7 @@ function showSolvedBanner(wrapper, name, onNext) {
 
 function showWWVictory(container, onComplete) {
     container.innerHTML = '';
+    window.audioManager?.playSound("celebrate");
     const screen = document.createElement('div');
     screen.className = 'victory-screen game-phase-enter';
     screen.innerHTML = `
@@ -821,7 +824,8 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
                 saveGameWin(targetArtifact.id);
                 
                 scenarioText.innerHTML = `<p style="color:var(--gold); font-weight:bold; font-size:1.1rem; text-align:center;">${story.success}</p>`;
-                // Play success narration
+                // Play success narration and celebration
+                window.audioManager?.playSound("celebrate");
                 speakText(story.success);
 
                 // Give it time to finish speaking before going to next round
@@ -851,6 +855,7 @@ function setupDraggable(container, element, dropZone, targetId, currentId, onSuc
         element.setPointerCapture(e.pointerId);
         
         element.classList.add('dragging');
+        window.audioManager?.playSound("drag");
         
         startX = e.clientX;
         startY = e.clientY;
@@ -916,7 +921,7 @@ function setupDraggable(container, element, dropZone, targetId, currentId, onSuc
         if (isOverDropZone) {
             if (currentId === targetId) {
                 // Correct!
-                playCorrectSound();
+                window.audioManager?.playSound("drop");
                 
                 // Spawn particles relative to the container coords
                 const sparkX = elementRect.left + elementRect.width / 2;
@@ -926,7 +931,7 @@ function setupDraggable(container, element, dropZone, targetId, currentId, onSuc
                 onSuccess();
             } else {
                 // Wrong! Bounce back, shake drop zone, play sound
-                playWrongSound();
+                window.audioManager?.playSound("wrong");
                 bounceBack(element);
                 dropZone.classList.add('wrong');
                 setTimeout(() => dropZone.classList.remove('wrong'), 500);
@@ -951,7 +956,7 @@ function setupDraggable(container, element, dropZone, targetId, currentId, onSuc
 function showDarangenVictory(container, onComplete) {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     container.innerHTML = '';
-    playVictoryFanfare();
+    window.audioManager?.playSound("celebrate");
     
     // Create epic victory ceremony container
     const victoryContainer = document.createElement('div');
@@ -987,102 +992,6 @@ function showDarangenVictory(container, onComplete) {
     
     localStorage.setItem('station3GameComplete', 'true');
     if (onComplete) onComplete();
-}
-
-// ─── Synthetic Audio System ───────────────────────────────────────────────────
-let audioCtx = null;
-
-function getAudioContext() {
-    if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-    }
-    return audioCtx;
-}
-
-function playCorrectSound() {
-    try {
-        const ctx = getAudioContext();
-        const now = ctx.currentTime;
-        // Rising pentatonic gold chime
-        const freqs = [349.23, 392.00, 440.00, 523.25, 587.33, 698.46]; // F4, G4, A4, C5, D5, F5
-        freqs.forEach((freq, i) => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(freq, now + i * 0.08);
-            
-            gain.gain.setValueAtTime(0.08, now + i * 0.08);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.6);
-            
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start(now + i * 0.08);
-            osc.stop(now + i * 0.08 + 0.65);
-        });
-    } catch (e) {
-        console.warn("Audio Context blocked or failed:", e);
-    }
-}
-
-function playWrongSound() {
-    try {
-        const ctx = getAudioContext();
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        // A low, wood-like thud
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(140, now);
-        osc.frequency.linearRampToValueAtTime(60, now + 0.25);
-        
-        gain.gain.setValueAtTime(0.2, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-        
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.3);
-    } catch (e) {
-        console.warn("Audio Context failed:", e);
-    }
-}
-
-function playVictoryFanfare() {
-    try {
-        const ctx = getAudioContext();
-        const now = ctx.currentTime;
-        
-        // 3 sequential chords to create a rich fanfare
-        const chord1 = [261.63, 329.63, 392.00]; // C major
-        const chord2 = [293.66, 349.23, 440.00]; // F major
-        const chord3 = [329.63, 415.30, 493.88, 659.25]; // E major / E5 gold chime
-        
-        const playChord = (freqs, startTime, duration) => {
-            freqs.forEach(freq => {
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(freq, startTime);
-                
-                gain.gain.setValueAtTime(0.06, startTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
-                
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start(startTime);
-                osc.stop(startTime + duration + 0.05);
-            });
-        };
-        
-        playChord(chord1, now, 0.4);
-        playChord(chord2, now + 0.35, 0.4);
-        playChord(chord3, now + 0.7, 1.2);
-    } catch (e) {
-        console.warn("Audio Context failed:", e);
-    }
 }
 
 // ─── Particle Effects ──────────────────────────────────────────────────────────
