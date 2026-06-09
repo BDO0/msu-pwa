@@ -270,18 +270,34 @@ function showGameOver(container, onReplay) {
 // ─── Celebration Ritual ───────────────────────────────────────────────────────
 
 /**
- * 3-step "Museum Completion Ritual":
- *   1. Freeze the game & play sound (t=0.0s)
- *   2. Full-screen overlay with card + particles (t=0.2s)
- *   3. Badge reveal (t=0.8s)
- *   4. Unlock & call onComplete (t=3.0s)
+ * 4-step "Museum Completion Ritual" (refined):
+ *   1. Freeze + sound (t=0.0s)
+ *   2. Micro anticipation delay, then overlay + particles (t=0.25s)
+ *   3. Badge reveal with spring arrival animation (t=1.0s)
+ *   4. Final silence moment, then unlock (t=3.5s)
+ *   Skip allowed after badge reveal (t=1.5s)
  */
 function showCelebration(container, config, onComplete) {
-    // Step 1 — Freeze (0.0s)
+    let unlocked = false;
+    let skipAllowed = false;
+
+    const unlockControls = () => {
+        if (unlocked) return;
+        unlocked = true;
+        document.body.classList.remove('completion-lock');
+        const overlay = container.querySelector('.celebration-overlay');
+        if (overlay) overlay.remove();
+        if (config.storageKey) {
+            localStorage.setItem(config.storageKey, 'true');
+        }
+        if (onComplete) onComplete();
+    };
+
+    // Step 1 — Freeze + play sound (0.0s)
     document.body.classList.add('completion-lock');
     window.audioManager?.playSound('celebrate');
 
-    // Step 2 — Overlay + card + particles (0.2s)
+    // Step 2 — Micro anticipation: overlay + card + particles (0.25s)
     setTimeout(() => {
         const overlay = document.createElement('div');
         overlay.className = 'celebration-overlay';
@@ -312,27 +328,36 @@ function showCelebration(container, config, onComplete) {
             overlay.appendChild(extra);
         }
 
-        container.appendChild(overlay);
-    }, 200);
+        // Skip hint — appears after badge reveal
+        const skipHint = document.createElement('div');
+        skipHint.className = 'celebration-skip-hint';
+        skipHint.innerText = 'Tap to continue';
+        overlay.appendChild(skipHint);
 
-    // Step 3 — Badge reveal (0.8s)
+        overlay.addEventListener('click', () => {
+            if (!skipAllowed) return;
+            unlockControls();
+        });
+
+        container.appendChild(overlay);
+    }, 250);
+
+    // Step 3 — Badge reveal with "arrival" animation (1.0s)
     setTimeout(() => {
         window.audioManager?.playSound('badge');
         const badge = container.querySelector('.badge-reveal');
         if (badge) badge.classList.add('visible');
-    }, 800);
+    }, 1000);
 
-    // Step 4 — Save & unlock (3.0s)
+    // Allow skip after badge animation finishes (1.5s)
     setTimeout(() => {
-        document.body.classList.remove('completion-lock');
-        const overlay = container.querySelector('.celebration-overlay');
-        if (overlay) overlay.remove();
+        skipAllowed = true;
+        const hint = container.querySelector('.celebration-skip-hint');
+        if (hint) hint.classList.add('visible');
+    }, 1500);
 
-        if (config.storageKey) {
-            localStorage.setItem(config.storageKey, 'true');
-        }
-        if (onComplete) onComplete();
-    }, 3000);
+    // Step 4 — Final silence moment, then unlock (3.5s)
+    setTimeout(unlockControls, 3500);
 }
 
 // ─── Victory Screens ─────────────────────────────────────────────────────────
