@@ -36,7 +36,8 @@
     </main>
 
     <footer style="text-align: center; padding: 0;">
-        <a href="#" id="admin-login-link" style="display: block; padding: 20px; font-size: 1rem; color: #ccc; text-decoration: none;">
+        <a href="#" id="about-link" style="display: block; padding: 16px 20px 6px; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.05em;">About This Experience</a>
+        <a href="#" id="admin-login-link" style="display: block; padding: 8px 20px 20px; font-size: 1rem; color: #ccc; text-decoration: none;">
             &copy; 2026 MSU Aga Khan Museum &middot; Admin Access
         </a>
     </footer>
@@ -283,6 +284,23 @@
                 <p>Point your camera at the station QR code.</p>
                 <div id="reader" style="width: 100%; max-width: 400px; margin: 0 auto;"></div>
                 <button id="btn-stop-scanner" class="btn btn-secondary" style="margin-top: 15px;">Cancel</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- About Modal Template -->
+    <template id="tmpl-about-modal">
+        <div class="modal-overlay" id="about-modal">
+            <div class="modal-content about-modal-content">
+                <button class="btn-close" id="btn-close-about">&times;</button>
+                <h2 class="about-heading">About This Experience</h2>
+                <div class="about-body">
+                    <p>This is not just a museum application.</p>
+                    <p>It is a journey through memory, culture, and identity.</p>
+                    <p>Each artifact you discover represents a fragment of Maranao heritage—preserved not only to be seen, but to be experienced.</p>
+                    <p>As you move through stations, solve challenges, and unlock achievements, you are following a path designed to mirror discovery itself: curiosity, understanding, and mastery.</p>
+                    <p>This project exists to bridge tradition and technology—so that cultural heritage does not remain in silence, but continues to be explored by the next generation.</p>
+                </div>
             </div>
         </div>
     </template>

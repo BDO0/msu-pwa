@@ -880,6 +880,32 @@ function setupModal() {
         });
     }
 
+    // Attach click event for the About link
+    const aboutLink = document.getElementById('about-link');
+    if (aboutLink) {
+        aboutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.audioManager?.playSound('click');
+            const aboutModal = document.getElementById('about-modal');
+            if (aboutModal) {
+                aboutModal.classList.remove('hidden');
+            } else {
+                // Inject the about modal template
+                const aboutTemplate = document.getElementById('tmpl-about-modal').content.cloneNode(true);
+                const aboutOverlay = aboutTemplate.querySelector('.modal-overlay');
+                aboutOverlay.classList.remove('hidden');
+                document.body.appendChild(aboutTemplate);
+
+                const modal = document.getElementById('about-modal');
+                const btnClose = document.getElementById('btn-close-about');
+                btnClose.addEventListener('click', () => modal.classList.add('hidden'));
+                modal.addEventListener('click', (ev) => {
+                    if (ev.target === modal) modal.classList.add('hidden');
+                });
+            }
+        });
+    }
+
     // Attach click event for the footer link
     const adminLoginLink = document.getElementById('admin-login-link');
     if (adminLoginLink) {
