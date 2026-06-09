@@ -6,6 +6,7 @@
 (function () {
   let audioCtx = null;
   let _enabled = true;
+  let masterGain = null;
 
   // Load preference
   try {
@@ -27,10 +28,16 @@
   function getCtx() {
     if (!audioCtx) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = 1.8; // global volume boost
+      masterGain.connect(audioCtx.destination);
     }
+
     if (audioCtx.state === 'suspended') {
       audioCtx.resume().catch(() => {});
     }
+
     return audioCtx;
   }
 
@@ -48,7 +55,7 @@
       gain.gain.setValueAtTime(0.12, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(masterGain);
       osc.start(now);
       osc.stop(now + 0.07);
     } catch (e) { /* noop */ }
@@ -66,7 +73,7 @@
       gain.gain.setValueAtTime(0.1, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(masterGain);
       osc.start(now);
       osc.stop(now + 0.08);
     } catch (e) { /* noop */ }
@@ -86,7 +93,7 @@
         gain.gain.setValueAtTime(0.07, now + i * 0.06);
         gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.45);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(masterGain);
         osc.start(now + i * 0.06);
         osc.stop(now + i * 0.06 + 0.5);
       });
@@ -105,7 +112,7 @@
       gain.gain.setValueAtTime(0.18, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(masterGain);
       osc.start(now);
       osc.stop(now + 0.3);
     } catch (e) { /* noop */ }
@@ -128,7 +135,7 @@
           gain.gain.setValueAtTime(0.05, startTime);
           gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
           osc.connect(gain);
-          gain.connect(ctx.destination);
+          gain.connect(masterGain);
           osc.start(startTime);
           osc.stop(startTime + duration + 0.05);
         });
@@ -153,7 +160,7 @@
         gain.gain.setValueAtTime(0.08, now + i * 0.15);
         gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.15 + 0.8);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(masterGain);
         osc.start(now + i * 0.15);
         osc.stop(now + i * 0.15 + 0.9);
       });
@@ -173,7 +180,7 @@
         gain.gain.setValueAtTime(0.1, now + i * 0.08);
         gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.35);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(masterGain);
         osc.start(now + i * 0.08);
         osc.stop(now + i * 0.08 + 0.4);
       });
@@ -201,7 +208,7 @@
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
       source.connect(filter);
       filter.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(masterGain);
       source.start(now);
       source.stop(now + 0.16);
     } catch (e) { /* noop */ }
@@ -229,7 +236,7 @@
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
       source.connect(filter);
       filter.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(masterGain);
       source.start(now);
       source.stop(now + 0.07);
     } catch (e) { /* noop */ }
@@ -248,7 +255,7 @@
       gain.gain.setValueAtTime(0.12, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(masterGain);
       osc.start(now);
       osc.stop(now + 0.75);
     } catch (e) { /* noop */ }
@@ -269,7 +276,7 @@
         gain.gain.setValueAtTime(0.06, now + delay);
         gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.9);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(masterGain);
         osc.start(now + delay);
         osc.stop(now + delay + 0.95);
       });
