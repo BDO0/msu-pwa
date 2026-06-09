@@ -358,7 +358,25 @@ async function renderHome() {
         }
     }
     
+    // --- Populate Journey Map ---
+    populateJourneyMap(template);
+
     appContent.appendChild(template);
+    
+    // --- Museum Guide Voice (first visit only) ---
+    if (!sessionStorage.getItem('guideVoicePlayed') && window.audioManager?.isEnabled()) {
+        sessionStorage.setItem('guideVoicePlayed', '1');
+        setTimeout(() => {
+            if (window.speechSynthesis && !window.darangenMuted) {
+                const guideMsg = new SpeechSynthesisUtterance(
+                    'Welcome to the MSU Aga Khan Museum of Maranao Heritage. Scan a QR code to begin your journey.'
+                );
+                guideMsg.rate = 0.9;
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(guideMsg);
+            }
+        }, 1500);
+    }
     
     // Handle offline install prompt
     let deferredPrompt;
@@ -559,6 +577,71 @@ async function renderArtifact(stationId, artifactId) {
     appContent.appendChild(template);
 }
 
+// --- Journey Map Population ---
+function populateJourneyMap(template) {
+    const map = template.getElementById('home-journey-map');
+    if (!map) return;
+
+    // Entrance is always unlocked
+    const entranceNode = map.querySelector('[data-station="start"]');
+    if (entranceNode) {
+        entranceNode.classList.add('unlocked');
+        entranceNode.classList.remove('locked');
+    }
+
+    // Station nodes: unlocked if visited, game-complete glows gold
+    const stationMap = { 'station1': 0, 'station2': 1, 'station3': 2 };
+    const gameCompleteKeys = {
+        'station1': localStorage.getItem('station1GameComplete') === 'true',
+        'station2': localStorage.getItem('station2GameComplete') === 'true',
+        'station3': localStorage.getItem('station3GameComplete') === 'true'
+    };
+
+    for (const [stId, segmentIdx] of Object.entries(stationMap)) {
+        const node = map.querySelector(`[data-station="${stId}"]`);
+        const lineSegment = map.querySelector(`[data-segment="${segmentIdx}"]`);
+        const isUnlocked = state.unlockedStations.includes(stId);
+        const isComplete = gameCompleteKeys[stId];
+
+        if (node) {
+            if (isUnlocked) {
+                node.classList.add('unlocked');
+                node.classList.remove('locked');
+            }
+            if (isComplete) {
+                node.classList.remove('locked');
+                node.classList.add('unlocked');
+            }
+        }
+
+        // Light up path segments for unlocked stations
+        if (lineSegment && isUnlocked) {
+            lineSegment.classList.add('lit');
+        }
+    }
+
+    // Hall of Masters: unlock when all 3 station games are complete
+    const hallNode = map.querySelector('[data-station="hall"]');
+    const hallLine = map.querySelector('[data-segment="3"]');
+    const allGamesComplete = gameCompleteKeys['station1'] && gameCompleteKeys['station2'] && gameCompleteKeys['station3'];
+    if (hallNode && allGamesComplete) {
+        hallNode.classList.add('unlocked');
+        hallNode.classList.remove('locked');
+    }
+    if (hallLine && allGamesComplete) {
+        hallLine.classList.add('lit');
+    }
+}
+
+// --- Page Transition Effect ---
+function applyPageTransition() {
+    const main = document.getElementById('app-content');
+    if (main) {
+        main.classList.add('view-transition');
+        setTimeout(() => main.classList.remove('view-transition'), 350);
+    }
+}
+
 function openScannerModal() {
     let modal = document.getElementById('scanner-modal');
     
@@ -619,18 +702,26 @@ function openScannerModal() {
     }
 }
 
-// --- Onboarding Logic ---
+// --- Cinematic Splash + Onboarding ---
 function handleOnboarding() {
     const hasOnboarded = localStorage.getItem('hasOnboarded');
     const splashScreen = document.getElementById('splash-screen');
     
     if (!hasOnboarded) {
+        // Show cinematic splash
         splashScreen.classList.remove('hidden');
+        window.audioManager?.playSound('startup');
+        
+        // Sequence: title in at 0.3s, subtitle at 1.0s, glow at 1.5s, fade out at 2.5s
+        setTimeout(() => {
+            splashScreen.classList.add('fade-out');
+        }, 2500);
         
         setTimeout(() => {
             splashScreen.classList.add('hidden');
+            splashScreen.classList.remove('fade-out');
             showOnboardingModal();
-        }, 2500);
+        }, 3100);
     }
 }
 
