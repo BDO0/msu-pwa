@@ -15,11 +15,13 @@
     <!-- Firebase SDK (Modular) will be loaded in firebase-ui.js -->
 </head>
 <body>
-    <!-- Splash Screen -->
+    <!-- Cinematic Splash Screen -->
     <div id="splash-screen" class="splash-screen hidden">
+        <div class="splash-bg"></div>
         <div class="splash-content">
             <h1 class="splash-title">MSU Aga Khan Museum</h1>
-            <p class="splash-subtitle">Welcome to your cultural journey</p>
+            <p class="splash-subtitle">Interactive Cultural Experience</p>
+            <div class="splash-glow"></div>
         </div>
     </div>
 
@@ -52,6 +54,34 @@
                     <button id="btn-install" class="btn btn-secondary hidden">Install App (Offline Use)</button>
                     <button id="btn-scan-qr" class="btn btn-primary" style="background-color: #FBC02D; color: #333;">📷 Scan Station QR</button>
                     <a href="#/station1" class="btn btn-primary" style="display:none;" id="btn-start-exploring">Start Exploring</a>
+                </div>
+            </div>
+
+            <!-- Journey Map -->
+            <div class="journey-map" id="home-journey-map">
+                <div class="journey-node unlocked" data-station="start">
+                    <span class="journey-icon">🏛</span>
+                    <span class="journey-label">Entrance</span>
+                </div>
+                <div class="journey-line" data-segment="0"></div>
+                <div class="journey-node locked" data-station="station1">
+                    <span class="journey-icon">⚔️</span>
+                    <span class="journey-label">Station 1</span>
+                </div>
+                <div class="journey-line" data-segment="1"></div>
+                <div class="journey-node locked" data-station="station2">
+                    <span class="journey-icon">🎵</span>
+                    <span class="journey-label">Station 2</span>
+                </div>
+                <div class="journey-line" data-segment="2"></div>
+                <div class="journey-node locked" data-station="station3">
+                    <span class="journey-icon">🐾</span>
+                    <span class="journey-label">Station 3</span>
+                </div>
+                <div class="journey-line" data-segment="3"></div>
+                <div class="journey-node locked" data-station="hall">
+                    <span class="journey-icon">👑</span>
+                    <span class="journey-label">Hall of Masters</span>
                 </div>
             </div>
 

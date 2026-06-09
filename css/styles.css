@@ -753,7 +753,7 @@ p {
 }
 
 /* =========================================================
-   ONBOARDING & SPLASH SCREEN
+   CINEMATIC SPLASH SCREEN
    ========================================================= */
 
 .splash-screen {
@@ -762,16 +762,28 @@ p {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: var(--marble-dark);
-    background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
-        radial-gradient(ellipse at center, #3a1f0a 0%, #1a1008 100%);
-    z-index: 9999;
+    background: #000;
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.splash-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at center, rgba(201, 168, 76, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse at 40% 50%, rgba(128, 0, 0, 0.12) 0%, transparent 60%),
+        #000;
+    animation: bg-breathe 3s ease-in-out infinite;
+}
+
+@keyframes bg-breathe {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
 }
 
 .splash-screen.hidden {
@@ -781,13 +793,15 @@ p {
     pointer-events: none;
 }
 
-.splash-content {
-    animation: splash-zoom 2s ease-out forwards;
+.splash-screen.fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
-@keyframes splash-zoom {
-    0% { transform: scale(0.9); opacity: 0; filter: brightness(0.5); }
-    100% { transform: scale(1); opacity: 1; filter: brightness(1); }
+.splash-content {
+    position: relative;
+    z-index: 2;
+    animation: none;
 }
 
 .splash-title {
@@ -795,15 +809,169 @@ p {
     color: var(--gold);
     font-size: 2.2rem;
     margin-bottom: 10px;
-    text-shadow: 0 0 20px rgba(201, 168, 76, 0.6);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     padding: 0 20px;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: cinematic-title-in 1s ease forwards 0.3s;
+    text-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+}
+
+@keyframes cinematic-title-in {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .splash-subtitle {
     color: var(--cream-dim);
     font-size: 1rem;
     font-style: italic;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: cinematic-sub-in 0.8s ease forwards 1.0s;
+}
+
+@keyframes cinematic-sub-in {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.splash-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: glow-pulse 1s ease-out forwards 1.5s;
+    pointer-events: none;
+}
+
+@keyframes glow-pulse {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    60% { opacity: 1; transform: translate(-50%, -50%) scale(2.5); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(3.5); }
+}
+
+/* =========================================================
+   JOURNEY MAP (Physical Museum Walk Feel)
+   ========================================================= */
+
+.journey-map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 18px 12px;
+    margin-bottom: 18px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: var(--marble-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-deep), var(--shadow-gold);
+}
+
+.journey-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 56px;
+    transition: transform 0.3s, filter 0.3s;
+    cursor: default;
+}
+
+.journey-node .journey-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.4s ease;
+}
+
+.journey-node .journey-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.05em;
+    max-width: 56px;
+    line-height: 1.2;
+    transition: color 0.4s;
+}
+
+/* Unlocked/active nodes */
+.journey-node.unlocked .journey-icon {
+    background: rgba(201, 168, 76, 0.15);
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.3);
+    color: var(--gold);
+}
+
+.journey-node.unlocked .journey-label {
+    color: var(--gold);
+}
+
+.journey-node.unlocked {
+    animation: node-glow-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes node-glow-pulse {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(201, 168, 76, 0.3)); }
+    50% { filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.7)); }
+}
+
+/* Current node (pulsing border) */
+.journey-node.current .journey-icon {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.6);
+    animation: current-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes current-pulse {
+    0%, 100% { box-shadow: 0 0 12px rgba(201, 168, 76, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(201, 168, 76, 0.8); }
+}
+
+/* Locked nodes */
+.journey-node.locked .journey-icon {
+    filter: grayscale(0.5);
+    opacity: 0.5;
+}
+
+/* Journey path lines */
+.journey-line {
+    width: 24px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1px;
+    margin: 0 2px;
+    transition: background 0.6s ease;
+    flex-shrink: 0;
+}
+
+.journey-line.lit {
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.5);
+    transition: background 0.3s ease, box-shadow 0.5s ease 0.2s;
+}
+
+/* Screen transition blur */
+.view-transition {
+    animation: page-blur-in 0.35s ease;
+}
+
+@keyframes page-blur-in {
+    0% { filter: blur(4px); opacity: 0.5; }
+    100% { filter: blur(0); opacity: 1; }
 }
 
 .onboard-slide {
