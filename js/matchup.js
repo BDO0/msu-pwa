@@ -267,26 +267,84 @@ function showGameOver(container, onReplay) {
     document.getElementById('btn-replay').addEventListener('click', onReplay);
 }
 
-// ─── Victory Screen ───────────────────────────────────────────────────────────
+// ─── Celebration Ritual ───────────────────────────────────────────────────────
+
+/**
+ * 3-step "Museum Completion Ritual":
+ *   1. Freeze the game & play sound (t=0.0s)
+ *   2. Full-screen overlay with card + particles (t=0.2s)
+ *   3. Badge reveal (t=0.8s)
+ *   4. Unlock & call onComplete (t=3.0s)
+ */
+function showCelebration(container, config, onComplete) {
+    // Step 1 — Freeze (0.0s)
+    document.body.classList.add('completion-lock');
+    window.audioManager?.playSound('celebrate');
+
+    // Step 2 — Overlay + card + particles (0.2s)
+    setTimeout(() => {
+        const overlay = document.createElement('div');
+        overlay.className = 'celebration-overlay';
+
+        // Particle burst — 18 gold dots radiating outward
+        for (let i = 0; i < 18; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'particle';
+            dot.style.setProperty('--angle', `${i * 20}deg`);
+            overlay.appendChild(dot);
+        }
+
+        const card = document.createElement('div');
+        card.className = 'celebration-card';
+        card.innerHTML = `
+            <div class="trophy">${config.trophy}</div>
+            <h2>${config.title}</h2>
+            <p>${config.subtitle}</p>
+            <p class="badge-reveal">${config.badgeText}</p>
+        `;
+        overlay.appendChild(card);
+
+        // Extra content for Station 3 (sunburst + gold rain)
+        if (config.extraContent) {
+            const extra = document.createElement('div');
+            extra.className = 'celebration-extra';
+            extra.innerHTML = config.extraContent;
+            overlay.appendChild(extra);
+        }
+
+        container.appendChild(overlay);
+    }, 200);
+
+    // Step 3 — Badge reveal (0.8s)
+    setTimeout(() => {
+        window.audioManager?.playSound('badge');
+        const badge = container.querySelector('.badge-reveal');
+        if (badge) badge.classList.add('visible');
+    }, 800);
+
+    // Step 4 — Save & unlock (3.0s)
+    setTimeout(() => {
+        document.body.classList.remove('completion-lock');
+        const overlay = container.querySelector('.celebration-overlay');
+        if (overlay) overlay.remove();
+
+        if (config.storageKey) {
+            localStorage.setItem(config.storageKey, 'true');
+        }
+        if (onComplete) onComplete();
+    }, 3000);
+}
+
+// ─── Victory Screens ─────────────────────────────────────────────────────────
 
 function showVictory(container, onComplete) {
-    container.innerHTML = '';
-    window.audioManager?.playSound("celebrate");
-
-    const screen = document.createElement('div');
-    screen.className = 'victory-screen game-phase-enter';
-    screen.innerHTML = `
-        <div class="trophy">🏆</div>
-        <h2>Challenge Complete!</h2>
-        <p>You successfully identified all 5 artifacts in this Station Challenge!</p>
-        <p style="color:var(--gold); font-weight:600; margin-top:8px;">✨ Badge Progress Saved</p>
-    `;
-
-    container.appendChild(screen);
-
-    localStorage.setItem('station1GameComplete', 'true');
-
-    if (onComplete) onComplete();
+    showCelebration(container, {
+        trophy: '🏆',
+        title: 'Challenge Complete!',
+        subtitle: 'You successfully identified all 5 artifacts in this Station Challenge!',
+        badgeText: '✨ Badge Progress Saved',
+        storageKey: 'station1GameComplete'
+    }, onComplete);
 }
 
 // ─── Persistence ──────────────────────────────────────────────────────────────
@@ -564,19 +622,13 @@ function showSolvedBanner(wrapper, name, onNext) {
 // ─── Word Weaver Victory ──────────────────────────────────────────────────────
 
 function showWWVictory(container, onComplete) {
-    container.innerHTML = '';
-    window.audioManager?.playSound("celebrate");
-    const screen = document.createElement('div');
-    screen.className = 'victory-screen game-phase-enter';
-    screen.innerHTML = `
-        <div class="trophy">🏆</div>
-        <h2>Word Weaver Complete!</h2>
-        <p>You spelled all 3 artifact names correctly! You are a true Maranao scholar.</p>
-        <p style="color:var(--gold); font-weight:600; margin-top:8px;">✨ Badge Progress Saved</p>
-    `;
-    container.appendChild(screen);
-    localStorage.setItem('station2GameComplete', 'true');
-    if (onComplete) onComplete();
+    showCelebration(container, {
+        trophy: '🏆',
+        title: 'Word Weaver Complete!',
+        subtitle: 'You spelled all 3 artifact names correctly! You are a true Maranao scholar.',
+        badgeText: '✨ Badge Progress Saved',
+        storageKey: 'station2GameComplete'
+    }, onComplete);
 }
 
 function showWWGameOver(container, onReplay) {
@@ -955,43 +1007,26 @@ function setupDraggable(container, element, dropZone, targetId, currentId, onSuc
 
 function showDarangenVictory(container, onComplete) {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
-    container.innerHTML = '';
-    window.audioManager?.playSound("celebrate");
     
-    // Create epic victory ceremony container
-    const victoryContainer = document.createElement('div');
-    victoryContainer.className = 'darangen-victory-container';
-    
-    // Glowing rotating sunburst background
-    const sunburst = document.createElement('div');
-    sunburst.className = 'sunburst-backdrop';
-    victoryContainer.appendChild(sunburst);
-    
-    // Raining gold confetti particles
-    for (let i = 0; i < 40; i++) {
-        const drop = document.createElement('div');
-        drop.className = 'gold-rain-drop';
-        drop.style.left = `${Math.random() * 100}%`;
-        drop.style.animationDelay = `${Math.random() * 3}s`;
-        drop.style.animationDuration = `${1.5 + Math.random() * 2}s`;
-        victoryContainer.appendChild(drop);
-    }
-    
-    const panel = document.createElement('div');
-    panel.className = 'victory-panel game-phase-enter';
-    panel.innerHTML = `
+    const extraContent = `
+        <div class="sunburst-backdrop"></div>
+        ${Array.from({length: 40}, (_, i) => {
+            const left = Math.random() * 100;
+            const delay = Math.random() * 3;
+            const dur = 1.5 + Math.random() * 2;
+            return `<div class="gold-rain-drop" style="left:${left}%;animation-delay:${delay}s;animation-duration:${dur}s;"></div>`;
+        }).join('')}
         <div class="grand-trophy">👑</div>
-        <h2>QUEST COMPLETE!</h2>
-        <p class="epic-title">Grand Historian of the Darangen</p>
-        <p>You have successfully decoded the ancient epics and proven your knowledge of Maranao heritage.</p>
-        <p style="color:var(--gold); font-weight:600; margin-top:12px; text-shadow:0 0 10px rgba(201,168,76,0.6);">✨ Final Station Badge Unlocked! ✨</p>
     `;
-    
-    victoryContainer.appendChild(panel);
-    container.appendChild(victoryContainer);
-    
-    localStorage.setItem('station3GameComplete', 'true');
-    if (onComplete) onComplete();
+
+    showCelebration(container, {
+        trophy: '',
+        title: 'QUEST COMPLETE!',
+        subtitle: 'Grand Historian of the Darangen — You have successfully decoded the ancient epics and proven your knowledge of Maranao heritage.',
+        badgeText: '✨ Final Station Badge Unlocked! ✨',
+        storageKey: 'station3GameComplete',
+        extraContent: extraContent
+    }, onComplete);
 }
 
 // ─── Particle Effects ──────────────────────────────────────────────────────────
