@@ -974,6 +974,48 @@ p {
     100% { filter: blur(0); opacity: 1; }
 }
 
+/* =========================================================
+   ABOUT MODAL
+   ========================================================= */
+
+.about-modal-content {
+    max-width: 500px;
+    padding: 40px 34px;
+    text-align: center;
+}
+
+.about-heading {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border-gold);
+    padding-bottom: 16px;
+    text-shadow: 0 0 16px rgba(201, 168, 76, 0.3);
+}
+
+.about-body p {
+    color: var(--cream-dim);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    font-weight: 400;
+}
+
+.about-body p:first-child {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--cream);
+}
+
+.about-body p:last-child {
+    margin-bottom: 0;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.9rem;
+}
+
 .onboard-slide {
     animation: fade-in 0.3s ease-in-out;
 }
