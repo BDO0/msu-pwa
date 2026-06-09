@@ -234,6 +234,11 @@ async function renderHome() {
     const completionMessage = template.getElementById('completion-message');
     if (state.isCompleted) {
         completionMessage.classList.remove('hidden');
+        // Only play celebration if not already registered
+        if (localStorage.getItem('hasRegistered') !== 'true' && !sessionStorage.getItem('completionCelebrated')) {
+            sessionStorage.setItem('completionCelebrated', '1');
+            setTimeout(() => window.audioManager?.playSound("celebrate"), 300);
+        }
         if (localStorage.getItem('hasRegistered') === 'true') {
             const btnReg = template.getElementById('btn-register');
             if (btnReg) {
@@ -251,17 +256,24 @@ async function renderHome() {
     }
     
     // Update Badges
+    let newlyUnlocked = false;
     if (localStorage.getItem('station1GameComplete') === 'true') {
         const b1 = template.getElementById('badge-station1');
+        if (b1 && b1.classList.contains('locked')) { newlyUnlocked = true; }
         if (b1) b1.classList.remove('locked');
     }
     if (localStorage.getItem('station2GameComplete') === 'true') {
         const b2 = template.getElementById('badge-station2');
+        if (b2 && b2.classList.contains('locked')) { newlyUnlocked = true; }
         if (b2) b2.classList.remove('locked');
     }
     if (localStorage.getItem('station3GameComplete') === 'true') {
         const b3 = template.getElementById('badge-station3');
+        if (b3 && b3.classList.contains('locked')) { newlyUnlocked = true; }
         if (b3) b3.classList.remove('locked');
+    }
+    if (newlyUnlocked) {
+        setTimeout(() => window.audioManager?.playSound("badge"), 200);
     }
     
     // Dynamic Hero Text
@@ -320,6 +332,7 @@ async function renderHome() {
     const btnRegister = template.getElementById('btn-register');
     if (btnRegister) {
         btnRegister.addEventListener('click', () => {
+            window.audioManager?.playSound("click");
             document.getElementById('register-modal').classList.remove('hidden');
         });
     }
@@ -333,9 +346,13 @@ async function renderHome() {
             if (btnStartExploring) {
                 btnStartExploring.style.display = 'inline-block';
                 btnStartExploring.innerText = 'Continue Exploring';
+                btnStartExploring.addEventListener('click', () => {
+                    window.audioManager?.playSound("click");
+                });
             }
         } else {
             btnScanQr.addEventListener('click', () => {
+                window.audioManager?.playSound("click");
                 openScannerModal();
             });
         }
@@ -352,6 +369,7 @@ async function renderHome() {
         if (installBtn) {
             installBtn.classList.remove('hidden');
             installBtn.addEventListener('click', () => {
+                window.audioManager?.playSound("click");
                 installBtn.classList.add('hidden');
                 deferredPrompt.prompt();
             });
@@ -587,6 +605,7 @@ function openScannerModal() {
             // Look for a station ID in the QR code text
             let match = decodedText.match(/(station[1-3])/i);
             if (match) {
+                window.audioManager?.playSound("scan");
                 window.location.hash = `#/${match[1].toLowerCase()}`;
                 modal.classList.add('hidden');
                 html5QrcodeScanner.clear().catch(e => console.error(e));
@@ -707,8 +726,9 @@ function setupModal() {
             
             if (window.firebaseAPI) {
                 const res = await window.firebaseAPI.registerCompleter(name, studentId);
-                if (res.success) {
-                    localStorage.setItem('hasRegistered', 'true');
+            if (res.success) {
+                window.audioManager?.playSound("celebrate");
+                localStorage.setItem('hasRegistered', 'true');
                     successMsg.classList.remove('hidden');
                     form.reset();
                     // Auto close after 2 seconds
@@ -774,6 +794,7 @@ function setupModal() {
     if (adminLoginLink) {
         adminLoginLink.addEventListener('click', (e) => {
             e.preventDefault();
+            window.audioManager?.playSound("click");
             const adminModal = document.getElementById('admin-login-modal');
             if (adminModal) {
                 adminModal.classList.remove('hidden');
@@ -784,6 +805,19 @@ function setupModal() {
 
 // App Initialization
 async function init() {
+    // Wire sound toggle
+    const btnSoundToggle = document.getElementById('btn-sound-toggle');
+    if (btnSoundToggle && window.audioManager) {
+        const updateIcon = () => {
+            btnSoundToggle.textContent = window.audioManager.isEnabled() ? '🔊' : '🔇';
+        };
+        updateIcon();
+        btnSoundToggle.addEventListener('click', () => {
+            window.audioManager.setEnabled(!window.audioManager.isEnabled());
+            updateIcon();
+            window.audioManager?.playSound("click");
+        });
+    }
     // Register Service Worker first so it can start caching immediately
     if ('serviceWorker' in navigator) {
         try {
@@ -812,6 +846,14 @@ async function init() {
 
     await initData();
     router();
+
+    // Play startup sound once per session
+    if (!sessionStorage.getItem('startupPlayed')) {
+        sessionStorage.setItem('startupPlayed', '1');
+        setTimeout(() => {
+            window.audioManager?.playSound("startup");
+        }, 500);
+    }
 }
 
 // Start
