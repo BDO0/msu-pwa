@@ -1,0 +1,28 @@
+{
+  "name": "msu-aga-khan-museum-pwa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-first Progressive Web App powering the MSU Aga Khan Museum of Maranao Heritage interactive QR scavenger hunt, station mini-games and admin panel.",
+  "type": "module",
+  "scripts": {
+    "start": "http-server . -p 8080 -c-1 --cors",
+    "tunnel": "localtunnel --port 8080",
+    "test": "node --test",
+    "images:compress": "node scripts/compress-images.js"
+  },
+  "keywords": [
+    "pwa",
+    "firebase",
+    "museum",
+    "qr-code",
+    "scavenger-hunt"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "localtunnel": "^2.0.2",
+    "sharp": "^0.33.5"
+  }
+}
