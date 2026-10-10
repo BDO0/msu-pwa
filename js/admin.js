@@ -3,19 +3,13 @@ import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from
 import { getFirestore, collection, addDoc, setDoc, doc, getDocs, updateDoc, deleteDoc, query, where, orderBy, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
-// Import config directly (We should probably export it from firebase-ui or duplicate here for simplicity,
-// Since we used a CDN, I'll copy the user's config provided earlier. In a real environment, use a shared config file).
-const firebaseConfig = {
-  apiKey: "AIzaSyA1VJmRQK1bKATahlKxBiizbbS6XhB91nI",
-  authDomain: "msu-museum-pwa.firebaseapp.com",
-  projectId: "msu-museum-pwa",
-  storageBucket: "msu-museum-pwa.firebasestorage.app",
-  messagingSenderId: "658642784462",
-  appId: "1:658642784462:web:e08c5fa9b74e5ae9f3409f",
-  measurementId: "G-MVBB6KGDJK"
-};
+import { FIREBASE_CONFIG } from './config.js';
 
-const app = initializeApp(firebaseConfig);
+// NOTE: the Firebase SDK version is pinned inside the static import URLs above,
+// because ES module static imports require string literals. Keep it in sync with
+// FIREBASE_SDK_VERSION in js/config.js when upgrading the SDK.
+
+const app = initializeApp(FIREBASE_CONFIG);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);

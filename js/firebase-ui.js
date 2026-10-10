@@ -1,26 +1,20 @@
 // Firebase is loaded dynamically so the app works offline even if the CDN is unreachable.
 // If Firebase cannot be loaded (e.g. user is offline on first visit), window.firebaseAPI
-// is set to null and the app falls back to local JSON data gracefully.
+// is set to null and the app degrades gracefully to whatever is already cached locally.
 
-const firebaseConfig = {
-  apiKey: "AIzaSyA1VJmRQK1bKATahlKxBiizbbS6XhB91nI",
-  authDomain: "msu-museum-pwa.firebaseapp.com",
-  projectId: "msu-museum-pwa",
-  storageBucket: "msu-museum-pwa.firebasestorage.app",
-  messagingSenderId: "658642784462",
-  appId: "1:658642784462:web:e08c5fa9b74e5ae9f3409f",
-  measurementId: "G-MVBB6KGDJK"
-};
+import { FIREBASE_CONFIG, FIREBASE_SDK_VERSION } from './config.js';
+
+const FIREBASE_CDN = `https://www.gstatic.com/firebasejs/${FIREBASE_SDK_VERSION}`;
 
 // Self-invoking async function so we can use await without blocking the module
 (async () => {
     try {
         // Dynamic imports — if CDN is offline, this throws and we catch it gracefully
-        const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js");
-        const { getFirestore, collection, addDoc, getDocs, query, where, orderBy, limit, enableIndexedDbPersistence } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
-        const { getAuth, signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js");
+        const { initializeApp } = await import(`${FIREBASE_CDN}/firebase-app.js`);
+        const { getFirestore, collection, addDoc, getDocs, query, where, orderBy, limit, enableIndexedDbPersistence } = await import(`${FIREBASE_CDN}/firebase-firestore.js`);
+        const { getAuth, signInWithEmailAndPassword } = await import(`${FIREBASE_CDN}/firebase-auth.js`);
 
-        const app = initializeApp(firebaseConfig);
+        const app = initializeApp(FIREBASE_CONFIG);
         const db = getFirestore(app);
         const auth = getAuth(app);
 
@@ -93,8 +87,6 @@ const firebaseConfig = {
                 }
             }
         };
-
-        console.log("Firebase loaded and ready.");
 
     } catch (error) {
         // Firebase CDN is unreachable (e.g. user is offline on first visit)

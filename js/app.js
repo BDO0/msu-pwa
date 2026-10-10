@@ -1,4 +1,5 @@
 import { initStationChallenge, initWordWeaver, initDarangenGame } from './matchup.js';
+import { STATION_IDS, STATION_NAMES } from './config.js';
 
 // State management
 let state = {
@@ -9,7 +10,6 @@ let state = {
     isCompleted: false
 };
 
-const STATIONS = ['station1', 'station2', 'station3'];
 const appContent = document.getElementById('app-content');
 let html5QrcodeScanner = null; // Global reference to the scanner
 
@@ -37,7 +37,6 @@ async function cacheImages(artifacts) {
                 }
             }
         }
-        console.log("Network-hosted images cached completely!");
         showOfflineReadyNotification();
     } catch (e) {
         console.error("Image cache error:", e);
@@ -101,12 +100,11 @@ async function initData() {
             const firebaseArtifacts = await window.firebaseAPI.getAllArtifacts();
 
             if (firebaseArtifacts !== null) {
-                console.log("Firebase/IndexedDB cache active. Artifacts found:", firebaseArtifacts.length);
                 allArtifacts = firebaseArtifacts;
 
-                stationMap['station1'] = { id: 'station1', name: 'Weapons & Tools', artifacts: [] };
-                stationMap['station2'] = { id: 'station2', name: 'Musical Instruments', artifacts: [] };
-                stationMap['station3'] = { id: 'station3', name: 'Animals', artifacts: [] };
+                for (const stationId of STATION_IDS) {
+                    stationMap[stationId] = { id: stationId, name: STATION_NAMES[stationId], artifacts: [] };
+                }
 
                 firebaseArtifacts.forEach(art => {
                     const st = art.station || 'station1';
@@ -291,7 +289,7 @@ async function renderHome() {
     
     // Station List
     const stationListEl = template.getElementById('home-station-list');
-    for (const st of STATIONS) {
+    for (const st of STATION_IDS) {
         const stData = getStationData(st);
         if (stData) {
             const li = document.createElement('li');
@@ -341,7 +339,7 @@ async function renderHome() {
     const btnScanQr = template.getElementById('btn-scan-qr');
     const btnStartExploring = template.getElementById('btn-start-exploring');
     if (btnScanQr) {
-        if (state.unlockedStations.length >= STATIONS.length) {
+        if (state.unlockedStations.length >= STATION_IDS.length) {
             btnScanQr.style.display = 'none';
             if (btnStartExploring) {
                 btnStartExploring.style.display = 'inline-block';
@@ -491,15 +489,11 @@ async function renderGame(stationId) {
     if (stationId === 'station1') {
         gameTitle.innerText = "🏆 Station Challenge";
         gameSubtitle.innerText = "Test your knowledge! Solve 5 image puzzles and identify the artifacts.";
-        initStationChallenge(containerId, data.artifacts, () => {
-            console.log('Station 1 Challenge completed!');
-        });
+        initStationChallenge(containerId, data.artifacts);
     } else if (stationId === 'station2') {
         gameTitle.innerText = "🪘 Maranao Word Weaver";
         gameSubtitle.innerText = "Spell the names of 3 mystery artifacts! Letters scramble.";
-        initWordWeaver(containerId, data.artifacts, () => {
-            console.log('Station 2 Word Weaver completed!');
-        });
+        initWordWeaver(containerId, data.artifacts);
     } else if (stationId === 'station3') {
         gameTitle.innerText = "✨ Darangen Quest";
         gameSubtitle.innerText = "Experience the epic tale. Match the sacred artifacts to their chapters.";
@@ -512,9 +506,7 @@ async function renderGame(stationId) {
             }
         }
         
-        initDarangenGame(containerId, globalArtifacts, () => {
-            console.log('Station 3 Darangen Game completed!');
-        });
+        initDarangenGame(containerId, globalArtifacts);
     } else {
         gameTitle.innerText = "Coming Soon";
         gameSubtitle.innerText = "There is no challenge available for this station yet.";
@@ -590,18 +582,13 @@ function populateJourneyMap(template) {
     }
 
     // Station nodes: unlocked if visited, game-complete glows gold
-    const stationMap = { 'station1': 0, 'station2': 1, 'station3': 2 };
-    const gameCompleteKeys = {
-        'station1': localStorage.getItem('station1GameComplete') === 'true',
-        'station2': localStorage.getItem('station2GameComplete') === 'true',
-        'station3': localStorage.getItem('station3GameComplete') === 'true'
-    };
+    const isGameComplete = (stationId) => localStorage.getItem(`${stationId}GameComplete`) === 'true';
 
-    for (const [stId, segmentIdx] of Object.entries(stationMap)) {
+    for (const [segmentIdx, stId] of STATION_IDS.entries()) {
         const node = map.querySelector(`[data-station="${stId}"]`);
         const lineSegment = map.querySelector(`[data-segment="${segmentIdx}"]`);
         const isUnlocked = state.unlockedStations.includes(stId);
-        const isComplete = gameCompleteKeys[stId];
+        const isComplete = isGameComplete(stId);
 
         if (node) {
             if (isUnlocked) {
@@ -623,22 +610,13 @@ function populateJourneyMap(template) {
     // Hall of Masters: unlock when all 3 station games are complete
     const hallNode = map.querySelector('[data-station="hall"]');
     const hallLine = map.querySelector('[data-segment="3"]');
-    const allGamesComplete = gameCompleteKeys['station1'] && gameCompleteKeys['station2'] && gameCompleteKeys['station3'];
+    const allGamesComplete = STATION_IDS.every(isGameComplete);
     if (hallNode && allGamesComplete) {
         hallNode.classList.add('unlocked');
         hallNode.classList.remove('locked');
     }
     if (hallLine && allGamesComplete) {
         hallLine.classList.add('lit');
-    }
-}
-
-// --- Page Transition Effect ---
-function applyPageTransition() {
-    const main = document.getElementById('app-content');
-    if (main) {
-        main.classList.add('view-transition');
-        setTimeout(() => main.classList.remove('view-transition'), 350);
     }
 }
 
@@ -683,8 +661,6 @@ function openScannerModal() {
         );
         
         html5QrcodeScanner.render((decodedText) => {
-            console.log(`Scan result: ${decodedText}`);
-            
             // Look for a station ID in the QR code text
             let match = decodedText.match(/(station[1-3])/i);
             if (match) {
@@ -938,8 +914,7 @@ async function init() {
     // Register Service Worker first so it can start caching immediately
     if ('serviceWorker' in navigator) {
         try {
-            const registration = await navigator.serviceWorker.register('./sw.js');
-            console.log('ServiceWorker registered, scope:', registration.scope);
+            await navigator.serviceWorker.register('./sw.js');
         } catch (err) {
             console.warn('ServiceWorker registration failed:', err);
         }

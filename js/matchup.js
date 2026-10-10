@@ -3,20 +3,7 @@
  * 5-round multi-phase: Rotation Puzzle → Name Identification
  */
 
-// ─── Utility Helpers ─────────────────────────────────────────────────────────
-
-function shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
-function pickRandom(arr, n) {
-    return shuffle(arr).slice(0, n);
-}
+import { shuffle, pickRandom } from './utils.js';
 
 // ─── Main Entry Point ─────────────────────────────────────────────────────────
 
@@ -217,7 +204,6 @@ function runNamePhase(container, artifact, allArtifacts, onCorrect, onGameOver) 
                 window.audioManager?.playSound("correct");
                 btn.classList.add('correct-answer');
                 grid.querySelectorAll('.choice-btn').forEach(b => b.style.pointerEvents = 'none');
-                saveGameWin(artifact.id);
                 setTimeout(onCorrect, 900);
             } else {
                 // ❌ Wrong — only shake this button, never reveal the answer
@@ -370,19 +356,6 @@ function showVictory(container, onComplete) {
         badgeText: '✨ Badge Progress Saved',
         storageKey: 'station1GameComplete'
     }, onComplete);
-}
-
-// ─── Persistence ──────────────────────────────────────────────────────────────
-
-function saveGameWin(artifactId) {
-    let gamesWon = JSON.parse(localStorage.getItem('gamesWon') || '[]');
-    if (!gamesWon.includes(artifactId)) {
-        gamesWon.push(artifactId);
-        localStorage.setItem('gamesWon', JSON.stringify(gamesWon));
-    }
-    if (gamesWon.length >= 9) {
-        localStorage.setItem('hasSpecialBadge', 'true');
-    }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -592,7 +565,6 @@ function renderWordWeaverRound(container, artifact, allArtifacts, totalRounds, r
                     artifactImg.style.filter = 'blur(0px)';
                     imgLabel.innerText = artifact.name;
                     showSolvedBanner(wrapper, artifact.name, onRoundWin);
-                    saveGameWin(artifact.id);
                 }, 400);
             }
         } else {
@@ -898,8 +870,6 @@ export function initDarangenGame(containerId, allArtifacts, onComplete) {
                     i.style.pointerEvents = 'none';
                 });
 
-                saveGameWin(targetArtifact.id);
-                
                 scenarioText.innerHTML = `<p style="color:var(--gold); font-weight:bold; font-size:1.1rem; text-align:center;">${story.success}</p>`;
                 // Play success narration and celebration
                 window.audioManager?.playSound("celebrate");

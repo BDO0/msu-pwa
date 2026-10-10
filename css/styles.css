@@ -964,16 +964,6 @@ p {
     transition: background 0.3s ease, box-shadow 0.5s ease 0.2s;
 }
 
-/* Screen transition blur */
-.view-transition {
-    animation: page-blur-in 0.35s ease;
-}
-
-@keyframes page-blur-in {
-    0% { filter: blur(4px); opacity: 0.5; }
-    100% { filter: blur(0); opacity: 1; }
-}
-
 /* =========================================================
    ABOUT MODAL
    ========================================================= */
