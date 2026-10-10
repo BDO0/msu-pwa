@@ -1,13 +1,16 @@
-const CACHE_NAME = 'msu-museum-cache-v19';
+const CACHE_NAME = 'msu-museum-cache-v21';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './admin.html',
     './css/styles.css',
     './css/matchup.css',
+    './js/config.js',
+    './js/utils.js',
     './js/app.js',
     './js/admin.js',
     './js/matchup.js',
+    './js/audio.js',
     './js/firebase-ui.js',
     './js/html5-qrcode.min.js',
     './manifest.json',
@@ -28,7 +31,6 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) => {
-            console.log('Opened cache');
             return Promise.all(
                 ASSETS_TO_CACHE.map(url => {
                     return cache.add(url).catch(err => {
