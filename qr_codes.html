@@ -254,69 +254,10 @@
     <p>Scroll down to see all QR codes · Right-click any QR image → Save to download</p>
 </header>
 
-<div class="qr-scroll">
+<!-- QR sections are generated from js/config.js so the deployment URL and
+     station names only have to be maintained in one place. -->
+<div class="qr-scroll" id="qr-scroll"></div>
 
-    <!-- ══ HOME / ENTRANCE QR ══ -->
-    <section class="qr-section">
-        <div class="qr-card">
-            <div class="qr-icon">🏛️</div>
-            <div class="qr-badge home-badge">Entrance QR</div>
-            <h2 class="qr-title">Museum Home</h2>
-            <p class="qr-subtitle">Scan this at the entrance to open the app</p>
-            <div class="qr-image-wrap">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://msu-pwa.vercel.app/" alt="Home QR Code">
-            </div>
-            <div class="qr-url">https://msu-pwa.vercel.app/</div>
-            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://msu-pwa.vercel.app/" target="_blank" download>⬇ Download High-Res</a>
-        </div>
-        <span class="scroll-hint">▼ scroll for stations</span>
-    </section>
-
-    <!-- ══ STATION 1 ══ -->
-    <section class="qr-section">
-        <div class="qr-card">
-            <div class="qr-icon">⚔️</div>
-            <div class="qr-badge">Station 1 QR</div>
-            <h2 class="qr-title">Weapons &amp; Tools</h2>
-            <p class="qr-subtitle">Place this QR code at Station 1</p>
-            <div class="qr-image-wrap">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://msu-pwa.vercel.app/%23/station1" alt="Station 1 QR Code">
-            </div>
-            <div class="qr-url">https://msu-pwa.vercel.app/#/station1</div>
-            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://msu-pwa.vercel.app/%23/station1" target="_blank" download>⬇ Download High-Res</a>
-        </div>
-    </section>
-
-    <!-- ══ STATION 2 ══ -->
-    <section class="qr-section">
-        <div class="qr-card">
-            <div class="qr-icon">🎵</div>
-            <div class="qr-badge">Station 2 QR</div>
-            <h2 class="qr-title">Musical Instruments</h2>
-            <p class="qr-subtitle">Place this QR code at Station 2</p>
-            <div class="qr-image-wrap">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://msu-pwa.vercel.app/%23/station2" alt="Station 2 QR Code">
-            </div>
-            <div class="qr-url">https://msu-pwa.vercel.app/#/station2</div>
-            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://msu-pwa.vercel.app/%23/station2" target="_blank" download>⬇ Download High-Res</a>
-        </div>
-    </section>
-
-    <!-- ══ STATION 3 ══ -->
-    <section class="qr-section">
-        <div class="qr-card">
-            <div class="qr-icon">🐾</div>
-            <div class="qr-badge">Station 3 QR</div>
-            <h2 class="qr-title">Animals</h2>
-            <p class="qr-subtitle">Place this QR code at Station 3</p>
-            <div class="qr-image-wrap">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=800x800&color=1a1008&data=https://msu-pwa.vercel.app/%23/station3" alt="Station 3 QR Code">
-            </div>
-            <div class="qr-url">https://msu-pwa.vercel.app/#/station3</div>
-            <a class="print-btn" href="https://api.qrserver.com/v1/create-qr-code/?size=1200x1200&color=1a1008&data=https://msu-pwa.vercel.app/%23/station3" target="_blank" download>⬇ Download High-Res</a>
-        </div>
-    </section>
-
-</div>
+<script type="module" src="js/qr-codes.js"></script>
 </body>
 </html>
