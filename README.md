@@ -207,5 +207,9 @@ Open `admin.html`, or tap **Admin Access** in the footer of the visitor app. Sig
 
 ## 📄 License
 
-No license has been chosen for this repository yet, so all rights are reserved by the authors. It was produced as an academic capstone project for Mindanao State University.
+**All rights reserved.**
+
+© 2026 the authors. This project was produced as an academic capstone for Mindanao State University and is published for portfolio and reference purposes only.
+
+No permission is granted to copy, modify, publish, distribute or reuse this code, in whole or in part. Third-party dependencies keep their own licences: [`html5-qrcode`](https://github.com/mebjas/html5-qrcode) (Apache-2.0) and the Firebase JS SDK (Apache-2.0).
 
